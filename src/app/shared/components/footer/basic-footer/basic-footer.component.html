@@ -1,0 +1,79 @@
+<div class="container-fluid-lg">
+    <div class="main-footer section-b-space">
+        <div class="row g-md-4 g-3">
+            <div class="col-xl-4 col-lg-4 col-sm-6">
+                <div class="footer-logo">
+                    <app-footer-logo [data]="data" [footer]="footer"></app-footer-logo>
+                    <app-footer-about [data]="data"></app-footer-about>
+                    <!-- <a href="https://www.instagram.com/stylexio/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/Stylexio1/" target="_blank"><i class="fa-brands fa-facebook"></i></a> -->
+                    <div class="social-media gap-4 d-flex ">
+                        <a href="https://www.facebook.com/Stylexio1/" target="_blank">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/stylexio/" target="_blank">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-2 col-lg-2 col-sm-3" (click)="toggle('useful_link')">
+                <div class="footer-title" [class.show]="active['useful_link']">
+                    <h4>{{ 'Useful Links' | translate }}</h4>
+                </div>
+                <div class="footer-contain">
+                    <!-- <app-footer-links [links]="data?.footer?.useful_link || []"></app-footer-links> -->
+                    <ul>
+                        <li><a routerLink="/term-condition" title="Terms &amp; Conditions" href="/term-condition">Terms
+                                &amp; Conditions</a></li>
+                        <li><a routerLink="/privacy-policy" title="Privacy Policy" href="/privacy-policy">Privacy
+                                Policy</a></li>
+                        <li><a routerLink="/refund-and-cancellation" title="Refund and Cancellation Policy"
+                                href="/refund-and-cancellation">Refund and Cancellation Policy</a></li>
+                        <li><a routerLink="/return-policy" title="Return Policy" href="/return-policy">Return Policy</a>
+                        </li>
+                        <li><a routerLink="/shipping-policy" title="Shipping Policy" href="/shipping-policy">Shipping
+                                Policy</a></li>
+                        <li><a routerLink="/page/about-us" title="About Us" href="/page/about-us">About Us</a></li>
+                        <li><a routerLink="/Contact-Us" title="Contact Us" href="/Contact-Us">Contact Us</a></li>
+                        <!-- <li><a href="/page/about-us">About Us</a></li> -->
+                    </ul>
+                    <!-- No Data -->
+                    <app-no-data [class]="'no-data-footer'" [text]="'no_link_found'"
+                        *ngIf="!data?.footer?.useful_link?.length"></app-no-data>
+                </div>
+            </div>
+            <div class="col-xl-2 col-sm-3" (click)="toggle('help_center')">
+                <div class="footer-title" [class.show]="active['help_center']">
+                    <h4>{{ 'Help Center' | translate }}</h4>
+                </div>
+                <div class="footer-contain">
+                    <app-footer-links [links]="data?.footer?.help_center || []"></app-footer-links>
+                    <!-- No Data -->
+                    <app-no-data [class]="'no-data-footer'" [text]="'no_link_found'"
+                        *ngIf="!data?.footer?.help_center?.length"></app-no-data>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-sm-6" *ngIf="data?.footer?.support_email ||
+                    data?.footer?.support_number ||
+                    data?.footer?.play_store_url ||
+                    data?.footer?.app_store_url">
+                <div class="footer-title contact-title">
+                    <h4>{{ 'Contact Us' | translate }}</h4>
+                </div>
+                <app-footer-contact [data]="data"></app-footer-contact>
+            </div>
+        </div>
+    </div>
+    <div class="sub-footer section-small-space">
+        <div class="reserve" *ngIf="data?.footer?.footer_copyright">
+            <app-footer-copyright [data]="data"></app-footer-copyright>
+        </div>
+        <!-- <div class="payment">
+            <app-footer-payment-options></app-footer-payment-options>
+        </div> -->
+        <app-footer-social-links [data]="data" *ngIf="data?.footer?.social_media_enable"></app-footer-social-links>
+    </div>
+
+</div>

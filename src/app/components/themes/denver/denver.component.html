@@ -1,0 +1,99 @@
+<!-- Home Section Start -->
+
+<!-- Hero Banner Start -->
+<section class="hero-banner-section">
+  <div class="hero-banner">
+    <img src="assets/images/Hero_image.webp" alt="Hero Banner" class="hero-banner-image">
+  </div>
+</section>
+
+<!-- <section class="home-section-2 home-section-bg pt-md-0 pt-3 overflow-hidden" *ngIf="data?.content?.home_banner">
+  <app-theme-home-banner [theme]="'denver'" [data]="data?.content?.home_banner"></app-theme-home-banner>
+</section> -->
+<!-- Home Section End -->
+
+
+<!-- Stylexio Banner End -->
+<!-- Category Section Start -->
+<section *ngIf="data?.content?.categories_icon_list?.status">
+  <div class="container-fluid-lg">
+    <app-theme-categories [style]="'horizontal'" [theme]="'paris'" [sliderOption]="categorySlider"
+      [categoryIds]="data?.content?.categories_icon_list?.category_ids || []"
+      [image]="data?.content?.categories_icon_list?.image_url">
+    </app-theme-categories>
+  </div>
+</section>
+<!-- Category Section End -->
+
+<!-- Deal Section Start -->
+<section class="product-section product-section-3" *ngIf="data?.content?.products_list_1?.status">
+  <div class="container-fluid-lg">
+    <div>
+      <div>
+        <h2 class="text-center mb-4 font-weight-light title-top">Fresh Drops</h2>
+      </div>
+
+      <app-theme-product [productIds]="data?.content?.products_list_1?.product_ids || []" [style]="'horizontal'"
+        [slider]="true" [sliderOption]="productSlider6ItemMargin" [productStyle]="'product-solid'"
+        [boxClass]="'product-box-bg'">
+      </app-theme-product>
+    </div>
+  </div>
+</section>
+<!-- Deal Section End -->
+
+
+
+<!-- Top Selling Section Start -->
+<section class="product-section product-section-3" *ngIf="data?.content?.products_list_2?.status">
+  <div class="container-fluid-lg">
+    <div>
+      <app-title [title]="data?.content?.products_list_2?.title" [style]="'simple'">
+      </app-title>
+      <p class="p-text-main">Find your own signature styles with classic menswear from our premium collections. Whether
+        it is for work, the weekend, or just between the two, Stylexio offers you stylish selections to ensure ultimate
+        comfort and confidence. Shirts, trousers, casual wear, and more-all just about keeping you sharp.Shop the Latest
+        in Men’s Style from timeless classics to modern trends, we make online men’s fashion shopping effortless. Browse
+        our wide range of categories and shop men’s clothing online — from casual essentials to formalwear, outerwear,
+        and more.
+      </p>
+      <app-theme-product [productIds]="data?.content?.products_list_2?.product_ids || []" [style]="'horizontal'"
+        [slider]="true" [sliderOption]="productSlider6ItemMargin" [productStyle]="'product-solid'"
+        [boxClass]="'product-box-bg'">
+      </app-theme-product>
+    </div>
+  </div>
+</section>
+<!-- Top Selling Section End -->
+
+<!-- Top Selling Section Start -->
+<section class="product-section product-section-3" *ngIf="data?.content?.products_list_3?.status">
+  <div class="container-fluid-lg">
+    <div>
+      <app-title [title]="data?.content?.products_list_3?.title" [style]="'simple'">
+      </app-title>
+      <p class="p-text-main">Our womenswear collection is Affordable, Stylish & On-Trend . From elegantly casual to
+        eye-catching styles, explore unique womenswear for those who are always styled-up. Go ahead and combine
+        fashion-forward with effortless chic for any occasion.</p>
+      <app-theme-product [productIds]="data?.content?.products_list_3?.product_ids || []" [style]="'horizontal'"
+        [slider]="true" [sliderOption]="productSlider6ItemMargin" [productStyle]="'product-solid'"
+        [boxClass]="'product-box-bg'">
+      </app-theme-product>
+    </div>
+  </div>
+</section>
+<!-- Top Selling Section End -->
+
+<!-- Brand Section start -->
+<section class="brand-effect border-brand" *ngIf="data?.content?.brands?.brand_ids && data?.content?.brands?.status">
+  <div class="container-fluid-lg">
+    <app-brand [brandIds]="data?.content?.brands?.brand_ids || []"></app-brand>
+  </div>
+</section>
+<!-- Brand Section end -->
+
+<!-- Newsletter Section Start -->
+<section class="newsletter-section section-b-space" *ngIf="data?.content?.news_letter?.status">
+  <app-newsletter [data]="data?.content?.news_letter!"></app-newsletter>
+</section>
+<!-- Newsletter Section End -->

@@ -36,44 +36,44 @@ export class LayoutComponent {
 
     this.route.queryParams.subscribe(params => this.theme = params['theme'])
 
-    this.store.dispatch(new GetUserDetails ());
+    this.store.dispatch(new GetUserDetails());
     this.router.events.subscribe((event) => {
-      if(event instanceof NavigationEnd) {
-        if(this.theme) {
-          if(this.theme == 'paris') {
+      if (event instanceof NavigationEnd) {
+        if (this.theme) {
+          if (this.theme == 'paris') {
             this.themeOptionService.theme_color = '#0da487';
-    
-          } else if (this.theme == 'osaka'){
+
+          } else if (this.theme == 'osaka') {
             this.themeOptionService.theme_color = '#0da487';
-    
-          } else if(this.theme == 'tokyo') {
+
+          } else if (this.theme == 'tokyo') {
             this.themeOptionService.theme_color = '#d99f46';
-    
-          } else if(this.theme == 'rome') {
+
+          } else if (this.theme == 'rome') {
             this.themeOptionService.theme_color = '#0baf9a';
-    
-          } else if(this.theme == 'madrid') {
+
+          } else if (this.theme == 'madrid') {
             this.themeOptionService.theme_color = '#239698';
-    
-          } else if(this.theme == 'berlin' || this.theme == 'denver' || this.theme == 'moscow') {
+
+          } else if (this.theme == 'berlin' || this.theme == 'denver' || this.theme == 'moscow') {
             this.themeOptionService.theme_color = '#417394';
-            
-          }else if(this.theme == 'cairo') {
+
+          } else if (this.theme == 'cairo') {
             this.themeOptionService.theme_color = '#7b4397';
             this.themeOptionService.secondary_color = '#dc2430';
           }
-        } else  {
+        } else {
           this.themeOption$.subscribe(theme => {
             this.themeOptionService.theme_color = theme?.general?.primary_color;
             this.themeOptionService.secondary_color = theme?.general?.secondary_color;
 
-            document.documentElement.style.setProperty('--theme-color',this.themeOptionService?.theme_color);
-            document.documentElement.style.setProperty('--theme-color2',this.themeOptionService?.secondary_color);
+            document.documentElement.style.setProperty('--theme-color', this.themeOptionService?.theme_color);
+            document.documentElement.style.setProperty('--theme-color2', this.themeOptionService?.secondary_color);
           })
         }
 
-        document.documentElement.style.setProperty('--theme-color',this.themeOptionService?.theme_color);
-        document.documentElement.style.setProperty('--theme-color2',this.themeOptionService?.secondary_color);
+        document.documentElement.style.setProperty('--theme-color', this.themeOptionService?.theme_color);
+        document.documentElement.style.setProperty('--theme-color2', this.themeOptionService?.secondary_color);
       }
     });
 
@@ -81,9 +81,9 @@ export class LayoutComponent {
     this.exit$.subscribe(res => this.exit = res);
     this.router.events.subscribe(
       (event) => {
-        if ( event instanceof NavigationEnd ) {
+        if (event instanceof NavigationEnd) {
           this.router.url
-      }
+        }
       }
     );
     this.themeOptionService.preloader = true;
@@ -93,7 +93,7 @@ export class LayoutComponent {
     const getPages$ = this.store.dispatch(new GetPages({ status: 1 }));
     const getMenu$ = this.store.dispatch(new GetMenu({ status: 1 }));
     this.store.dispatch(new GetWishlist())
-    forkJoin([getCategories$, getProductBySearch$ , getPages$, getBlog$, getMenu$]).subscribe({
+    forkJoin([getCategories$, getProductBySearch$, getPages$, getBlog$, getMenu$]).subscribe({
       complete: () => {
         this.themeOptionService.preloader = false;
       }
@@ -105,45 +105,45 @@ export class LayoutComponent {
     var headerLogo;
     var footerLogo;
     var footerClass;
-    if(this.theme) {
-      
-      if(this.theme == 'paris') {
+    if (this.theme) {
+
+      if (this.theme == 'paris') {
         headerLogo = 'assets/images/logo/1.png';
         footerLogo = 'assets/images/logo/1.png';
 
-      } else if (this.theme == 'osaka'){
+      } else if (this.theme == 'osaka') {
         headerLogo = 'assets/images/logo/1.png';
         footerLogo = 'assets/images/logo/1.png';
 
-      } else if(this.theme == 'tokyo') {
+      } else if (this.theme == 'tokyo') {
         headerLogo = 'assets/images/logo/2.png';
         footerLogo = 'assets/images/logo/2.png';
 
-      } else if(this.theme == 'rome') {
+      } else if (this.theme == 'rome') {
         headerLogo = 'assets/images/logo/3.png';
         footerLogo = 'assets/images/logo/3.png';
 
-      } else if(this.theme == 'madrid') {
+      } else if (this.theme == 'madrid') {
         headerLogo = 'assets/images/logo/4.png';
         footerLogo = 'assets/images/logo/4.png'
         footerClass = 'footer-section-2 footer-color-2'
 
-      } else if(this.theme == 'berlin') {
+      } else if (this.theme == 'berlin') {
         headerLogo = 'assets/images/logo/6.png';
         footerLogo = 'assets/images/logo/4.png'
         footerClass = 'footer-section-2 footer-color-3'
 
-      } else if( this.theme == 'denver') {
+      } else if (this.theme == 'denver') {
         headerLogo = 'assets/images/logo-web.png';
         footerLogo = 'assets/images/logo/4.png'
         footerClass = 'footer-section-2 footer-color-3'
 
-      } else if(this.theme == 'moscow') {
+      } else if (this.theme == 'moscow') {
         headerLogo = 'assets/images/logo/6.png';
         footerLogo = 'assets/images/logo/4.png'
         footerClass = 'footer-section-2 footer-color-3'
 
-      }else if(this.theme == 'cairo') {
+      } else if (this.theme == 'cairo') {
         headerLogo = 'assets/images/logo/7.png';
         footerLogo = 'assets/images/logo/4.png'
         footerClass = 'footer-section-2 footer-color-3'
@@ -157,30 +157,30 @@ export class LayoutComponent {
       });
     }
 
-    return { header_logo: headerLogo, footer: { footer_logo: footerLogo, footer_class: footerClass }  }
+    return { header_logo: headerLogo, footer: { footer_logo: footerLogo, footer_class: footerClass } }
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.setVariant();
     this.router.events.forEach((event) => {
-      if(event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd) {
         this.setVariant();
       }
     });
   }
 
-  setVariant(){
-    if(this.theme === 'paris' || this.theme === 'tokyo'){
+  setVariant() {
+    if (this.theme === 'paris' || this.theme === 'tokyo') {
       this.themeOptionService.productBox = 'basic';
-    } else if ( this.theme === 'berlin' || this.theme === 'denver'){
+    } else if (this.theme === 'berlin' || this.theme === 'denver') {
       this.themeOptionService.productBox = 'standard';
-    } else if (this.theme === 'osaka' || this.theme === 'rome'){
+    } else if (this.theme === 'osaka' || this.theme === 'rome') {
       this.themeOptionService.productBox = 'classic';
-    } else if (this.theme === 'cairo'){
+    } else if (this.theme === 'cairo') {
       this.themeOptionService.productBox = 'digital';
-    } else if (this.theme === 'madrid' || this.theme === 'moscow'){
+    } else if (this.theme === 'madrid' || this.theme === 'moscow') {
       this.themeOptionService.productBox = 'premium';
-    }  else {
+    } else {
       this.themeOption$.subscribe(theme => {
         this.themeOptionService.productBox = theme?.product ? theme?.product?.product_box_variant : '';
       });

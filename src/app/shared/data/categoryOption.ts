@@ -1,7 +1,7 @@
 export const CategoryOption: any[] = [
     {
       "id": 60,
-      "name": "Activewear",
+      "name": "MoveMode",
       "slug": "activewear",
       "meta_title": null,
       "meta_description": null,
@@ -46,7 +46,7 @@ export const CategoryOption: any[] = [
     },
     {
       "id": 66,
-      "name": "Men’s Clothes",
+      "name": "The Men’s Rack",
       "slug": "men",
       "meta_title": null,
       "meta_description": null,
@@ -91,8 +91,8 @@ export const CategoryOption: any[] = [
     },
     {
       "id": 68,
-      "name": "Women's Clothes",
-      "slug": "women",
+      "name": "Style for Her",
+      "slug": "Style for Her",
       "meta_title": null,
       "meta_description": null,
       "category_meta_image_id": null,

@@ -22,7 +22,7 @@ export class SettingStateModel {
 @Injectable()
 export class SettingState {
 
-  constructor(private settingService: SettingService) {}
+  constructor(private settingService: SettingService) { }
 
   @Selector()
   static setting(state: SettingStateModel) {
@@ -35,21 +35,21 @@ export class SettingState {
   }
 
   @Action(GetSettingOption)
-  getSettingOptions(ctx: StateContext<SettingStateModel>) { 
+  getSettingOptions(ctx: StateContext<SettingStateModel>) {
     return this.settingService.getSettingOption().pipe(
       tap({
         next: (result) => {
           let customValue;
           const state = ctx.getState();
-         
-          if(!state.selectedCurrency && result?.values?.general){
+
+          if (!state.selectedCurrency && result?.values?.general) {
             state.selectedCurrency = result?.values?.general.default_currency;
           }
 
-          if(result.values?.payment_methods?.length) {
+          if (result.values?.payment_methods?.length) {
             customValue = JSON.parse(JSON.stringify(result.values));
             const customPayments = [
-              
+
               {
                 name: 'neoKred',
                 status: true,
@@ -57,10 +57,10 @@ export class SettingState {
                 // icon: './assets/images/payment/pay_by_qr.png',
               },
               {
-                name: 'stylexio_nabu',
+                name: 'VastraVibe_nabu',
                 status: true,
                 title: 'Pay By UPI INTENT 3',
-                // icon: './assets/images/payment/stylexio_nabu.png',
+                // icon: './assets/images/payment/VastraVibe_nabu.png',
               },
               {
                 name: 'cash_free',
@@ -92,13 +92,13 @@ export class SettingState {
                 title: 'Pay By UPI INTENT2',
                 // icon: './assets/images/payment/pay_by_qr.png',
               },
-             
+
             ];
             customValue.payment_methods = customPayments //[result.values.payment_methods[0]];
           }
           ctx.patchState({
-          ...state,
-          setting: customValue,
+            ...state,
+            setting: customValue,
           });
         },
         error: (err) => {
@@ -109,12 +109,12 @@ export class SettingState {
   }
 
   @Action(SelectedCurrency)
-  selectedCurrency(ctx: StateContext<SettingStateModel>, action: SelectedCurrency){
+  selectedCurrency(ctx: StateContext<SettingStateModel>, action: SelectedCurrency) {
     const state = ctx.getState();
     ctx.patchState({
       ...state,
       selectedCurrency: action.payload
     });
   }
-  
+
 }

@@ -394,14 +394,14 @@ header {
         display: flex;
         gap: 20px;
         justify-content: center;
-        
+
         li {
           a {
             color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-size: 0.85rem;
             transition: color 0.3s ease;
-            
+
             &:hover {
               color: white;
               text-decoration: none;
@@ -4374,7 +4374,7 @@ header.header-3 {
     }
   }
 
-  .delivery-login-box  {
+  .delivery-login-box {
     .delivery-icon {
       i {
         @media (max-width: 1199px) {
@@ -5052,6 +5052,7 @@ header.header-3 {
         }
 
         @include mq-max(md) {
+
           &:nth-child(2),
           &:nth-child(3),
           &:nth-child(4) {
@@ -5987,6 +5988,27 @@ header {
   .rightside-box {
     .right-side-menu {
       .right-side {
+
+        .header-wishlist,
+        .header-wishlist i,
+        .header-wishlist .cil-cart,
+        .header-icon,
+        .header-icon i,
+        .swap-icon,
+        .swap-icon i {
+          color: #ffffff !important;
+        }
+      }
+    }
+  }
+}
+
+// Global override for cart icon - always white
+header {
+  .rightside-box {
+    .right-side-menu {
+      .right-side {
+
         .header-wishlist,
         .header-wishlist i,
         .header-wishlist .cil-cart,

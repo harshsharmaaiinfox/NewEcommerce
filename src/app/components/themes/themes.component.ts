@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Store, Select  } from '@ngxs/store';
+import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ThemeState } from '../../shared/state/theme.state';
 import { GetHomePage } from '../../shared/action/theme.action';
@@ -24,15 +24,15 @@ export class ThemesComponent implements OnInit {
     private route: ActivatedRoute,
     private themeOptionService: ThemeOptionService,
     private seoService: SeoService) {
-      this.route.queryParams.subscribe(params => {
-        this.themeOptionService.preloader = true;
-        this.activeTheme$.subscribe(theme => {
-          this.theme = params['theme'] ? params['theme'] : theme;
-          this.store.dispatch(new GetHomePage(params['theme'] ? params['theme'] : theme)).subscribe(data => {
-            this.homePage = data.theme.homePage;
-            this.themeOptionService.preloader = false;
-          });
-        })
+    this.route.queryParams.subscribe(params => {
+      this.themeOptionService.preloader = true;
+      this.activeTheme$.subscribe(theme => {
+        this.theme = params['theme'] ? params['theme'] : theme;
+        this.store.dispatch(new GetHomePage(params['theme'] ? params['theme'] : theme)).subscribe(data => {
+          this.homePage = data.theme.homePage;
+          this.themeOptionService.preloader = false;
+        });
+      })
     });
 
     document.body.classList.add('home');
@@ -41,16 +41,16 @@ export class ThemesComponent implements OnInit {
   ngOnInit() {
     // Set SEO data for homepage
     this.seoService.updateDefaultSeo();
-    
+
     // Set additional homepage-specific SEO data
     this.seoService.setSEOData({
-      canonicalUrl: 'https://stylexio.in/',
-      url: 'https://stylexio.in/',
-      image: 'https://stylexio.in/assets/images/hero-banner.jpg'
+      canonicalUrl: 'https://VastraVibe.in/',
+      url: 'https://VastraVibe.in/',
+      image: 'https://VastraVibe.in/assets/images/hero-banner.jpg'
     });
   }
-  
-  ngOnDestroy(){
+
+  ngOnDestroy() {
     document.body.classList.remove('home');
   }
 }

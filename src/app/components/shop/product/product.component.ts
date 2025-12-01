@@ -36,7 +36,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   ) {
     const productSub = this.product$.subscribe(product => {
       this.product = product;
-      
+
       // 🎯 ADD META DATA FROM MAPPING
       if (product && PRODUCT_META_DATA[product.id]) {
         const metaData: ProductMetaData = PRODUCT_META_DATA[product.id];
@@ -51,7 +51,7 @@ export class ProductComponent implements OnInit, OnDestroy {
         console.log('❌ No meta data found for product ID:', product.id);
         console.log('❌ Available meta data IDs:', Object.keys(PRODUCT_META_DATA));
       }
-      
+
       this.breadcrumb.items = [];
       this.breadcrumb.title = product?.name || 'Product';
       this.breadcrumb.items.push(
@@ -89,25 +89,25 @@ export class ProductComponent implements OnInit, OnDestroy {
   private setProductSEO(product: Product): void {
     // Get product slug from route (can be null)
     const productSlug = this.route.snapshot.paramMap.get('slug');
-    
+
     // Debug logging
     console.log('🔍 Setting SEO for product:', product.name);
     console.log('📝 Custom meta title:', product.meta_title);
     console.log('📝 Custom meta description:', product.meta_description);
     console.log('🔗 Product ID:', product.id);
-    
+
     // Use the SeoService method for product pages
     this.seoService.setProductPageSEO(product, productSlug);
-    
+
     // Multiple delayed updates to ensure it overrides default SEO
     setTimeout(() => {
       this.forceProductSEOUpdate(product, productSlug);
     }, 50);
-    
+
     setTimeout(() => {
       this.forceProductSEOUpdate(product, productSlug);
     }, 200);
-    
+
     setTimeout(() => {
       this.forceProductSEOUpdate(product, productSlug);
     }, 500);
@@ -118,7 +118,7 @@ export class ProductComponent implements OnInit, OnDestroy {
    */
   private forceProductSEOUpdate(product: Product, productSlug: string | null): void {
     const slug = productSlug || product.slug || `product-${product.id}`;
-    const baseUrl = 'https://stylexio.in';
+    const baseUrl = 'https://VastraVibe.in';
     const productUrl = `${baseUrl}/product/${slug}`;
 
     // Use custom meta data if available, otherwise generate from product data
@@ -139,7 +139,7 @@ export class ProductComponent implements OnInit, OnDestroy {
       url: productUrl,
       canonicalUrl: product.canonical_url || productUrl,
       type: 'product',
-      author: 'Stylexio'
+      author: 'VastraVibe'
     });
   }
 
@@ -150,8 +150,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     const brand = product.brand?.name ? `${product.brand.name} ` : '';
     const category = product.categories?.[0]?.name ? ` ${product.categories[0].name}` : '';
     const price = product.sale_price ? `₹${product.sale_price}` : `₹${product.price}`;
-    
-    return `${brand}${product.name}${category} - ${price} | Stylexio`;
+
+    return `${brand}${product.name}${category} - ${price} | VastraVibe`;
   }
 
   /**
@@ -166,7 +166,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     let rawDescription: string = product.meta_description
       || product.short_description
       || product.description
-      || `Shop ${brand}${product.name}${category} online at Stylexio. Premium quality, great prices, fast delivery.${discount}`;
+      || `Shop ${brand}${product.name}${category} online at VastraVibe. Premium quality, great prices, fast delivery.${discount}`;
 
     // Sanitize sizing/measurement notes and HTML, normalize whitespace
     rawDescription = this.stripHtmlTags(this.sanitizeProductDescription(rawDescription));
@@ -198,7 +198,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     sanitized = sanitized.replace(/\s{2,}/g, ' ').replace(/\s([\.,;:!\?])/g, '$1').trim();
 
     if (!sanitized) {
-      sanitized = 'Premium quality, great prices, fast delivery from Stylexio.';
+      sanitized = 'Premium quality, great prices, fast delivery from VastraVibe.';
     }
 
     return sanitized;
@@ -221,32 +221,32 @@ export class ProductComponent implements OnInit, OnDestroy {
    */
   private generateProductKeywords(product: Product): string {
     const keywords = [];
-    
+
     // Add product name
     keywords.push(product.name);
-    
+
     // Add brand
     if (product.brand?.name) {
       keywords.push(product.brand.name);
     }
-    
+
     // Add categories
     if (product.categories) {
       product.categories.forEach(category => {
         keywords.push(category.name);
       });
     }
-    
+
     // Add tags
     if (product.tags) {
       product.tags.forEach(tag => {
         keywords.push(tag.name);
       });
     }
-    
+
     // Add generic keywords
-    keywords.push('buy online', 'Stylexio', 'fashion', 'clothing');
-    
+    keywords.push('buy online', 'VastraVibe', 'fashion', 'clothing');
+
     return keywords.join(', ');
   }
 

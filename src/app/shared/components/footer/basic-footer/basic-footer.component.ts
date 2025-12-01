@@ -17,7 +17,7 @@ export class BasicFooterComponent {
     useful_link: false
   };
 
-  toggle(value: string){
+  toggle(value: string) {
     this.active[value] = !this.active[value];
   }
 }

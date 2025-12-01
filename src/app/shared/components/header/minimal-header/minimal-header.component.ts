@@ -20,14 +20,14 @@ export class MinimalHeaderComponent {
   @HostListener("window:scroll", [])
   onWindowScroll() {
     let number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-  	if (number >= 150 && window.innerWidth > 400) {
-  	  this.stick = true;
-  	} else {
-  	  this.stick = false;
-  	}
+    if (number >= 150 && window.innerWidth > 400) {
+      this.stick = true;
+    } else {
+      this.stick = false;
+    }
   }
 
-  toggle(val: boolean){
+  toggle(val: boolean) {
     this.active = val;
   }
 }

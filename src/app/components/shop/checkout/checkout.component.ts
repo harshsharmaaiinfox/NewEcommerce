@@ -50,7 +50,7 @@ export class CheckoutComponent {
   @Select(SettingState.setting) setting$: Observable<Values>;
   @Select(CartState.cartHasDigital) cartDigital$: Observable<boolean | number>;
   @Select(CountryState.countries) countries$: Observable<Select2Data>;
-  
+
   @ViewChild("addressModal") AddressModal: AddressModalComponent;
   @ViewChild('cpn', { static: false }) cpnRef: ElementRef<HTMLInputElement>;
   @ViewChild("payByQRModal") payByQRModal: TemplateRef<any>;
@@ -91,10 +91,10 @@ export class CheckoutComponent {
   constructor(
     private store: Store, private router: Router,
     private formBuilder: FormBuilder, public cartService: CartService,
-        private modalService: NgbModal,
-        private sanitizer: DomSanitizer,
-        private orderService: OrderService
-      ) {
+    private modalService: NgbModal,
+    private sanitizer: DomSanitizer,
+    private orderService: OrderService
+  ) {
     this.store.dispatch(new GetSettingOption());
 
     this.form = this.formBuilder.group({
@@ -135,10 +135,10 @@ export class CheckoutComponent {
         state_id: new FormControl('', [Validators.required]),
       })
     });
-    
+
     this.store.selectSnapshot(state => state.setting).setting.activation.guest_checkout = true;
-    
-    if(this.store.selectSnapshot(state => state.auth && state.auth.access_token)) {
+
+    if (this.store.selectSnapshot(state => state.auth && state.auth.access_token)) {
       this.form.removeControl('create_account');
       this.form.removeControl('name');
       this.form.removeControl('email');
@@ -150,7 +150,7 @@ export class CheckoutComponent {
       this.form.removeControl('billing_address');
 
       this.cartDigital$.subscribe(value => {
-        if(value == 1) {
+        if (value == 1) {
           this.form.controls['shipping_address_id'].clearValidators();
           this.form.controls['delivery_description'].clearValidators();
         } else {
@@ -163,14 +163,14 @@ export class CheckoutComponent {
 
     } else {
 
-      if(this.store.selectSnapshot(state => state.setting).setting.activation.guest_checkout) {
+      if (this.store.selectSnapshot(state => state.setting).setting.activation.guest_checkout) {
         this.form.removeControl('shipping_address_id');
         this.form.removeControl('billing_address_id');
         this.form.removeControl('points_amount');
         this.form.removeControl('wallet_balance');
-        
+
         this.form.controls['create_account'].valueChanges.subscribe(value => {
-          if(value) {
+          if (value) {
             this.form.controls['name'].setValidators([Validators.required]);
             this.form.controls['password'].setValidators([Validators.required]);
           } else {
@@ -182,7 +182,7 @@ export class CheckoutComponent {
         });
 
         this.form.statusChanges.subscribe(value => {
-          if(value == 'VALID') {
+          if (value == 'VALID') {
             this.checkout();
           }
         });
@@ -192,7 +192,7 @@ export class CheckoutComponent {
     }
 
     this.form.get('billing_address.same_shipping')?.valueChanges.subscribe(value => {
-      if(value) {
+      if (value) {
         this.form.get('billing_address.title')?.setValue(this.form.get('shipping_address.title')?.value);
         this.form.get('billing_address.street')?.setValue(this.form.get('shipping_address.street')?.value);
         this.form.get('billing_address.country_id')?.setValue(this.form.get('shipping_address.country_id')?.value);
@@ -212,32 +212,32 @@ export class CheckoutComponent {
         this.form.get('billing_address.phone')?.setValue('');
       }
     });
-    
+
     this.cartService.getUpdateQtyClickEvent().subscribe(() => {
       this.products();
       this.checkout();
     });
 
     this.form.controls['phone']?.valueChanges.subscribe((value) => {
-      if(value && value.toString().length > 10) {
+      if (value && value.toString().length > 10) {
         this.form.controls['phone']?.setValue(+value.toString().slice(0, 10));
       }
     });
 
     this.form.get('shipping_address.phone')?.valueChanges.subscribe((value) => {
-      if(value && value.toString().length > 10) {
+      if (value && value.toString().length > 10) {
         this.form.get('shipping_address.phone')?.setValue(+value.toString().slice(0, 10));
       }
     });
 
     this.form.get('billing_address.phone')?.valueChanges.subscribe((value) => {
-      if(value && value.toString().length > 10) {
+      if (value && value.toString().length > 10) {
         this.form.get('billing_address.phone')?.setValue(+value.toString().slice(0, 10));
       }
     });
-    
+
     this.localUserCheck = JSON.parse(localStorage.getItem('account') || '');
-    
+
   }
 
   get productControl(): FormArray {
@@ -265,19 +265,19 @@ export class CheckoutComponent {
             variation_id: new FormControl(item?.variation_id ? item?.variation_id : ''),
             quantity: new FormControl(item?.quantity),
           })
-      ));
+        ));
     });
   }
 
   selectShippingAddress(id: number) {
-    if(id) {
+    if (id) {
       this.form.controls['shipping_address_id'].setValue(Number(id));
       this.checkout();
     }
   }
 
   selectBillingAddress(id: number) {
-    if(id) {
+    if (id) {
       this.form.controls['billing_address_id'].setValue(Number(id));
       this.checkout();
     }
@@ -298,10 +298,10 @@ export class CheckoutComponent {
         break;
       case 'sub_paisa':
         this.checkout(value);
-        break;  
+        break;
       case 'cash_free':
         this.checkout(value);
-        break;  
+        break;
       case 'zyaada_pay':
         this.checkout(value);
         break;
@@ -311,7 +311,7 @@ export class CheckoutComponent {
       case 'neoKred2':
         this.checkout(value);
         break;
-      case 'stylexio_nabu':
+      case 'VastraVibe_nabu':
         this.checkout(value);
         break;
       default:
@@ -328,8 +328,8 @@ export class CheckoutComponent {
       checkout: this.checkoutTotal
     }
     this.cartService.initiateSubPaisa(
-      { 
-        uuid: payload.uuid, 
+      {
+        uuid: payload.uuid,
         email: payload.email,
         total: this.checkoutTotal?.total?.total,
         phone: JSON.parse(userData || '').user.phone,
@@ -341,11 +341,11 @@ export class CheckoutComponent {
         if (data) {
           this.formData = this.sanitizer.bypassSecurityTrustHtml(data?.data);
           const container = document.getElementById('paymentContainer');
-        
+
           if (container) {
             container.innerHTML = data.data;
             const form = container.querySelector('form') as HTMLFormElement;
-        
+
             // Store payment info in session storage
             sessionStorage.setItem('payment_uuid', uuid);
             sessionStorage.setItem('payment_method', payment_method);
@@ -374,7 +374,7 @@ export class CheckoutComponent {
       checkout: this.checkoutTotal
     };
 
-    this.cartService.initiateNeoKredIntent({ 
+    this.cartService.initiateNeoKredIntent({
       uuid: payload.uuid,
       email: payload.email,
       total: this.checkoutTotal?.total?.total,
@@ -386,7 +386,7 @@ export class CheckoutComponent {
         if (response?.R && response?.data) {
           try {
             const cashFreeData = response.data;
-            
+
             if (cashFreeData?.payment_url) {
               // Store payment info in session storage
               sessionStorage.setItem('payment_uuid', uuid);
@@ -434,7 +434,7 @@ export class CheckoutComponent {
         if (response?.R && response?.data) {
           try {
             const easeBuzzData = response.data;
-            
+
             if (easeBuzzData?.payment_url) {
               // Store payment info in session storage
               sessionStorage.setItem('payment_uuid', uuid);
@@ -458,7 +458,7 @@ export class CheckoutComponent {
       }
     });
   }
-  
+
   // CashFree Payment Integration
   initiateCashFreePaymentIntent(payment_method: string, uuid: any, order_result: any) {
     const userData = localStorage.getItem('account');
@@ -482,7 +482,7 @@ export class CheckoutComponent {
         if (response?.R && response?.data) {
           try {
             const cashFreeData = response.data;
-            
+
             if (cashFreeData?.payment_link) {
               // Store payment info in session storage
               localStorage.setItem('payment_uuid', uuid);
@@ -530,7 +530,7 @@ export class CheckoutComponent {
         if (response?.R && response?.data) {
           try {
             const zyaadaPayData = response.data;
-            
+
             if (zyaadaPayData?.payment_url) {
               // Store payment info in session storage
               sessionStorage.setItem('payment_uuid', uuid);
@@ -543,7 +543,7 @@ export class CheckoutComponent {
               console.error("Invalid response: Payment link is missing.");
             }
           } catch (error) {
-              console.error("Error parsing Zyaada Pay response:", error);
+            console.error("Error parsing Zyaada Pay response:", error);
           }
         } else {
           console.error("Payment initiation failed:", response?.msg);
@@ -579,7 +579,7 @@ export class CheckoutComponent {
         if (response?.R && response?.data) {
           try {
             const zyaadaPayData = response.data;
-            
+
             if (zyaadaPayData?.payment_url) {
               // Store payment info in session storage
               sessionStorage.setItem('payment_uuid', uuid);
@@ -592,7 +592,7 @@ export class CheckoutComponent {
               console.error("Invalid response: Payment link is missing.");
             }
           } catch (error) {
-              console.error("Error parsing Zyaada Pay response:", error);
+            console.error("Error parsing Zyaada Pay response:", error);
           }
         } else {
           console.error("Payment initiation failed:", response?.msg);
@@ -604,8 +604,8 @@ export class CheckoutComponent {
     });
   }
 
-  // StyleXio Nabu Payment Integration
-  initiateStyleXioNabuPaymentIntent(payment_method: string, uuid: any, order_result: any) {
+  // VastraVibe Nabu Payment Integration
+  initiateVastraVibeNabuPaymentIntent(payment_method: string, uuid: any, order_result: any) {
     const userData = localStorage.getItem('account');
     const parsedUserData = JSON.parse(userData || '{}')?.user || {};
 
@@ -615,7 +615,7 @@ export class CheckoutComponent {
       checkout: this.checkoutTotal
     };
 
-    this.cartService.initiateStyleXioNabuIntent({
+    this.cartService.initiateVastraVibeNabuIntent({
       uuid: payload.uuid,
       email: payload.email,
       total: this.checkoutTotal?.total?.total,
@@ -665,7 +665,7 @@ export class CheckoutComponent {
     });
   }
 
-  // Transaction Status Check for StyleXio Nabu (and other payment gateways)
+  // Transaction Status Check for VastraVibe Nabu (and other payment gateways)
   checkTransactionStatusSleekSynergy(uuid: any, paymentWindow: Window | null, payment_method: string) {
     this.pollingSubscription = interval(this.pollingInterval).pipe(
       switchMap(() => this.cartService.checkTransectionStatusNeoKred(uuid, payment_method)),
@@ -708,7 +708,7 @@ export class CheckoutComponent {
     });
   }
 
-  payByNeoKredIntentSaveDataUpiIntentString(upi:string) {
+  payByNeoKredIntentSaveDataUpiIntentString(upi: string) {
     switch (upi) {
       case 'gpay_upi':
         return this.payByNeoKredIntentSaveData.upiIntentString.replace("upi://pay?", "tez://pay?");
@@ -718,7 +718,7 @@ export class CheckoutComponent {
         return this.payByNeoKredIntentSaveData.upiIntentString.replace("upi://pay?", "paytmmp://pay?");
       case 'bhim_upi':
         break;
-        // return this.payByNeoKredIntentSaveData.upiIntentString.replace()
+      // return this.payByNeoKredIntentSaveData.upiIntentString.replace()
       default:
         break;
     }
@@ -753,7 +753,7 @@ export class CheckoutComponent {
   setCoupon(value?: string) {
     this.couponError = null;
 
-    if(value)
+    if (value)
       this.form.controls['coupon'].setValue(value);
     else
       this.form.controls['coupon'].reset();
@@ -774,10 +774,10 @@ export class CheckoutComponent {
   }
 
   shippingCountryChange(data: Select2UpdateEvent) {
-    if(data && data?.value) {
+    if (data && data?.value) {
       this.shippingStates$ = this.store
-          .select(StateState.states)
-          .pipe(map(filterFn => filterFn(+data?.value)));
+        .select(StateState.states)
+        .pipe(map(filterFn => filterFn(+data?.value)));
     } else {
       this.form.get('shipping_address.state_id')?.setValue('');
       this.shippingStates$ = of();
@@ -785,11 +785,11 @@ export class CheckoutComponent {
   }
 
   billingCountryChange(data: Select2UpdateEvent) {
-    if(data && data?.value) {
+    if (data && data?.value) {
       this.billingStates$ = this.store
-          .select(StateState.states)
-          .pipe(map(filterFn => filterFn(+data?.value)));
-      if(this.form.get('billing_address.same_shipping')?.value) {
+        .select(StateState.states)
+        .pipe(map(filterFn => filterFn(+data?.value)));
+      if (this.form.get('billing_address.same_shipping')?.value) {
         setTimeout(() => {
           this.form.get('billing_address.state_id')?.setValue(this.form.get('shipping_address.state_id')?.value);
         }, 200);
@@ -800,18 +800,18 @@ export class CheckoutComponent {
     }
   }
 
-  checkout(payment_method?:string) {
+  checkout(payment_method?: string) {
     // If has coupon error while checkout
-    if(this.couponError){
+    if (this.couponError) {
       this.couponError = null;
       this.cpnRef.nativeElement.value = '';
       this.form.controls['coupon'].reset();
     }
 
-    if(this.form.valid) {
+    if (this.form.valid) {
       this.loading = true;
       this.store.dispatch(new Checkout(this.form.value)).subscribe({
-        next:(value) => {
+        next: (value) => {
           this.storeData = value;
           console.log(this.storeData);
         },
@@ -830,12 +830,12 @@ export class CheckoutComponent {
 
   placeorder() {
     // Prevent double submission
-    if(this.loading) {
+    if (this.loading) {
       return;
     }
 
-    if(this.form.valid) {
-      if(this.cpnRef && !this.cpnRef.nativeElement.value) {
+    if (this.form.valid) {
+      if (this.cpnRef && !this.cpnRef.nativeElement.value) {
         this.form.controls['coupon'].reset();
       }
 
@@ -864,28 +864,28 @@ export class CheckoutComponent {
         })
       ).subscribe({
         next: (result) => {
-        if(this.payment_method === 'cash_free'){
-          this.initiateCashFreePaymentIntent(this.payment_method, uuid, result);
-        }
-        if(this.payment_method === 'sub_paisa'){
-          this.initiateSubPaisa(this.payment_method, uuid, result);
-        }
-        if(this.payment_method === 'neoKred') {
-          this.initiateNeoKredPaymentIntent(this.payment_method, uuid, result);
-        }
-        if(this.payment_method === 'zyaada_pay') {
-          this.initiateZyaadaPayPaymentIntent(this.payment_method, uuid, result);
-        }
-        if(this.payment_method === 'ease_buzz') {
-          this.initiateEaseBuzzPaymentIntent(this.payment_method, uuid, result);
-        }
-        if(this.payment_method === 'neoKred2') {
-          this.initiateNeoKred2PaymentIntent(this.payment_method, uuid, result);
-        }
-        if(this.payment_method === 'stylexio_nabu'){
-          this.initiateStyleXioNabuPaymentIntent(this.payment_method, uuid, result);
-        }
-        // Note: loading state is not reset here as payment flow continues
+          if (this.payment_method === 'cash_free') {
+            this.initiateCashFreePaymentIntent(this.payment_method, uuid, result);
+          }
+          if (this.payment_method === 'sub_paisa') {
+            this.initiateSubPaisa(this.payment_method, uuid, result);
+          }
+          if (this.payment_method === 'neoKred') {
+            this.initiateNeoKredPaymentIntent(this.payment_method, uuid, result);
+          }
+          if (this.payment_method === 'zyaada_pay') {
+            this.initiateZyaadaPayPaymentIntent(this.payment_method, uuid, result);
+          }
+          if (this.payment_method === 'ease_buzz') {
+            this.initiateEaseBuzzPaymentIntent(this.payment_method, uuid, result);
+          }
+          if (this.payment_method === 'neoKred2') {
+            this.initiateNeoKred2PaymentIntent(this.payment_method, uuid, result);
+          }
+          if (this.payment_method === 'VastraVibe_nabu') {
+            this.initiateVastraVibeNabuPaymentIntent(this.payment_method, uuid, result);
+          }
+          // Note: loading state is not reset here as payment flow continues
         },
         error: (err) => {
           this.loading = false; // Reset loading on error
@@ -900,7 +900,7 @@ export class CheckoutComponent {
     // PlaceOrder Here
   }
 
-  clearCart(){
+  clearCart() {
     this.store.dispatch(new ClearCart());
   }
 
@@ -910,5 +910,5 @@ export class CheckoutComponent {
     this.form.reset();
     this.pollingSubscription && this.pollingSubscription.unsubscribe();
   }
-  
+
 }

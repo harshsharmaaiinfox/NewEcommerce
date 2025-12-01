@@ -15,7 +15,7 @@ export class HeaderComponent {
 
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
   @Select(ThemeState.activeTheme) activeTheme$: Observable<String>;
-  
+
   @Input() logo?: string | undefined;
 
   public style: string = 'basic_header';
@@ -25,22 +25,22 @@ export class HeaderComponent {
   constructor(router: Router, public route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => this.path = params['theme'])
     router.events.forEach((event) => {
-      if(event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd) {
         this.setHeader();
       }
     });
   }
- 
+
   setHeader() {
-    if(this.path){
-      if(this.path == 'rome') {
+    if (this.path) {
+      if (this.path == 'rome') {
         this.style = 'standard_header';
-      } else if(this.path == 'madrid') {
+      } else if (this.path == 'madrid') {
         this.style = 'classic_header';
-      } else if(this.path == 'berlin' ||
-      this.path == 'denver' || 
-      this.path == 'moscow' ||
-      this.path == 'cairo') {
+      } else if (this.path == 'berlin' ||
+        this.path == 'denver' ||
+        this.path == 'moscow' ||
+        this.path == 'cairo') {
         this.style = 'minimal_header';
       } else {
         this.style = 'basic_header';

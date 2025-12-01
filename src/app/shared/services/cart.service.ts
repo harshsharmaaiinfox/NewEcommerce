@@ -9,11 +9,11 @@ import { Cart, CartAddOrUpdate, CartModel } from "../interface/cart.interface";
   providedIn: "root",
 })
 export class CartService {
-  
-  private subjectQty = new Subject<boolean>();
-  private paymentReturnSubject = new Subject<{uuid: string, method: string, payload: any}>();
 
-  constructor(private http: HttpClient) {}
+  private subjectQty = new Subject<boolean>();
+  private paymentReturnSubject = new Subject<{ uuid: string, method: string, payload: any }>();
+
+  constructor(private http: HttpClient) { }
 
   getCartItems(): Observable<CartModel> {
     return this.http.get<CartModel>(`${environment.URL}/cart`);
@@ -27,7 +27,7 @@ export class CartService {
     this.subjectQty.next(true);
   }
 
-  getUpdateQtyClickEvent(): Observable<boolean>{ 
+  getUpdateQtyClickEvent(): Observable<boolean> {
     return this.subjectQty.asObservable();
   }
 
@@ -45,7 +45,7 @@ export class CartService {
 
   clearCart() {
     return this.http.delete<number>(`${environment.URL}/clear/cart`);
-  } 
+  }
 
   syncCart(payload: CartAddOrUpdate[]): Observable<CartModel> {
     return this.http.post<CartModel>(`${environment.URL}/sync/cart`, payload);
@@ -53,7 +53,7 @@ export class CartService {
 
   initiateSubPaisa(data: any): Observable<any> {
     return new Observable(observer => {
-      fetch(`${environment.URL}/initiate-payment`,{
+      fetch(`${environment.URL}/initiate-payment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json' // Ensure JSON data format
@@ -73,7 +73,7 @@ export class CartService {
 
   initiateNeoKredIntent(data: any): Observable<any> {
     return new Observable(observer => {
-      fetch(`${environment.URL}/newcred-initiate-payment`,{
+      fetch(`${environment.URL}/newcred-initiate-payment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -92,12 +92,12 @@ export class CartService {
   }
 
   checkTransectionStatusNeoKred(uuid: any, payment_method: string) {
-    return this.http.post<any>(`${environment.URL}/check-payment-response`,{ uuid: uuid, payment_method});
+    return this.http.post<any>(`${environment.URL}/check-payment-response`, { uuid: uuid, payment_method });
   }
 
   initiateCashFreeIntent(data: any): Observable<any> {
     return new Observable(observer => {
-      fetch(`${environment.URL}/generate-cash-free`,{
+      fetch(`${environment.URL}/generate-cash-free`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -117,7 +117,7 @@ export class CartService {
 
   initiateZyaadaPayIntent(data: any): Observable<any> {
     return new Observable(observer => {
-      fetch(`${environment.URL}/zyaadapaisa-initiate-payment`,{
+      fetch(`${environment.URL}/zyaadapaisa-initiate-payment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -137,7 +137,7 @@ export class CartService {
 
   initiateEaseBuzzIntent(data: any): Observable<any> {
     return new Observable(observer => {
-      fetch(`${environment.URL}/ease-buzz-initiate-payment`,{
+      fetch(`${environment.URL}/ease-buzz-initiate-payment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -157,7 +157,7 @@ export class CartService {
 
   initiateNeoKred2Intent(data: any): Observable<any> {
     return new Observable(observer => {
-      fetch(`${environment.URL}/newcred-initiate-payment2`,{
+      fetch(`${environment.URL}/newcred-initiate-payment2`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -167,7 +167,7 @@ export class CartService {
         .then(response => response.json())
         .then(data => {
           observer.next(data);
-          observer.complete();  
+          observer.complete();
         })
         .catch(error => {
           observer.error(error);
@@ -175,9 +175,9 @@ export class CartService {
     });
   }
 
-  initiateStyleXioNabuIntent(data: any): Observable<any> {
+  initiateVastraVibeNabuIntent(data: any): Observable<any> {
     return new Observable(observer => {
-      fetch(`${environment.URL}/stylexio-nabu-initiate-payment`, {
+      fetch(`${environment.URL}/VastraVibe-nabu-initiate-payment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -190,5 +190,5 @@ export class CartService {
         .catch(err => observer.error(err));
     });
   }
-  
+
 }

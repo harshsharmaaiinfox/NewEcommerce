@@ -42,21 +42,21 @@ export class OrderDetailsComponent {
     this.route.params
       .pipe(
         switchMap(params => {
-            if(!params['id']) return of();
-            return this.store
-                      .dispatch(new ViewOrder(params['id']))
-                      .pipe(mergeMap(() => this.store.select(OrderState.selectedOrder)))
-          }
+          if (!params['id']) return of();
+          return this.store
+            .dispatch(new ViewOrder(params['id']))
+            .pipe(mergeMap(() => this.store.select(OrderState.selectedOrder)))
+        }
         ),
         takeUntil(this.destroy$)
       )
       .subscribe(order => {
         this.order = order!;
-        // Check payment status for pending stylexio_nabu orders
-        if (this.order && 
-            this.order.payment_method === 'stylexio_nabu' && 
-            this.order.payment_status === 'PENDING' &&
-            this.order.uuid) {
+        // Check payment status for pending VastraVibe_nabu orders
+        if (this.order &&
+          this.order.payment_method === 'VastraVibe_nabu' &&
+          this.order.payment_status === 'PENDING' &&
+          this.order.uuid) {
           this.checkPaymentStatus();
         }
       });
@@ -64,7 +64,7 @@ export class OrderDetailsComponent {
 
   checkPaymentStatus() {
     if (!this.order || !this.order.uuid) return;
-    
+
     // Stop any existing polling
     if (this.pollingSubscription) {
       this.pollingSubscription.unsubscribe();
@@ -109,11 +109,11 @@ export class OrderDetailsComponent {
     });
   }
 
-  download(id: number){
-    this.store.dispatch(new DownloadInvoice({order_number: id}))
+  download(id: number) {
+    this.store.dispatch(new DownloadInvoice({ order_number: id }))
   }
 
-  ngOnDestroy() { 
+  ngOnDestroy() {
     if (this.pollingSubscription) {
       this.pollingSubscription.unsubscribe();
     }

@@ -13,7 +13,7 @@
 <!-- Home Section End -->
 
 
-<!-- Stylexio Banner End -->
+<!-- VastraVibe Banner End -->
 <!-- Category Section Start -->
 <section *ngIf="data?.content?.categories_icon_list?.status">
   <div class="container-fluid-lg">
@@ -42,21 +42,57 @@
 </section>
 <!-- Deal Section End -->
 
+<!-- Explore More Section Start -->
+<section class="explore-more-section section-b-space">
+  <div class="container-fluid-lg">
+    <div class="title-header-main">
+      <h2 class="text-center mb-2 font-weight-bold">WEDDING VIBES</h2>
+      <p class="text-center mb-4">Shop our occasion-ready curations</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6 col-12" *ngFor="let item of exploreMoreItems">
+        <div class="explore-card" [routerLink]="['/collections']" [queryParams]="{category: 'women', sortBy: 'asc'}">
+          <div class="explore-image">
+            <img [src]="item.image" [alt]="item.title" class="img-fluid">
+          </div>
+          <div class="explore-content">
+            <h3>{{ item.title }}</h3>
+          </div>
+          <div class="overlay">
+            <div class="shop-now-text">
+              <h3>SHOP NOW</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Explore More Section End -->
 
+<!-- Shop Now Banner Section Start -->
+<section class="men-banner-section-1 pt-0">
+  <div class="container-fluid-lg">
+    <div class="men-banner" [routerLink]="['/collections']" [queryParams]="{category: 'men', sortBy: 'asc'}">
+      <img src="assets/images/Shop now.png" alt="Shop Now Banner" class="img-fluid w-100">
+    </div>
+  </div>
+</section>
+<!-- Shop Now Banner Section End -->
 
 <!-- Top Selling Section Start -->
 <section class="product-section product-section-3" *ngIf="data?.content?.products_list_2?.status">
   <div class="container-fluid-lg">
-    <div>
-      <app-title [title]="data?.content?.products_list_2?.title" [style]="'simple'">
+    <div class="title-header-main product-small">
+      <!-- <app-title [title]="data?.content?.products_list_2?.title" [style]="'simple'">
       </app-title>
       <p class="p-text-main">Find your own signature styles with classic menswear from our premium collections. Whether
-        it is for work, the weekend, or just between the two, Stylexio offers you stylish selections to ensure ultimate
+        it is for work, the weekend, or just between the two, VastraVibe offers you stylish selections to ensure ultimate
         comfort and confidence. Shirts, trousers, casual wear, and more-all just about keeping you sharp.Shop the Latest
-        in Men’s Style from timeless classics to modern trends, we make online men’s fashion shopping effortless. Browse
-        our wide range of categories and shop men’s clothing online — from casual essentials to formalwear, outerwear,
+        in Men's Style from timeless classics to modern trends, we make online men's fashion shopping effortless. Browse
+        our wide range of categories and shop men's clothing online — from casual essentials to formalwear, outerwear,
         and more.
-      </p>
+      </p> -->
       <app-theme-product [productIds]="data?.content?.products_list_2?.product_ids || []" [style]="'horizontal'"
         [slider]="true" [sliderOption]="productSlider6ItemMargin" [productStyle]="'product-solid'"
         [boxClass]="'product-box-bg'">
@@ -66,15 +102,30 @@
 </section>
 <!-- Top Selling Section End -->
 
+<!-- Gowns Banner Section Start -->
+<section class="gowns-banner-section">
+  <div class="container-fluid-lg">
+    <div class="gowns-banner-container">
+      <img src="assets/images/girl-dress.webp" alt="Gowns That Dazzle" class="gowns-banner-image">
+      <div class="gowns-banner-overlay">
+        <h2>GOWNS THAT DAZZLE</h2>
+        <button class="shop-gowns-btn" [routerLink]="['/collections']" [queryParams]="{category: 'women'}">SHOP
+          Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Gowns Banner Section End -->
+
 <!-- Top Selling Section Start -->
 <section class="product-section product-section-3" *ngIf="data?.content?.products_list_3?.status">
   <div class="container-fluid-lg">
     <div>
-      <app-title [title]="data?.content?.products_list_3?.title" [style]="'simple'">
+      <!-- <app-title [title]="data?.content?.products_list_3?.title" [style]="'simple'">
       </app-title>
       <p class="p-text-main">Our womenswear collection is Affordable, Stylish & On-Trend . From elegantly casual to
         eye-catching styles, explore unique womenswear for those who are always styled-up. Go ahead and combine
-        fashion-forward with effortless chic for any occasion.</p>
+        fashion-forward with effortless chic for any occasion.</p> -->
       <app-theme-product [productIds]="data?.content?.products_list_3?.product_ids || []" [style]="'horizontal'"
         [slider]="true" [sliderOption]="productSlider6ItemMargin" [productStyle]="'product-solid'"
         [boxClass]="'product-box-bg'">

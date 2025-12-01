@@ -42,7 +42,7 @@ export class SeoService {
       this.title.setTitle(data.title);
       // Also set meta title tag for better compatibility
       this.meta.updateTag({ name: 'title', content: data.title });
-      
+
       // For SSR compatibility, also set document title directly
       if (isPlatformServer(this.platformId)) {
         this.document.title = data.title;
@@ -54,19 +54,19 @@ export class SeoService {
       // Strip HTML tags from description
       const cleanDescription = this.stripHtmlTags(data.description);
       console.log('🔍 Setting meta description:', cleanDescription);
-      
+
       // Update meta tags using Angular Meta service
       this.meta.updateTag({ name: 'description', content: cleanDescription });
       this.meta.updateTag({ property: 'og:description', content: cleanDescription });
       this.meta.updateTag({ name: 'twitter:description', content: cleanDescription });
-      
+
       // For SSR compatibility, also set meta tags directly in document
       if (isPlatformServer(this.platformId)) {
         this.setMetaTagDirectly('description', cleanDescription);
         this.setMetaTagDirectly('og:description', cleanDescription, 'property');
         this.setMetaTagDirectly('twitter:description', cleanDescription);
       }
-      
+
       console.log('✅ Meta description tags updated');
     } else {
       console.log('❌ No description provided to setSEOData');
@@ -155,10 +155,10 @@ export class SeoService {
   setCanonicalUrl(url: string): void {
     // Remove existing canonical tags
     this.meta.removeTag('rel="canonical"');
-    
+
     // Add new canonical tag
     this.meta.addTag({ rel: 'canonical', href: url });
-    
+
     // For SSR compatibility, also set canonical tag directly in document
     if (isPlatformServer(this.platformId)) {
       let canonicalTag = this.document.querySelector('link[rel="canonical"]');
@@ -171,7 +171,7 @@ export class SeoService {
         this.document.head.appendChild(canonicalTag);
       }
     }
-    
+
     // Also update Open Graph URL for social media
     this.meta.updateTag({ property: 'og:url', content: url });
   }
@@ -226,7 +226,7 @@ export class SeoService {
       "image": images.length > 0 ? images : undefined,
       "brand": {
         "@type": "Brand",
-        "name": product.brand?.name || "Stylexio"
+        "name": product.brand?.name || "VastraVibe"
       },
       "offers": {
         "@type": "Offer",
@@ -237,7 +237,7 @@ export class SeoService {
         "itemCondition": "https://schema.org/NewCondition",
         "seller": {
           "@type": "Organization",
-          "name": "Stylexio"
+          "name": "VastraVibe"
         }
       }
     };
@@ -261,8 +261,8 @@ export class SeoService {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Ecomus",
-      "url": "https://stylexio.in",
-      "logo": "https://stylexio.in/assets/images/logo.png",
+      "url": "https://VastraVibe.in",
+      "logo": "https://VastraVibe.in/assets/images/logo.png",
       "sameAs": [
         "https://facebook.com/ecomus",
         "https://twitter.com/ecomus",
@@ -281,7 +281,7 @@ export class SeoService {
   /**
    * Set breadcrumb structured data
    */
-  setBreadcrumbStructuredData(breadcrumbs: Array<{name: string, url: string}>): void {
+  setBreadcrumbStructuredData(breadcrumbs: Array<{ name: string, url: string }>): void {
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -315,7 +315,7 @@ export class SeoService {
         "name": "Ecomus",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://stylexio.in/assets/images/logo.png"
+          "url": "https://VastraVibe.in/assets/images/logo.png"
         }
       },
       "datePublished": article.publishedDate,
@@ -350,7 +350,7 @@ export class SeoService {
   aggressiveClearAndSet(data: SEOData): void {
     // Don't remove tags - just update them in place
     // This is more reliable than removing and re-adding
-    
+
     // Set new meta tags using updateTag (creates if doesn't exist, updates if exists)
     if (data.title) {
       this.title.setTitle(data.title);
@@ -358,16 +358,16 @@ export class SeoService {
       this.meta.updateTag({ property: 'og:title', content: data.title });
       this.meta.updateTag({ name: 'twitter:title', content: data.title });
     }
-    
+
     if (data.description) {
       const cleanDescription = this.stripHtmlTags(data.description);
       console.log('🔥 Aggressive update - Setting meta description:', cleanDescription);
-      
+
       // First try to update existing tag
       this.meta.updateTag({ name: 'description', content: cleanDescription });
       this.meta.updateTag({ property: 'og:description', content: cleanDescription });
       this.meta.updateTag({ name: 'twitter:description', content: cleanDescription });
-      
+
       // If updateTag doesn't work, force create the tag directly
       setTimeout(() => {
         let metaDesc = document.querySelector('meta[name="description"]');
@@ -378,7 +378,7 @@ export class SeoService {
           document.head.appendChild(metaDesc);
         }
         metaDesc.setAttribute('content', cleanDescription);
-        
+
         // Also ensure Open Graph description exists
         let ogDesc = document.querySelector('meta[property="og:description"]');
         if (!ogDesc) {
@@ -387,28 +387,28 @@ export class SeoService {
           document.head.appendChild(ogDesc);
         }
         ogDesc.setAttribute('content', cleanDescription);
-        
+
         console.log('✅ Meta description forcefully set:', cleanDescription.substring(0, 50) + '...');
       }, 50);
-      
+
     } else {
       console.log('❌ No description provided to aggressiveClearAndSet');
     }
-    
+
     if (data.url) {
       this.meta.updateTag({ property: 'og:url', content: data.url });
       this.meta.updateTag({ name: 'twitter:url', content: data.url });
     }
-    
+
     if (data.image) {
       this.meta.updateTag({ property: 'og:image', content: data.image });
       this.meta.updateTag({ name: 'twitter:image', content: data.image });
     }
-    
+
     if (data.type) {
       this.meta.updateTag({ property: 'og:type', content: data.type });
     }
-    
+
     if (data.keywords) {
       this.meta.updateTag({ name: 'keywords', content: data.keywords });
     }
@@ -424,20 +424,20 @@ export class SeoService {
       console.log('🚫 Skipping default SEO update - on product page');
       return;
     }
-    
+
     // Additional check: if we're on any product-related page, don't override
     if (currentUrl.includes('/product') || currentUrl.includes('/collections')) {
       console.log('🚫 Skipping default SEO update - on product/collection page');
       return;
     }
-    
+
     console.log('✅ Setting default SEO for non-product page:', currentUrl);
     this.setSEOData({
-      title: 'Stylexio Premium Mens and Womens Fashion Online',
-      description: 'Discover new season shirts jackets suits denim and more at Stylexio. Premium quality fast shipping across India COD and easy returns.',
-      keywords: 'activewear, gym wear, joggers, men\'s clothes, women\'s clothes, stylish outfits, comfort fit, performance clothing, Stylexio',
+      title: 'VastraVibe Premium Mens and Womens Fashion Online',
+      description: 'Discover new season shirts jackets suits denim and more at VastraVibe. Premium quality fast shipping across India COD and easy returns.',
+      keywords: 'activewear, gym wear, joggers, men\'s clothes, women\'s clothes, stylish outfits, comfort fit, performance clothing, VastraVibe',
       type: 'website',
-      url: 'https://stylexio.in/'
+      url: 'https://VastraVibe.in/'
     });
   }
 
@@ -455,11 +455,11 @@ export class SeoService {
    * Set SEO data specifically for product pages
    * This method provides a convenient way to set all product-related SEO data
    */
-  setProductPageSEO(product: any, productSlug: string | null, baseUrl: string = 'https://stylexio.in'): void {
+  setProductPageSEO(product: any, productSlug: string | null, baseUrl: string = 'https://VastraVibe.in'): void {
     // Handle null/undefined slug
     const slug = productSlug || product.slug || `product-${product.id}`;
     const productUrl = `${baseUrl}/product/${slug}`;
-    
+
     // Use custom meta data if available, otherwise generate from product data
     const metaTitle = product.meta_title || this.generateProductTitle(product);
     const metaDescription = product.meta_description || this.generateProductDescription(product);
@@ -474,7 +474,7 @@ export class SeoService {
       url: productUrl,
       canonicalUrl: product.canonical_url || productUrl,
       type: 'product',
-      author: 'Stylexio'
+      author: 'VastraVibe'
     });
 
     // Set product structured data for rich snippets
@@ -493,14 +493,14 @@ export class SeoService {
       { name: 'Home', url: baseUrl },
       { name: 'Products', url: `${baseUrl}/collections` }
     ];
-    
+
     if (product.categories && product.categories.length > 0) {
       breadcrumbs.push({
         name: product.categories[0].name,
         url: `${baseUrl}/category/${product.categories[0].slug}`
       });
     }
-    
+
     breadcrumbs.push({ name: product.name, url: productUrl });
     this.setBreadcrumbStructuredData(breadcrumbs);
   }
@@ -513,9 +513,9 @@ export class SeoService {
     const brand = product.brand?.name ? `${product.brand.name} ` : '';
     const category = product.categories?.[0]?.name ? ` ${product.categories[0].name}` : '';
     const price = product.sale_price ? `₹${product.sale_price}` : `₹${product.price}`;
-    
-    // Example: "Nike Air Max 270 Men's Running Shoes - ₹8,999 | Stylexio"
-    return `${brand}${product.name}${category} - ${price} | Stylexio`;
+
+    // Example: "Nike Air Max 270 Men's Running Shoes - ₹8,999 | VastraVibe"
+    return `${brand}${product.name}${category} - ${price} | VastraVibe`;
   }
 
   /**
@@ -531,7 +531,7 @@ export class SeoService {
     let rawDescription: string = product.meta_description
       || product.short_description
       || product.description
-      || `Shop ${brand}${product.name}${category} online at Stylexio. Premium quality, great prices, fast delivery.${discount}`;
+      || `Shop ${brand}${product.name}${category} online at VastraVibe. Premium quality, great prices, fast delivery.${discount}`;
 
     // Sanitize sizing/measurement notes and HTML, normalize whitespace
     rawDescription = this.stripHtmlTags(this.sanitizeProductDescription(rawDescription));
@@ -566,7 +566,7 @@ export class SeoService {
 
     // If description becomes empty after sanitization, fallback to a generic line
     if (!sanitized) {
-      sanitized = 'Premium quality, great prices, fast delivery from Stylexio.';
+      sanitized = 'Premium quality, great prices, fast delivery from VastraVibe.';
     }
 
     return sanitized;
@@ -577,32 +577,32 @@ export class SeoService {
    */
   private generateProductKeywords(product: any): string {
     const keywords = [];
-    
+
     // Add product name
     keywords.push(product.name);
-    
+
     // Add brand
     if (product.brand?.name) {
       keywords.push(product.brand.name);
     }
-    
+
     // Add categories
     if (product.categories) {
       product.categories.forEach((category: any) => {
         keywords.push(category.name);
       });
     }
-    
+
     // Add tags
     if (product.tags) {
       product.tags.forEach((tag: any) => {
         keywords.push(tag.name);
       });
     }
-    
+
     // Add generic keywords
-    keywords.push('buy online', 'Stylexio', 'fashion', 'clothing');
-    
+    keywords.push('buy online', 'VastraVibe', 'fashion', 'clothing');
+
     return keywords.join(', ');
   }
 
@@ -637,22 +637,22 @@ export class SeoService {
    */
   private stripHtmlTags(html: string): string {
     if (!html) return '';
-    
+
     // Create a temporary DOM element to parse HTML
     const temp = document.createElement('div');
     temp.innerHTML = html;
-    
+
     // Get text content and clean it up
     let text = temp.textContent || temp.innerText || '';
-    
+
     // Clean up extra whitespace
     text = text.replace(/\s+/g, ' ').trim();
-    
+
     // Limit to 160 characters for SEO
     if (text.length > 160) {
       text = text.substring(0, 157) + '...';
     }
-    
+
     return text;
   }
 
@@ -663,10 +663,10 @@ export class SeoService {
   forceUpdateSEOData(data: SEOData): void {
     // Don't clear tags - just update them directly to avoid timing issues
     console.log('🚀 Force update SEO data - NOT clearing tags to prevent timing issues');
-    
+
     // Set new SEO data
     this.setSEOData(data);
-    
+
     // Force update with multiple methods and multiple timeouts
     if (data.title) {
       // Immediate update
@@ -675,7 +675,7 @@ export class SeoService {
       this.meta.updateTag({ name: 'title', content: data.title });
       this.meta.updateTag({ property: 'og:title', content: data.title });
       this.meta.updateTag({ name: 'twitter:title', content: data.title });
-      
+
       // Delayed updates to ensure they stick
       setTimeout(() => {
         this.title.setTitle(data.title!);
@@ -684,7 +684,7 @@ export class SeoService {
         this.meta.updateTag({ property: 'og:title', content: data.title! });
         this.meta.updateTag({ name: 'twitter:title', content: data.title! });
       }, 0);
-      
+
       setTimeout(() => {
         this.title.setTitle(data.title!);
         document.title = data.title!;
@@ -693,35 +693,35 @@ export class SeoService {
         this.meta.updateTag({ name: 'twitter:title', content: data.title! });
       }, 100);
     }
-    
+
     if (data.description) {
       const cleanDescription = this.stripHtmlTags(data.description);
       console.log('🚀 Force update - Setting meta description:', cleanDescription);
-      
+
       // Immediate update
       this.meta.updateTag({ name: 'description', content: cleanDescription });
       this.meta.updateTag({ property: 'og:description', content: cleanDescription });
       this.meta.updateTag({ name: 'twitter:description', content: cleanDescription });
-      
+
       // Delayed updates to ensure they stick
       setTimeout(() => {
         this.meta.updateTag({ name: 'description', content: cleanDescription });
         this.meta.updateTag({ property: 'og:description', content: cleanDescription });
         this.meta.updateTag({ name: 'twitter:description', content: cleanDescription });
       }, 0);
-      
+
       setTimeout(() => {
         this.meta.updateTag({ name: 'description', content: cleanDescription });
         this.meta.updateTag({ property: 'og:description', content: cleanDescription });
         this.meta.updateTag({ name: 'twitter:description', content: cleanDescription });
       }, 100);
-      
+
       setTimeout(() => {
         this.meta.updateTag({ name: 'description', content: cleanDescription });
         this.meta.updateTag({ property: 'og:description', content: cleanDescription });
         this.meta.updateTag({ name: 'twitter:description', content: cleanDescription });
       }, 500);
-      
+
       // Final aggressive update with direct DOM manipulation
       setTimeout(() => {
         console.log('🔧 Final force update - Direct DOM manipulation');
@@ -734,17 +734,17 @@ export class SeoService {
         }
         metaDesc.setAttribute('content', cleanDescription);
         console.log('✅ Meta description final update:', metaDesc.getAttribute('content'));
-        
+
         // Start persistent monitoring to ensure meta description stays
         this.startMetaDescriptionMonitoring(cleanDescription);
       }, 1000);
     }
-    
+
     // Force update URLs
     if (data.url) {
       this.meta.updateTag({ property: 'og:url', content: data.url });
       this.meta.updateTag({ name: 'twitter:url', content: data.url });
-      
+
       setTimeout(() => {
         this.meta.updateTag({ property: 'og:url', content: data.url! });
         this.meta.updateTag({ name: 'twitter:url', content: data.url! });
@@ -758,25 +758,25 @@ export class SeoService {
    */
   private startMetaDescriptionMonitoring(description: string): void {
     console.log('🛡️ Starting meta description monitoring...');
-    
+
     // Check every 500ms for 10 seconds to ensure meta description stays
     let checkCount = 0;
     const maxChecks = 20; // 10 seconds
-    
+
     const monitor = setInterval(() => {
       checkCount++;
       const metaDesc = document.querySelector('meta[name="description"]');
-      
+
       if (!metaDesc || metaDesc.getAttribute('content') !== description) {
         console.log('⚠️ Meta description missing or changed, restoring...');
-        
+
         // Restore the meta description
         if (!metaDesc) {
           const newMetaDesc = document.createElement('meta');
           newMetaDesc.setAttribute('name', 'description');
           document.head.appendChild(newMetaDesc);
         }
-        
+
         const targetDesc = document.querySelector('meta[name="description"]');
         if (targetDesc) {
           targetDesc.setAttribute('content', description);
@@ -785,7 +785,7 @@ export class SeoService {
       } else {
         console.log('✅ Meta description is stable');
       }
-      
+
       // Stop monitoring after max checks
       if (checkCount >= maxChecks) {
         clearInterval(monitor);

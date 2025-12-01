@@ -30,6 +30,25 @@ export class DenverComponent implements OnInit {
     private route: ActivatedRoute,
     private themeOptionService: ThemeOptionService) { }
 
+  public exploreMoreItems = [
+    {
+      image: 'assets/images/women1.jpg',
+      title: 'BRIDAL LEHENGA'
+    },
+    {
+      image: 'assets/images/women2.jpg',
+      title: 'WEDDING SAREE'
+    },
+    {
+      image: 'assets/images/women3.jpg',
+      title: 'RECEPTION GOWN'
+    },
+    {
+      image: 'assets/images/women4.jpg',
+      title: 'HALDI OUTFIT'
+    }
+  ];
+
 
   public featuredProduct: any;
 

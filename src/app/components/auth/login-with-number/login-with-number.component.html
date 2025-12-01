@@ -11,29 +11,29 @@
                 <app-alert></app-alert>
                 <div class="log-in-box">
                     <div class="log-in-title">
-                        <h3>Welcome To Stylexio</h3>
+                        <h3>Welcome To VastraVibe</h3>
                         <h4>{{ 'login_your_account' | translate }}</h4>
                     </div>
                     <div class="input-box">
                         <form class="row g-4" [formGroup]="form" (ngSubmit)="submit()">
-                            
+
                             <div class="col-12 phone-field">
                                 <div class="form-floating log-in-form">
-                                    <input type="number" class="form-control" id="phone" id="phone" formControlName="phone" placeholder="{{ 'phone' | translate }}">
+                                    <input type="number" class="form-control" id="phone" id="phone"
+                                        formControlName="phone" placeholder="{{ 'phone' | translate }}">
                                     <label for="phone">{{ 'phone_number' | translate }}</label>
-                                    <div *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['required']" class="invalid-feedback">{{ 'phone_number_is_required' | translate }}</div>
-                                    <select2 class="custom-select intl-tel-input"
-                                      [data]="codes"
-                                      [templates]="template"
-                                      formControlName="country_code">
-                                      <ng-template #template let-data="data">
-                                        <div class="country">
-                                          <div class="flag-box">
-                                            <div class="iti-flag {{data?.class}}"></div>
-                                          </div>
-                                          <span class="dial-code">{{data.code}}</span>
-                                        </div>
-                                      </ng-template>
+                                    <div *ngIf="form.controls['phone'].touched && form.controls['phone'].errors?.['required']"
+                                        class="invalid-feedback">{{ 'phone_number_is_required' | translate }}</div>
+                                    <select2 class="custom-select intl-tel-input" [data]="codes" [templates]="template"
+                                        formControlName="country_code">
+                                        <ng-template #template let-data="data">
+                                            <div class="country">
+                                                <div class="flag-box">
+                                                    <div class="iti-flag {{data?.class}}"></div>
+                                                </div>
+                                                <span class="dial-code">{{data.code}}</span>
+                                            </div>
+                                        </ng-template>
                                     </select2>
                                 </div>
                             </div>

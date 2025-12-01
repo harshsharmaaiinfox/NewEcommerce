@@ -7,8 +7,8 @@ import { SeoService } from '../services/seo.service';
     <div class="seo-example-container">
       <!-- Main page title with H1 -->
       <app-seo-heading 
-        title="Stylexio Premium Mens and Womens Fashion Online" 
-        description="Discover new season shirts jackets suits denim and more at Stylexio. Premium quality fast shipping across India COD and easy returns."
+        title="VastraVibe Premium Mens and Womens Fashion Online" 
+        description="Discover new season shirts jackets suits denim and more at VastraVibe. Premium quality fast shipping across India COD and easy returns."
         level="1"
         headingClass="main-title">
       </app-seo-heading>
@@ -172,16 +172,16 @@ export class SeoExampleComponent implements OnInit {
     }
   ];
 
-  constructor(private seoService: SeoService) {}
+  constructor(private seoService: SeoService) { }
 
   ngOnInit() {
     // Set comprehensive SEO data for this page
     this.seoService.setSEOData({
-      title: 'Stylexio Premium Mens and Womens Fashion Online',
-      description: 'Discover new season shirts jackets suits denim and more at Stylexio. Premium quality fast shipping across India COD and easy returns.',
-      keywords: 'activewear, gym wear, joggers, men\'s clothes, women\'s clothes, stylish outfits, comfort fit, performance clothing, Stylexio',
-      image: 'https://stylexio.in/assets/images/hero-banner.jpg',
-      url: 'https://stylexio.in',
+      title: 'VastraVibe Premium Mens and Womens Fashion Online',
+      description: 'Discover new season shirts jackets suits denim and more at VastraVibe. Premium quality fast shipping across India COD and easy returns.',
+      keywords: 'activewear, gym wear, joggers, men\'s clothes, women\'s clothes, stylish outfits, comfort fit, performance clothing, VastraVibe',
+      image: 'https://VastraVibe.in/assets/images/hero-banner.jpg',
+      url: 'https://VastraVibe.in',
       type: 'website',
       author: 'Ecomus Team'
     });
@@ -191,8 +191,8 @@ export class SeoExampleComponent implements OnInit {
 
     // Set breadcrumb structured data
     this.seoService.setBreadcrumbStructuredData([
-      { name: 'Home', url: 'https://stylexio.in' },
-      { name: 'Featured Products', url: 'https://stylexio.in/featured' }
+      { name: 'Home', url: 'https://VastraVibe.in' },
+      { name: 'Featured Products', url: 'https://VastraVibe.in/featured' }
     ]);
   }
 } 

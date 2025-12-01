@@ -1,19 +1,11 @@
 <div class="button-item" *ngIf="(cartItem$ | async)?.length">
-  <app-button
-    [class]="'item-btn btn text-white'"
-    [id]="'open_cart_btn'"
-    [type]="'button'"
-    [spinner]="false"
+  <app-button [class]="'item-btn btn text-white'" [id]="'open_cart_btn'" [type]="'button'" [spinner]="false"
     (click)="openCart(true)">
     <i class="ri-shopping-cart-2-line"></i>
   </app-button>
 </div>
 <div class="item-section" [class.active]="isOpen && (cartItem$ | async)?.length">
-  <app-button
-    [class]="'close-button'"
-    [id]="'close_cart_btn'"
-    [type]="'button'"
-    [spinner]="false"
+  <app-button [class]="'close-button'" [id]="'close_cart_btn'" [type]="'button'" [spinner]="false"
     (click)="openCart(false)">
     <i class="ri-close-line"></i>
   </app-button>

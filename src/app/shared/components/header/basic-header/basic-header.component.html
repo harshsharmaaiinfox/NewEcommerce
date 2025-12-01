@@ -1,4 +1,4 @@
-<header [class.active]="stick && sticky" [class.transparent-header]="!stick || !sticky">
+<header [class.active]="stick && sticky" [class.transparent-header]="isHomePage && (!stick || !sticky)">
   <div class="top-nav top-header sticky-header">
       <div class="container-fluid-lg">
           <div class="row">

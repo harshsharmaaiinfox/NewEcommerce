@@ -1,5 +1,8 @@
 :root {
-  --theme-color: #0da487;
+  --theme-color: #20c997;
+  --theme-color-dark: #0a1a1a;
+  --theme-color-gradient: linear-gradient(135deg, #0a1a1a 0%, #1a3a3a 50%, #20c997 100%);
+  --theme-color-gradient-horizontal: linear-gradient(90deg, #0a1a1a 0%, #20c997 100%);
 }
 
 $white: #ffffff;
@@ -42,8 +45,7 @@ $card-footer-bg-color: $white;
 $card-hover-box-shadow: 0 0 40px rgba(8, 21, 66, 0.05);
 
 // font family
-$public-sans: "Public Sans",
-sans-serif;
+$public-sans: "Rubik", "Titillium Web", sans-serif;
 $fontawesome: "Font Awesome 6 Free";
 
 // Breakpoints

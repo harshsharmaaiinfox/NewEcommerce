@@ -2044,3 +2044,55 @@ header {
     }
   }
 }
+
+// Global override for header menu - always white
+header {
+  .header-menu {
+    .main-nav {
+      .navbar-nav {
+        .nav-item {
+          > a,
+          .nav-link,
+          .dropdown-toggle,
+          a.nav-link,
+          a.dropdown-toggle {
+            color: #ffffff !important;
+            
+            &:hover,
+            &:focus,
+            &.active,
+            &.show {
+              color: #20c997 !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  &.transparent-header,
+  &:not(.active) {
+    .header-menu {
+      .main-nav {
+        .navbar-nav {
+          .nav-item {
+            > a,
+            .nav-link,
+            .dropdown-toggle,
+            a.nav-link,
+            a.dropdown-toggle {
+              color: #ffffff !important;
+              
+              &:hover,
+              &:focus,
+              &.active,
+              &.show {
+                color: #20c997 !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -7,6 +7,9 @@ body {
   font-size: 14px;
   color: $title-color;
   margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
   background-color: $white;
   transition: all 0.3s ease-in-out;
   padding-right: 0 !important;
@@ -16,6 +19,10 @@ body {
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .bg-overlay {
@@ -176,4 +183,8 @@ span {
 
 .theme-bg-color {
   background: var(--theme-color) !important;
+}
+
+.theme-bg-gradient {
+  background: linear-gradient(90deg, #0a1a1a 0%, #1a3a3a 50%, #20c997 100%) !important;
 }

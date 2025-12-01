@@ -1,9 +1,11 @@
 /**=====================
      Reset scss
 ==========================**/
+// Full screen - remove max-width constraint
 @media (min-width: 1464px) {
   .container {
-    max-width: 1440px;
+    max-width: 100%;
+    width: 100%;
   }
 }
 
@@ -69,7 +71,7 @@ section,
 }
 
 .container-fluid-lg {
-  padding: 0 calc(12px + (160 - 12) * ((100vw - 320px) / (1920 - 320)));
+  padding: 0 calc(12px + 148 * (25vw - 320px) / 1600);
 }
 
 .container-fluid-md {

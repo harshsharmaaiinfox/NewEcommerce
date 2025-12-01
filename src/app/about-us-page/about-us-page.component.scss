@@ -1,0 +1,226 @@
+.about-us-container {
+    overflow-x: hidden;
+}
+
+.hero-section {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+
+    .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+
+    .hero-content {
+        z-index: 1;
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+            @media (max-width: 768px) {
+                font-size: 2.5rem;
+            }
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-weight: 300;
+
+            @media (max-width: 768px) {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}
+
+.story-section {
+    padding-top: 50px;
+
+    .story-img {
+        img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .story-content {
+        padding: 20px;
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            margin-top: 30px;
+        }
+    }
+}
+
+.values-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+
+    .title-box {
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #777;
+        }
+    }
+
+    .value-card {
+        background: #fff;
+        padding: 40px 30px;
+        border-radius: 10px;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        height: 100%;
+
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-box {
+            font-size: 3rem;
+            color: var(--theme-color, #0da487);
+            /* Fallback color */
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+    }
+}
+
+.newsletter-section {
+    .newsletter-box {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        padding: 60px;
+        text-align: center;
+        color: #fff;
+
+        .newsletter-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                filter: brightness(0.6);
+            }
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+
+            h2 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+                opacity: 0.9;
+            }
+
+            .newsletter-form {
+                display: flex;
+                gap: 10px;
+
+                input {
+                    flex: 1;
+                    padding: 15px;
+                    border-radius: 5px;
+                    border: none;
+                    outline: none;
+                }
+
+                button {
+                    padding: 15px 30px;
+                    border-radius: 5px;
+                    font-weight: 600;
+                    background-color: var(--theme-color, #0da487);
+                    color: #fff;
+                    border: none;
+                    cursor: pointer;
+                    transition: background 0.3s;
+
+                    &:hover {
+                        background-color: darken(#0da487, 10%);
+                    }
+                }
+
+                @media (max-width: 576px) {
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}

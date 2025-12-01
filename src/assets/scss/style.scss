@@ -360,13 +360,16 @@ h6.byers {
 .grid-option {
   display: none !important;
 }
+
 .custom-select .select2-container .select2-container-dropdown .select2-dropdown {
   background-color: #1b4a44 !important;
   color: #ffffff !important;
 }
+
 ul.pagination {
   justify-content: right !important;
 }
+
 a.page-link {
   background: #1b4b45 !important;
   color: #fff !important;
@@ -374,9 +377,19 @@ a.page-link {
   border-top-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-.footer-logo{
-  width:69%;
+
+.footer-logo {
+  width: 69%;
 }
-.section-t-space{
+
+.section-t-space {
   padding-top: 0px !important;
+}
+
+.web-logo img {
+  width: 60% !important;
+}
+
+.footer-logo {
+  width: 90% !important;
 }

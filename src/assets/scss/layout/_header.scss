@@ -103,7 +103,7 @@ header {
       color: #ffffff;
       box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
       z-index: 1000;
-      padding: calc(15px + (24 - 15) * ((100vw - 320px) / (1920 - 320))) 0;
+      padding: calc(5px + (24 - 15) * ((100vw - 320px) / (1920 - 320))) 0;
 
 
       .search-full {
@@ -599,7 +599,7 @@ header {
   }
 
   .top-nav {
-    padding: 24px 0;
+    padding: 5px 0;
     background: transparent;
     position: relative;
     z-index: 1001;

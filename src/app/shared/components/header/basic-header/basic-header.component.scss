@@ -175,6 +175,10 @@ header {
   .web-logo {
     margin-right: 40px;
 
+    img {
+      height: 80px;
+    }
+
     @media (max-width: 1400px) {
       margin-right: 30px;
     }

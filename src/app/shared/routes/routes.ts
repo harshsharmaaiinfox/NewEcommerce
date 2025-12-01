@@ -32,6 +32,11 @@ export const content: Routes = [
     title: 'Contact VastraVibe – We’re Here to Help You 24/7'
   },
   {
+    path: 'about-us',
+    loadChildren: () => import('../../about-us-page/about-us-page.module').then(m => m.AboutUsPageModule),
+    title: 'About Us | RaylomShop'
+  },
+  {
     path: 'term-condition',
     loadChildren: () =>
       import('../../term-condition/term-condition.module').then((m) => m.TermConditionModule),

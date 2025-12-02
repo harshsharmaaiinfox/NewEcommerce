@@ -104,27 +104,27 @@ export class CollectionComponent {
 
     switch (categoryLower) {
       case 'activewear':
-        title = 'Activewear Collection | Gym Wear, Sportswear & Fitness Clothes | VastraVibe';
-        description = 'Shop premium activewear and sportswear at VastraVibe. Find high-quality gym wear, fitness clothes, yoga pants, sports bras, and athletic wear for men & women. Perfect for workouts, running, and active lifestyle.';
-        keywords = 'activewear, gym wear, sportswear, fitness clothes, workout clothes, yoga pants, sports bras, athletic wear, running clothes, exercise wear, gym clothes, fitness apparel, VastraVibe';
+        title = 'Activewear Collection | Gym Wear, Sportswear & Fitness Clothes | RaylomShop';
+        description = 'Shop premium activewear and sportswear at RaylomShop. Find high-quality gym wear, fitness clothes, yoga pants, sports bras, and athletic wear for men & women. Perfect for workouts, running, and active lifestyle.';
+        keywords = 'activewear, gym wear, sportswear, fitness clothes, workout clothes, yoga pants, sports bras, athletic wear, running clothes, exercise wear, gym clothes, fitness apparel, RaylomShop';
         break;
 
       case 'men':
-        title = 'Mens Clothing Collection VastraVibe';
-        description = 'Explore mens shirts jackets suits jeans and more at VastraVibe. New arrivals fast PAN India delivery COD and easy 7 day returns.';
-        keywords = 'men\'s clothes, men\'s fashion, men\'s clothing, men\'s apparel, men\'s shirts, men\'s pants, men\'s jeans, men\'s jackets, men\'s casual wear, men\'s formal clothes, stylish men\'s fashion, VastraVibe';
+        title = 'Mens Clothing Collection RaylomShop';
+        description = 'Explore mens shirts jackets suits jeans and more at RaylomShop. New arrivals fast PAN India delivery COD and easy 7 day returns.';
+        keywords = 'men\'s clothes, men\'s fashion, men\'s clothing, men\'s apparel, men\'s shirts, men\'s pants, men\'s jeans, men\'s jackets, men\'s casual wear, men\'s formal clothes, stylish men\'s fashion, RaylomShop';
         break;
 
       case 'women':
-        title = 'Women\'s Clothing Collection | Fashionable Women\'s Apparel & Style | VastraVibe';
-        description = 'Explore stunning women\'s clothing and fashion at VastraVibe. Shop trendy women\'s fashion including dresses, tops, jeans, skirts, women\'s casual wear, formal clothes, and stylish women\'s apparel. Fashion that makes you feel confident.';
-        keywords = 'women\'s clothes, women\'s fashion, women\'s clothing, women\'s apparel, women\'s dresses, women\'s tops, women\'s jeans, women\'s skirts, women\'s casual wear, women\'s formal clothes, stylish women\'s fashion, VastraVibe';
+        title = 'Women\'s Clothing Collection | Fashionable Women\'s Apparel & Style | RaylomShop';
+        description = 'Explore stunning women\'s clothing and fashion at RaylomShop. Shop trendy women\'s fashion including dresses, tops, jeans, skirts, women\'s casual wear, formal clothes, and stylish women\'s apparel. Fashion that makes you feel confident.';
+        keywords = 'women\'s clothes, women\'s fashion, women\'s clothing, women\'s apparel, women\'s dresses, women\'s tops, women\'s jeans, women\'s skirts, women\'s casual wear, women\'s formal clothes, stylish women\'s fashion, RaylomShop';
         break;
 
       default:
-        title = `${category.charAt(0).toUpperCase() + category.slice(1)} Collection | VastraVibe Fashion Store`;
-        description = `Shop ${category} collection at VastraVibe. Discover trendy fashion, quality clothing, and stylish apparel for every occasion.`;
-        keywords = `${category}, fashion, clothing, apparel, VastraVibe, trendy style`;
+        title = `${category.charAt(0).toUpperCase() + category.slice(1)} Collection | RaylomShop Fashion Store`;
+        description = `Shop ${category} collection at RaylomShop. Discover trendy fashion, quality clothing, and stylish apparel for every occasion.`;
+        keywords = `${category}, fashion, clothing, apparel, RaylomShop, trendy style`;
         break;
     }
 
@@ -136,12 +136,12 @@ export class CollectionComponent {
     this.meta.updateTag({ name: 'keywords', content: keywords });
     this.meta.updateTag({ property: 'og:title', content: title });
     this.meta.updateTag({ property: 'og:description', content: description });
-    this.meta.updateTag({ property: 'og:url', content: `https://VastraVibe.in/collections/${category}` });
+    this.meta.updateTag({ property: 'og:url', content: `https://RaylomShop.in/collections/${category}` });
     this.meta.updateTag({ name: 'twitter:title', content: title });
     this.meta.updateTag({ name: 'twitter:description', content: description });
 
     // Update canonical URL
-    this.meta.updateTag({ rel: 'canonical', href: `https://VastraVibe.in/collections/${category}` });
+    this.meta.updateTag({ rel: 'canonical', href: `https://RaylomShop.in/collections/${category}` });
 
     // Update breadcrumb
     this.breadcrumb.title = `${category.charAt(0).toUpperCase() + category.slice(1)} Collection`;
@@ -156,9 +156,9 @@ export class CollectionComponent {
    * Set default SEO meta tags for collections page
    */
   private setDefaultSEO(): void {
-    const title = 'Shop Collections | Activewear, Men\'s & Women\'s Fashion | VastraVibe';
-    const description = 'Explore our curated collections at VastraVibe. Shop activewear, men\'s clothing, women\'s fashion, and more. Find the perfect style for every occasion with our quality fashion collections.';
-    const keywords = 'collections, activewear, men\'s clothes, women\'s clothes, fashion collections, stylish clothing, VastraVibe collections';
+    const title = 'Shop Collections | Activewear, Men\'s & Women\'s Fashion | RaylomShop';
+    const description = 'Explore our curated collections at RaylomShop. Shop activewear, men\'s clothing, women\'s fashion, and more. Find the perfect style for every occasion with our quality fashion collections.';
+    const keywords = 'collections, activewear, men\'s clothes, women\'s clothes, fashion collections, stylish clothing, RaylomShop collections';
 
     // Force title update
     this.forceUpdateTitle(title);
@@ -168,10 +168,10 @@ export class CollectionComponent {
     this.meta.updateTag({ name: 'keywords', content: keywords });
     this.meta.updateTag({ property: 'og:title', content: title });
     this.meta.updateTag({ property: 'og:description', content: description });
-    this.meta.updateTag({ property: 'og:url', content: 'https://VastraVibe.in/collections' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://RaylomShop.in/collections' });
     this.meta.updateTag({ name: 'twitter:title', content: title });
     this.meta.updateTag({ name: 'twitter:description', content: description });
-    this.meta.updateTag({ rel: 'canonical', href: 'https://VastraVibe.in/collections' });
+    this.meta.updateTag({ rel: 'canonical', href: 'https://RaylomShop.in/collections' });
 
     // Reset breadcrumb to default
     this.breadcrumb.title = 'Collections';

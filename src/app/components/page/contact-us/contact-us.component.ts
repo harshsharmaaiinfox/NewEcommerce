@@ -44,13 +44,13 @@ export class ContactUsComponent implements OnInit {
   ngOnInit() {
     // Set unique SEO data for Contact Us page
     this.seoService.setSEOData({
-      title: 'Contact VastraVibe – We\'re Here to Help You 24/7',
-      description: 'Get in touch with VastraVibe customer support. We\'re available 24/7 to help with orders, products, and any questions you may have.',
-      keywords: 'contact us, customer support, help, VastraVibe contact, customer service',
-      canonicalUrl: 'https://VastraVibe.in/Contact-Us', // ✅ Canonical URL for SEO
-      url: 'https://VastraVibe.in/Contact-Us',
+      title: 'Contact RaylomShop – We\'re Here to Help You 24/7',
+      description: 'Get in touch with RaylomShop customer support. We\'re available 24/7 to help with orders, products, and any questions you may have.',
+      keywords: 'contact us, customer support, help, RaylomShop contact, customer service',
+      canonicalUrl: 'https://RaylomShop.in/Contact-Us', // ✅ Canonical URL for SEO
+      url: 'https://RaylomShop.in/Contact-Us',
       type: 'website',
-      image: 'https://VastraVibe.in/assets/images/contact-us.jpg'
+      image: 'https://RaylomShop.in/assets/images/contact-us.jpg'
     });
   }
 

@@ -5,6 +5,11 @@ import { Observable } from 'rxjs';
 import { GetPaymentDetails, UpdatePaymentDetails } from '../../../shared/action/payment-details.action';
 import { PaymentDetailsState } from '../../../shared/state/payment-details.state';
 import { PaymentDetails } from '../../../shared/interface/payment-details.interface';
+import { AccountState } from '../../../shared/state/account.state';
+import { NotificationState } from '../../../shared/state/notification.state';
+import { Logout } from '../../../shared/action/auth.action';
+import { User } from '../../../shared/interface/user.interface';
+import { Notification } from '../../../shared/interface/notification.interface';
 
 @Component({
   selector: 'app-bank-details',
@@ -14,9 +19,12 @@ import { PaymentDetails } from '../../../shared/interface/payment-details.interf
 export class BankDetailsComponent {
 
   @Select(PaymentDetailsState.paymentDetails) paymentDetails$: Observable<PaymentDetails>;
-  
+  @Select(AccountState.user) user$: Observable<User>;
+  @Select(NotificationState.notification) notification$: Observable<Notification[]>;
+
   public form: FormGroup;
   public active = 'bank';
+  public unreadNotificationCount: number = 0;
 
   constructor(private store: Store) {
     this.form = new FormGroup({
@@ -27,6 +35,10 @@ export class BankDetailsComponent {
       ifsc: new FormControl(),
       paypal_email: new FormControl('', [Validators.email]),
     });
+
+    this.notification$.subscribe((notification) => {
+      this.unreadNotificationCount = notification?.filter(item => !item.read_at)?.length || 0;
+    });
   }
 
   ngOnInit(): void {
@@ -36,16 +48,20 @@ export class BankDetailsComponent {
         bank_account_no: paymentDetails?.bank_account_no,
         bank_name: paymentDetails?.bank_name,
         bank_holder_name: paymentDetails?.bank_holder_name,
-        swift:paymentDetails?.swift,
+        swift: paymentDetails?.swift,
         ifsc: paymentDetails?.ifsc,
         paypal_email: paymentDetails?.paypal_email
       })
     });
   }
 
-  submit(){    
+  logout() {
+    this.store.dispatch(new Logout());
+  }
+
+  submit() {
     this.form.markAllAsTouched();
-    if(this.form.valid){
+    if (this.form.valid) {
       this.store.dispatch(new UpdatePaymentDetails(this.form.value))
     }
   }
@@ -53,7 +69,7 @@ export class BankDetailsComponent {
   // Input guards: shared helpers
   allowOnlyDigits(event: KeyboardEvent): void {
     const allowedControlKeys = [
-      'Backspace','Delete','Tab','Enter','Escape','ArrowLeft','ArrowRight','Home','End'
+      'Backspace', 'Delete', 'Tab', 'Enter', 'Escape', 'ArrowLeft', 'ArrowRight', 'Home', 'End'
     ];
     if (allowedControlKeys.includes(event.key)) return;
     if (event.ctrlKey || event.metaKey) return;
@@ -82,7 +98,7 @@ export class BankDetailsComponent {
 
   allowOnlyLetters(event: KeyboardEvent): void {
     const allowedControlKeys = [
-      'Backspace','Delete','Tab','Enter','Escape','ArrowLeft','ArrowRight','Home','End'
+      'Backspace', 'Delete', 'Tab', 'Enter', 'Escape', 'ArrowLeft', 'ArrowRight', 'Home', 'End'
     ];
     if (allowedControlKeys.includes(event.key)) return;
     if (/^[A-Za-z\s]$/.test(event.key)) return;

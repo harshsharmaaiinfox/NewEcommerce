@@ -12,6 +12,11 @@ import { OrderStatusModel } from '../../../../shared/interface/order-status.inte
 import { RefundModalComponent } from '../../../../shared/components/widgets/modal/refund-modal/refund-modal.component';
 import { PayModalComponent } from '../../../../shared/components/widgets/modal/pay-modal/pay-modal.component';
 import { CartService } from '../../../../shared/services/cart.service';
+import { AccountState } from '../../../../shared/state/account.state';
+import { NotificationState } from '../../../../shared/state/notification.state';
+import { Logout } from '../../../../shared/action/auth.action';
+import { User } from '../../../../shared/interface/user.interface';
+import { Notification } from '../../../../shared/interface/notification.interface';
 
 @Component({
   selector: 'app-order-details',
@@ -21,6 +26,8 @@ import { CartService } from '../../../../shared/services/cart.service';
 export class OrderDetailsComponent {
 
   @Select(OrderStatusState.orderStatus) orderStatus$: Observable<OrderStatusModel>;
+  @Select(AccountState.user) user$: Observable<User>;
+  @Select(NotificationState.notification) notification$: Observable<Notification[]>;
   @ViewChild("refundModal") RefundModal: RefundModalComponent;
   @ViewChild("payModal") PayModal: PayModalComponent;
 
@@ -28,6 +35,7 @@ export class OrderDetailsComponent {
   private pollingSubscription!: Subscription;
   private pollingInterval = 5000; // Poll every 5 seconds
   public isLogin: boolean;
+  public unreadNotificationCount: number = 0;
 
   public order: Order;
 
@@ -35,6 +43,14 @@ export class OrderDetailsComponent {
     private route: ActivatedRoute,
     private cartService: CartService) {
     this.store.dispatch(new GetOrderStatus());
+
+    this.notification$.subscribe((notification) => {
+      this.unreadNotificationCount = notification?.filter(item => !item.read_at)?.length || 0;
+    });
+  }
+
+  logout() {
+    this.store.dispatch(new Logout());
   }
 
   ngOnInit() {
@@ -52,9 +68,9 @@ export class OrderDetailsComponent {
       )
       .subscribe(order => {
         this.order = order!;
-        // Check payment status for pending VastraVibe_nabu orders
+        // Check payment status for pending RaylomShop_nabu orders
         if (this.order &&
-          this.order.payment_method === 'VastraVibe_nabu' &&
+          this.order.payment_method === 'RaylomShop_nabu' &&
           this.order.payment_status === 'PENDING' &&
           this.order.uuid) {
           this.checkPaymentStatus();

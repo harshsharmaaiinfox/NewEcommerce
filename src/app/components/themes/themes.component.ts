@@ -44,9 +44,9 @@ export class ThemesComponent implements OnInit {
 
     // Set additional homepage-specific SEO data
     this.seoService.setSEOData({
-      canonicalUrl: 'https://VastraVibe.in/',
-      url: 'https://VastraVibe.in/',
-      image: 'https://VastraVibe.in/assets/images/hero-banner.jpg'
+      canonicalUrl: 'https://RaylomShop.in/',
+      url: 'https://RaylomShop.in/',
+      image: 'https://RaylomShop.in/assets/images/hero-banner.jpg'
     });
   }
 

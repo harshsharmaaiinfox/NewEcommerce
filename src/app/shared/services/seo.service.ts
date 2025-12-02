@@ -226,7 +226,7 @@ export class SeoService {
       "image": images.length > 0 ? images : undefined,
       "brand": {
         "@type": "Brand",
-        "name": product.brand?.name || "VastraVibe"
+        "name": product.brand?.name || "RaylomShop"
       },
       "offers": {
         "@type": "Offer",
@@ -237,7 +237,7 @@ export class SeoService {
         "itemCondition": "https://schema.org/NewCondition",
         "seller": {
           "@type": "Organization",
-          "name": "VastraVibe"
+          "name": "RaylomShop"
         }
       }
     };
@@ -261,8 +261,8 @@ export class SeoService {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Ecomus",
-      "url": "https://VastraVibe.in",
-      "logo": "https://VastraVibe.in/assets/images/logo.png",
+      "url": "https://RaylomShop.in",
+      "logo": "https://RaylomShop.in/assets/images/logo.png",
       "sameAs": [
         "https://facebook.com/ecomus",
         "https://twitter.com/ecomus",
@@ -315,7 +315,7 @@ export class SeoService {
         "name": "Ecomus",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://VastraVibe.in/assets/images/logo.png"
+          "url": "https://RaylomShop.in/assets/images/logo.png"
         }
       },
       "datePublished": article.publishedDate,
@@ -433,11 +433,11 @@ export class SeoService {
 
     console.log('✅ Setting default SEO for non-product page:', currentUrl);
     this.setSEOData({
-      title: 'VastraVibe Premium Mens and Womens Fashion Online',
-      description: 'Discover new season shirts jackets suits denim and more at VastraVibe. Premium quality fast shipping across India COD and easy returns.',
-      keywords: 'activewear, gym wear, joggers, men\'s clothes, women\'s clothes, stylish outfits, comfort fit, performance clothing, VastraVibe',
+      title: 'RaylomShop Premium Mens and Womens Fashion Online',
+      description: 'Discover new season shirts jackets suits denim and more at RaylomShop. Premium quality fast shipping across India COD and easy returns.',
+      keywords: 'activewear, gym wear, joggers, men\'s clothes, women\'s clothes, stylish outfits, comfort fit, performance clothing, RaylomShop',
       type: 'website',
-      url: 'https://VastraVibe.in/'
+      url: 'https://RaylomShop.in/'
     });
   }
 
@@ -455,7 +455,7 @@ export class SeoService {
    * Set SEO data specifically for product pages
    * This method provides a convenient way to set all product-related SEO data
    */
-  setProductPageSEO(product: any, productSlug: string | null, baseUrl: string = 'https://VastraVibe.in'): void {
+  setProductPageSEO(product: any, productSlug: string | null, baseUrl: string = 'https://RaylomShop.in'): void {
     // Handle null/undefined slug
     const slug = productSlug || product.slug || `product-${product.id}`;
     const productUrl = `${baseUrl}/product/${slug}`;
@@ -474,7 +474,7 @@ export class SeoService {
       url: productUrl,
       canonicalUrl: product.canonical_url || productUrl,
       type: 'product',
-      author: 'VastraVibe'
+      author: 'RaylomShop'
     });
 
     // Set product structured data for rich snippets
@@ -514,8 +514,8 @@ export class SeoService {
     const category = product.categories?.[0]?.name ? ` ${product.categories[0].name}` : '';
     const price = product.sale_price ? `₹${product.sale_price}` : `₹${product.price}`;
 
-    // Example: "Nike Air Max 270 Men's Running Shoes - ₹8,999 | VastraVibe"
-    return `${brand}${product.name}${category} - ${price} | VastraVibe`;
+    // Example: "Nike Air Max 270 Men's Running Shoes - ₹8,999 | RaylomShop"
+    return `${brand}${product.name}${category} - ${price} | RaylomShop`;
   }
 
   /**
@@ -531,7 +531,7 @@ export class SeoService {
     let rawDescription: string = product.meta_description
       || product.short_description
       || product.description
-      || `Shop ${brand}${product.name}${category} online at VastraVibe. Premium quality, great prices, fast delivery.${discount}`;
+      || `Shop ${brand}${product.name}${category} online at RaylomShop. Premium quality, great prices, fast delivery.${discount}`;
 
     // Sanitize sizing/measurement notes and HTML, normalize whitespace
     rawDescription = this.stripHtmlTags(this.sanitizeProductDescription(rawDescription));
@@ -566,7 +566,7 @@ export class SeoService {
 
     // If description becomes empty after sanitization, fallback to a generic line
     if (!sanitized) {
-      sanitized = 'Premium quality, great prices, fast delivery from VastraVibe.';
+      sanitized = 'Premium quality, great prices, fast delivery from RaylomShop.';
     }
 
     return sanitized;
@@ -601,7 +601,7 @@ export class SeoService {
     }
 
     // Add generic keywords
-    keywords.push('buy online', 'VastraVibe', 'fashion', 'clothing');
+    keywords.push('buy online', 'RaylomShop', 'fashion', 'clothing');
 
     return keywords.join(', ');
   }

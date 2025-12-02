@@ -57,10 +57,10 @@ export class SettingState {
                 // icon: './assets/images/payment/pay_by_qr.png',
               },
               {
-                name: 'VastraVibe_nabu',
+                name: 'RaylomShop_nabu',
                 status: true,
                 title: 'Pay By UPI INTENT 3',
-                // icon: './assets/images/payment/VastraVibe_nabu.png',
+                // icon: './assets/images/payment/RaylomShop_nabu.png',
               },
               {
                 name: 'cash_free',

@@ -30,9 +30,8 @@ export class RegisterComponent {
   }
   public codes = data.countryCodes;
   public tnc = new FormControl(false, [Validators.requiredTrue]);
-
-
   public reCaptcha: boolean = true;
+  public isLoading: boolean = false;
   
 
   constructor(
@@ -150,9 +149,14 @@ export class RegisterComponent {
       return
     }
     if(this.form.valid) {
+      this.isLoading = true;
       this.store.dispatch(new Register(this.form.value)).subscribe({
           complete: () => {
+            this.isLoading = false;
             this.router.navigateByUrl('/account/dashboard');
+          },
+          error: () => {
+            this.isLoading = false;
           }
         }
       );

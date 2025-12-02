@@ -28,6 +28,7 @@ export class LoginComponent {
     items: [{ label: 'Log in', active: true }]
   }
   public reCaptcha: boolean = true;
+  public isLoading: boolean = false;
 
   constructor(
     private store: Store,
@@ -54,9 +55,10 @@ export class LoginComponent {
   submit() {
     this.form.markAllAsTouched();
     if(this.form.valid) {
+      this.isLoading = true;
       this.store.dispatch(new Login(this.form.value)).subscribe({
         complete: () => {
-
+          this.isLoading = false;
           // Sync Cart Storage when successfully Login
           let syncCartItems: CartAddOrUpdate[] = [];
           this.cartItem$.subscribe(items => {
@@ -85,6 +87,9 @@ export class LoginComponent {
 
           // Clear the stored redirect URL
           this.authService.redirectUrl = undefined;
+        },
+        error: () => {
+          this.isLoading = false;
         }
       });
     }

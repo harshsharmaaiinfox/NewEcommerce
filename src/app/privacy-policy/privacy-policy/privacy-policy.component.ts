@@ -15,12 +15,28 @@ export class PrivacyPolicyComponent implements OnInit {
   ngOnInit() {
     // Set unique SEO data for Privacy Policy page
     this.seoService.setSEOData({
-      title: 'Privacy Policy – How We Use Your Data | VastraVibe',
-      description: 'Learn how VastraVibe protects and uses your personal information. Read our comprehensive privacy policy to understand your rights and our data practices.',
-      keywords: 'privacy policy, data protection, personal information, VastraVibe privacy, data usage',
-      canonicalUrl: 'https://VastraVibe.in/privacy-policy', // ✅ Canonical URL for SEO
-      url: 'https://VastraVibe.in/privacy-policy',
+      title: 'Privacy Policy – How We Use Your Data | RaylomShop',
+      description: 'Learn how RaylomShop protects and uses your personal information. Read our comprehensive privacy policy to understand your rights and our data practices.',
+      keywords: 'privacy policy, data protection, personal information, RaylomShop privacy, data usage',
+      canonicalUrl: 'https://RaylomShop.in/privacy-policy', // ✅ Canonical URL for SEO
+      url: 'https://RaylomShop.in/privacy-policy',
       type: 'website'
     });
+    
+    // Set current date
+    this.setCurrentDate();
+  }
+
+  setCurrentDate(): void {
+    const dateElement = document.getElementById('currentDate');
+    if (dateElement) {
+      const today = new Date();
+      const options: Intl.DateTimeFormatOptions = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      };
+      dateElement.textContent = today.toLocaleDateString('en-US', options);
+    }
   }
 }

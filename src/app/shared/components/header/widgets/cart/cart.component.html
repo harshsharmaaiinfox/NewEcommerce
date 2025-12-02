@@ -1,10 +1,7 @@
 <!-- Cart Style Basic -->
-<app-button
-  [type]="'button'"
-  [class]="'btn p-0 position-relative d-md-inline-block d-none header-wishlist'"
-  [spinner]="false"
-  [id]="'cart_sidebar_btn'"
-  (click)="cartStyle == 'cart_sidebar' && cartToggle(true)" *ngIf="style == 'basic'">
+<app-button [type]="'button'" [class]="'btn p-0 position-relative d-md-inline-block d-none header-wishlist'"
+    [spinner]="false" [id]="'cart_sidebar_btn'" (click)="cartStyle == 'cart_sidebar' && cartToggle(true)"
+    *ngIf="style == 'basic'">
     <i class="cil-cart"></i>
     <span class="position-absolute top-0 start-100 translate-middle badge" *ngIf="(cartItem$ | async)?.length">
         {{ (cartItem$ | async)?.length }} <span class="visually-hidden">{{ 'unread_messages' | translate }}</span>
@@ -12,8 +9,7 @@
 </app-button>
 
 <!-- Cart Style Classic -->
-<a href="javascript:void(0)" class="header-icon swap-icon"
-    (click)="cartStyle == 'cart_sidebar' && cartToggle(true)"
+<a href="javascript:void(0)" class="header-icon swap-icon" (click)="cartStyle == 'cart_sidebar' && cartToggle(true)"
     *ngIf="style == 'classic'">
     <small class="badge-number badge-light" *ngIf="(cartItem$ | async)?.length">
         {{ (cartItem$ | async)?.length }}
@@ -23,10 +19,9 @@
 
 <!-- Modern Cart Sidebar -->
 <ng-container *ngIf="!cartHide">
-    <div class="modern-cart-sidebar onhover-div"
-        [ngClass]="{ 'fixed-cart': cartStyle == 'cart_sidebar' }"
+    <div class="modern-cart-sidebar onhover-div" [ngClass]="{ 'fixed-cart': cartStyle == 'cart_sidebar' }"
         [class.show]="(sidebarCartOpen$ | async)">
-        
+
         <!-- Sidebar Header -->
         <div class="cart-sidebar-header">
             <div class="header-content">
@@ -40,7 +35,8 @@
             </div>
             <div class="header-actions" *ngIf="(cartItem$ | async)?.length">
                 <p class="cart-subtitle">
-                    {{ (cartItem$ | async)?.length }} {{ ((cartItem$ | async)?.length == 1 ? 'item' : 'items') | translate }}
+                    {{ (cartItem$ | async)?.length }} {{ ((cartItem$ | async)?.length == 1 ? 'item' : 'items') |
+                    translate }}
                 </p>
                 <button type="button" class="clear-cart-btn" (click)="clearCart()" title="Clear Cart">
                     <i class="cil-trash"></i>
@@ -54,7 +50,8 @@
             <div class="progress-info">
                 <i class="cil-truck me-2"></i>
                 <span *ngIf="shippingFreeAmt > cartTotal">
-                    {{ 'Spend' | translate }} <strong>{{ (shippingFreeAmt - cartTotal) | currencySymbol }}</strong> {{ 'More For Free Shipping' | translate }}
+                    {{ 'Spend' | translate }} <strong>{{ (shippingFreeAmt - cartTotal) | currencySymbol }}</strong> {{
+                    'More For Free Shipping' | translate }}
                 </span>
                 <span *ngIf="shippingFreeAmt <= cartTotal" class="success-text">
                     <i class="cil-check-circle me-1"></i>
@@ -62,13 +59,11 @@
                 </span>
             </div>
             <div class="progress-wrapper">
-                <div class="progress-bar-modern"
-                    [ngClass]="{ 
+                <div class="progress-bar-modern" [ngClass]="{ 
                         'danger': shippingCal <= 30, 
                         'warning': shippingCal >= 31 && shippingCal <= 80,
                         'success': shippingCal > 80
-                    }"
-                    [ngStyle]="{ width: shippingCal+'%' }">
+                    }" [ngStyle]="{ width: shippingCal+'%' }">
                     <span class="progress-text">{{ shippingCal | number:'1.0-0' }}%</span>
                 </div>
             </div>
@@ -83,11 +78,9 @@
                                 ? item?.variation?.variation_image?.original_url
                                 : item?.product?.product_thumbnail
                                 ? item?.product?.product_thumbnail?.original_url
-                                : 'assets/images/product.png'" 
-                             [alt]="item?.product?.name"
-                             class="item-image">
+                                : 'assets/images/product.png'" [alt]="item?.product?.name" class="item-image">
                     </div>
-                    
+
                     <div class="item-details">
                         <h5 class="item-name">
                             {{ item?.variation ? item?.variation?.name : item?.product?.name }}
@@ -96,44 +89,33 @@
                             {{ item?.variation?.selected_variation }}
                         </p>
                         <div class="item-price">
-                            {{ (item?.variation ? item.variation.sale_price : item?.product && item?.wholesale_price ? item?.wholesale_price : item?.product?.sale_price)! | currencySymbol }}
+                            {{ (item?.variation ? item.variation.sale_price : item?.product && item?.wholesale_price ?
+                            item?.wholesale_price : item?.product?.sale_price)! | currencySymbol }}
                         </div>
-                        
+
                         <div class="item-actions">
                             <div class="quantity-controls">
-                                <button type="button" 
-                                        class="qty-btn"
-                                        [id]="'decrease-qty-'+item.product.id"
-                                        (click)="updateQuantity(item, -1)">
+                                <button type="button" class="qty-btn" [id]="'decrease-qty-'+item.product.id"
+                                    (click)="updateQuantity(item, -1)">
                                     <i class="cil-minus" *ngIf="item.quantity > 1"></i>
                                     <i class="cil-trash" *ngIf="item.quantity <= 1"></i>
                                 </button>
-                                <input type="number" 
-                                       class="qty-input" 
-                                       [value]="item?.quantity" 
-                                       readonly>
-                                <button type="button" 
-                                        class="qty-btn"
-                                        [id]="'increase-qty-'+item.product.id"
-                                        (click)="updateQuantity(item, 1)">
+                                <input type="number" class="qty-input" [value]="item?.quantity" readonly>
+                                <button type="button" class="qty-btn" [id]="'increase-qty-'+item.product.id"
+                                    (click)="updateQuantity(item, 1)">
                                     <i class="cil-plus"></i>
                                 </button>
                             </div>
-                            
+
                             <div class="item-action-buttons">
-                                <button type="button" 
-                                        class="action-btn edit-btn"
-                                        [id]="'cart_item_edit_btn'+item.product.id" 
-                                        (click)="VariationModal.openModal(item)" 
-                                        *ngIf="item?.variation"
-                                        title="Edit">
+                                <button type="button" class="action-btn edit-btn"
+                                    [id]="'cart_item_edit_btn'+item.product.id" (click)="VariationModal.openModal(item)"
+                                    *ngIf="item?.variation" title="Edit">
                                     <i class="cil-pencil"></i>
                                 </button>
-                                <button type="button" 
-                                        class="action-btn delete-btn"
-                                        [id]="'cart_item_delete_btn'+item.product.id" 
-                                        (click)="delete(item.id)"
-                                        title="Remove">
+                                <button type="button" class="action-btn delete-btn"
+                                    [id]="'cart_item_delete_btn'+item.product.id" (click)="delete(item.id)"
+                                    title="Remove">
                                     <i class="cil-trash"></i>
                                 </button>
                             </div>
@@ -150,10 +132,7 @@
             </div>
             <h4>{{ 'Your Cart Is Empty' | translate }}</h4>
             <p>{{ 'Add items to your cart to continue shopping' | translate }}</p>
-            <a [routerLink]="['/shop']" class="btn btn-primary" (click)="cartToggle(false)">
-                <i class="cil-arrow-right me-2"></i>
-                {{ 'Start Shopping' | translate }}
-            </a>
+
         </div>
 
         <!-- Cart Footer -->
@@ -168,28 +147,23 @@
                     {{ 'Shipping and taxes calculated at checkout' | translate }}
                 </p>
             </div>
-            
+
             <div class="cart-action-buttons">
-                <a [routerLink]="['/cart']" 
-                   class="btn btn-view-cart" 
-                   (click)="cartToggle(false)">
+                <a [routerLink]="['/cart']" class="btn btn-view-cart" (click)="cartToggle(false)">
                     <i class="cil-eye me-2"></i>
                     {{ 'View Cart' | translate }}
                 </a>
-                <a [routerLink]="['/checkout']" 
-                   class="btn btn-checkout" 
-                   (click)="cartToggle(false)">
+                <a [routerLink]="['/checkout']" class="btn btn-checkout" (click)="cartToggle(false)">
                     <i class="cil-credit-card me-2"></i>
                     {{ 'Checkout' | translate }}
                 </a>
             </div>
         </div>
     </div>
-    
+
     <!-- Backdrop Overlay -->
-    <div class="cart-backdrop" 
-         [class.show]="cartStyle == 'cart_sidebar' && (sidebarCartOpen$ | async)" 
-         (click)="cartStyle == 'cart_sidebar' && cartToggle(false)"></div>
+    <div class="cart-backdrop" [class.show]="cartStyle == 'cart_sidebar' && (sidebarCartOpen$ | async)"
+        (click)="cartStyle == 'cart_sidebar' && cartToggle(false)"></div>
 </ng-container>
 
 <!-- Variation Customize Modal -->

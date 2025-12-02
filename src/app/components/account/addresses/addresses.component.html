@@ -31,10 +31,7 @@
                     <i class="ri-map-pin-fill"></i>
                     <span>{{ 'Saved Address' | translate }}</span>
                 </a>
-                <a class="menu-item logout-item" href="javascript:void(0)" (click)="logout()">
-                    <i class="ri-logout-box-r-fill"></i>
-                    <span>{{ 'Logout' | translate }}</span>
-                </a>
+
             </div>
         </div>
 
@@ -55,17 +52,15 @@
                 <div class="title-header">
                     <div class="d-flex align-items-center w-100 justify-content-between">
                         <h5>{{ 'Saved Address' | translate }}</h5>
-                        <app-button
-                            [class]="'btn theme-bg-color text-white btn-sm fw-bold mt-lg-0 ms-auto'"
-                            [type]="'button'"
-                            [spinner]="false"
-                            [id]="'add_address'"
-                            (click)="AddressModal.openModal()">
+                        <app-button [class]="'btn theme-bg-color text-white btn-sm fw-bold mt-lg-0 ms-auto'"
+                            [type]="'button'" [spinner]="false" [id]="'add_address'" (click)="AddressModal.openModal()">
                             <i class="ri-add-line"></i> {{ 'Add Address' | translate }}
-                        </app-button>        </div>
+                        </app-button>
+                    </div>
                 </div>
                 <div class="row g-sm-4 g-3" *ngIf="(user$ | async)?.address?.length">
-                    <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6" *ngFor="let address of (user$ | async)?.address; let i = index;">
+                    <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6"
+                        *ngFor="let address of (user$ | async)?.address; let i = index;">
                         <div class="address-box">
                             <div>
                                 <div class="label">
@@ -99,18 +94,11 @@
                                 </div>
                             </div>
                             <div class="button-group">
-                                <app-button
-                                    [class]="'btn btn-sm add-button'"
-                                    [type]="'button'"
-                                    [spinner]="false"
-                                    [id]="'edit_address'+address.id"
-                                    (click)="AddressModal.openModal(address)">
+                                <app-button [class]="'btn btn-sm add-button'" [type]="'button'" [spinner]="false"
+                                    [id]="'edit_address'+address.id" (click)="AddressModal.openModal(address)">
                                     <i class="ri-edit-box-line"></i> {{ 'Edit' | translate }}
                                 </app-button>
-                                <app-button
-                                    [class]="'btn btn-sm add-button'"
-                                    [type]="'button'"
-                                    [spinner]="false"
+                                <app-button [class]="'btn btn-sm add-button'" [type]="'button'" [spinner]="false"
                                     [id]="'remove_address'+address.id"
                                     (click)="DeleteModal.openModal('delete', address)">
                                     <i class="ri-delete-bin-line"></i> {{ 'Remove' | translate }}
@@ -123,14 +111,9 @@
         </div>
     </div>
 </div>
-<app-no-data [class]="'no-data-added'"
-    [image]="'assets/svg/empty-items.svg'"
-    [text]="'No Address Found'"
-    [description]="'You Have Not Address yet'"
+<app-no-data [class]="'no-data-added'" [text]="'No Address Found'" [description]="'You Have Not Address yet'"
     *ngIf="!(user$ | async)?.address?.length">
 </app-no-data>
 <address-modal #addressModal></address-modal>
-<app-delete-modal
-    #deleteModal
-    (deleteItem)="delete($event.actionToPerform,$event.data)">
+<app-delete-modal #deleteModal (deleteItem)="delete($event.actionToPerform,$event.data)">
 </app-delete-modal>

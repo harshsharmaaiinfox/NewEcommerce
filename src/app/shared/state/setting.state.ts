@@ -52,13 +52,13 @@ export class SettingState {
 
               {
                 name: 'neoKred',
-                status: true,
+                status: false,
                 title: 'Pay By UPI INTENT',
                 // icon: './assets/images/payment/pay_by_qr.png',
               },
               {
                 name: 'RaylomShop_nabu',
-                status: true,
+                status: false,
                 title: 'Pay By UPI INTENT 3',
                 // icon: './assets/images/payment/RaylomShop_nabu.png',
               },

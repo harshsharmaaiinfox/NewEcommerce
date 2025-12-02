@@ -393,3 +393,217 @@ a.page-link {
 .footer-logo {
   width: 90% !important;
 }
+
+.accordion-button {
+  background-color: transparent !important;
+}
+
+
+input.form-control.intl-input-padding.ng-pristine.ng-valid.ng-touched {
+  padding-left: 10px !important;
+}
+
+.title-header h5:after,
+.title-header .h5:after {
+  display: none !important;
+}
+
+ul.pagination {
+  gap: 10px;
+}
+
+.notification-list li::after {
+  display: none !important;
+}
+
+.user-dashboard-section .dashboard-right-sidebar .dashboard-address .address-box>div .label {
+  background-color: transparent !important;
+
+}
+
+.user-dashboard-section .dashboard-right-sidebar .dashboard-address .address-box .button-group button:hover {
+  background-color: #1b4b45 !important;
+  color: #ffffff;
+}
+
+.dashboard-address .address-box:hover .label label {
+  color: #ffffff !important;
+}
+
+// Add Address Button
+.dashboard-address .title-header .btn.theme-bg-color {
+  background-color: #183D38 !important;
+  border-color: #183D38 !important;
+
+  &:hover {
+    background-color: #0f2e2a !important;
+    border-color: #0f2e2a !important;
+  }
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #1B4B45 0%, #0f2e2a 100%);
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  color: #fff !important;
+}
+
+.theme-modal .modal-dialog .modal-content .modal-header .btn-close {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #e2e8f0 !important;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.select2-container .select2-selection--single {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid #e2e8f0 !important;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: #f8fafc !important;
+}
+
+.custom-select .select2-container .select2-selection {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem !important;
+  border: 2px solid #e2e8f0 !important;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: #f8fafc !important;
+}
+
+.address-form .custom-select .select2-container .select2-selection {
+  border-color: #e2e8f0 !important;
+  background: transparent !important;
+}
+
+.btn-theme-outline {
+  color: #10322E !important;
+  border: 1px solid #10322E !important;
+  transition: all 0.5s ease;
+}
+
+button#submit_address_btn {
+  background: #10312d !important;
+}
+
+.custom-select .select2-container .select2-results__option {
+  color: #ffffff !important;
+  padding: 4px 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.select2-dropdown.select2-dropdown--below {
+  border-radius: 5px !important;
+}
+
+.btn-theme-outline:hover {
+  background-color: #1B4B45 !important;
+  color: white !important;
+}
+
+.tracking-card {
+  display: none;
+}
+
+.shipping-progress-box.ng-star-inserted {
+  display: none;
+}
+
+.checkout-section-2 .left-sidebar-checkout .checkout-detail-box>ul>li .checkout-box {
+  margin-left: 0 !important;
+}
+
+.checkout-detail-box ul li .checkout-icon {
+  display: none !important;
+}
+
+.delivery-option .delivery-category .shipment-detail .form-check:has(.form-check-input:checked) {
+  border-color: #1B4B45;
+  background: rgba(27, 75, 69, 0.03);
+  padding: 10px !important;
+}
+
+.checkout-section-2 .left-sidebar-checkout .checkout-detail-box>ul>li .checkout-box .checkout-detail .delivery-option,
+.checkout-section-2 .left-sidebar-checkout .checkout-detail-box>ul>li .checkout-box .checkout-detail .payment-option {
+  padding: 0 !important;
+  background-color: transparent !important;
+  border-radius: 5px;
+}
+
+.form-check.custom-form-check.hide-check-box.w-100 {
+  padding: 10px !important;
+}
+
+.pos-detail-card .summary-total:after,
+.pos-detail-card .summary-total:before {
+  display: none !important;
+}
+
+.coupon-box.mt-2.d-flex.w-100 {
+  display: none !important;
+}
+
+li.border-cls {
+  display: none !important;
+}
+
+.pos-detail-card .card-body .summary-total li.list-total {
+  border-top: none !important;
+}
+
+.summary-total li:nth-child(4) {
+  display: none !important;
+}
+
+li.coupon-sec {
+  display: none !important;
+}
+
+.shipping-progress-box {
+  display: none !important;
+}
+
+// Enhanced styles for vertical layout payment and delivery boxes
+.delivery-option .delivery-category .shipment-detail .form-check:has(.form-check-input:checked) {
+  border-color: #1B4B45 !important;
+  box-shadow: 0 6px 16px rgba(27, 75, 69, 0.3) !important;
+  transform: translateY(-2px) !important;
+
+  &::before {
+    filter: brightness(0) invert(1) !important;
+  }
+}
+
+
+
+
+.delivery-option .delivery-category .shipment-detail .form-check:has(.form-check-input:checked) {
+  border-color: #1B4B45 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: translateY(-2px) !important;
+  border: 1px solid;
+  border-radius: 5px;
+  color: #1b4b45 !important;
+}
+
+.form-check.custom-form-check.hide-check-box.w-100 {
+  border: 1px solid #1b4b45;
+  border-radius: 5px;
+}
+
+button#place_order {
+  background: #1b4b45 !important;
+}

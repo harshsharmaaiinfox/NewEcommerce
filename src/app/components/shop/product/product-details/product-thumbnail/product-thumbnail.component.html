@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col-xxl-9 col-xl-8 col-lg-7">
             <div class="row g-4">
-                <div class="col-xl-6">
+                <!-- Image column: move to RIGHT on large screens -->
+                <div class="col-xl-6 order-lg-2">
                     <div class="product-left-box">
                         <div class="row g-2">
                             <div class="col-12">
@@ -109,7 +110,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6">
+                <!-- Details column: move to LEFT on large screens -->
+                <div class="col-xl-6 order-lg-1">
                     <div class="right-box-contain">
                         <app-product-contain [product]="product" [option]="option" [owlCar]="owlCar">
                         </app-product-contain>
@@ -123,9 +125,6 @@
                 <div class="col-12 related-product-2"
                     *ngIf="product?.cross_sell_products && product?.cross_sell_products?.length">
                     <app-product-bundle [product]="product"></app-product-bundle>
-                </div>
-                <div class="col-12">
-                    <app-product-details-tabs [product]="product"></app-product-details-tabs>
                 </div>
             </div>
         </div>

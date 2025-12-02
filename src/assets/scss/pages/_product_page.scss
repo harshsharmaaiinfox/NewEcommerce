@@ -540,6 +540,12 @@
 }
 
 .product-section {
+  // Limit overall width so there isn't huge empty space on very wide screens
+  .container-fluid-lg {
+    max-width: 1320px;
+    margin-inline: auto;
+  }
+
   .product-left-box {
     position: sticky;
     top: 0;
@@ -1224,7 +1230,16 @@
       border-bottom: 1px solid $border-color;
 
       button {
-        background-color: #ff7272;
+        // Primary buy-now button in product page should follow
+        // the new #1B4B45 theme color.
+        background-color: #1b4b45;
+        border-color: #1b4b45;
+        color: #ffffff;
+
+        &:hover {
+          background-color: darken(#1b4b45, 5%);
+          border-color: darken(#1b4b45, 5%);
+        }
       }
     }
 
@@ -2328,6 +2343,19 @@
         font-size: 20px;
       }
     }
+  }
+}
+
+// Bottom tabs (Description / Review / Q/A) layout
+.product-tabs-bottom {
+  .container-fluid-lg {
+    max-width: 1320px;
+    margin-inline: auto;
+  }
+
+  .product-section-box {
+    // Match width visually with main content area, not full screen
+    max-width: 700px;
   }
 }
 

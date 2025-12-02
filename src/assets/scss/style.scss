@@ -33,6 +33,17 @@
   --theme-color-gradient-horizontal: linear-gradient(90deg, #0a1a1a 0%, #417394 100%);
 }
 
+// Product page specific theme override using #1B4B45
+// This keeps the rest of the site on existing themes but forces
+// product detail sections to use the new green brand color.
+.product-section,
+.theme-product-section {
+  --theme-color: #1b4b45;
+  --theme-color-dark: #0f2e2a;
+  --theme-color-gradient: linear-gradient(135deg, #0f2e2a 0%, #1b4b45 50%, #2f6f66 100%);
+  --theme-color-gradient-horizontal: linear-gradient(90deg, #0f2e2a 0%, #1b4b45 100%);
+}
+
 // utils
 @import "utils/mixin/animation";
 @import "utils/mixin/common";
@@ -300,7 +311,8 @@ h2.p-text-main.h1-text {
 .product-section .right-box-contain .name {
   font-weight: 700;
   margin-bottom: 8px;
-  font-size: 40px;
+  font-size: 28px;
+  line-height: 1.25;
 }
 
 
@@ -337,15 +349,16 @@ app-root {
 }
 
 .theme-gradient-btn {
-  background: linear-gradient(90deg, #0a1a1a 0%, #1a3a3a 50%, #20c997 100%) !important;
+  // Use current theme gradient so it follows the product page override.
+  background: var(--theme-color-gradient-horizontal) !important;
   color: #ffffff !important;
   border: none !important;
   transition: all 0.3s ease !important;
 
   &:hover {
-    background: linear-gradient(90deg, #1a3a3a 0%, #20c997 50%, #2dd4a8 100%) !important;
+    background: var(--theme-color-gradient-horizontal) !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(32, 201, 151, 0.3) !important;
+    box-shadow: 0 4px 12px rgba(27, 75, 69, 0.3) !important;
   }
 }
 
@@ -606,4 +619,17 @@ li.coupon-sec {
 
 button#place_order {
   background: #1b4b45 !important;
+}
+.wishlist-btn-group {
+  display: none;
+}
+.product-count {
+  display: none;
+}
+ul.product-info-list.product-info-list-2 {
+  display: flex;
+  flex-direction: column;
+}
+section.product-tabs-bottom.section-b-space {
+  padding-top: 0;
 }

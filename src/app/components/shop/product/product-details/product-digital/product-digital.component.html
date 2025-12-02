@@ -1,7 +1,8 @@
 <!-- Product Left Sidebar Start -->
 <div class="container-fluid-lg">
     <div class="row g-sm-4 g-3">
-        <div class="col-xl-8 col-lg-7 wow fadeInUp">
+        <!-- Details LEFT (on large screens), Image RIGHT -->
+        <div class="col-xl-8 col-lg-7 wow fadeInUp order-lg-2">
             <div class="product-left-box">
                 <div class="row g-sm-4 g-3">
                     <div class="col-12 wow fadeInUp">
@@ -59,13 +60,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <app-product-details-tabs [product]="product"></app-product-details-tabs>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-xl-4 col-lg-5 wow fadeInUp vendor-right-box">
+        <div class="col-xl-4 col-lg-5 wow fadeInUp vendor-right-box order-lg-1">
             <div class="right-box-contain">
                 <div class="main-right-box-contain">
                     <div class="vendor-box">

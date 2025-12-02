@@ -19,6 +19,13 @@
         *ngIf="layout == 'product_accordion'"></app-product-accordion>
 </section>
 
+<!-- Tabs (Description / Review / Q&A) moved to bottom of product page -->
+<section class="product-tabs-bottom section-b-space">
+    <div class="container-fluid-lg">
+        <app-product-details-tabs [product]="(product$ | async)!"></app-product-details-tabs>
+    </div>
+</section>
+
 <!-- Related Products -->
 <section class="product-list-section releted-product section-b-space"
     *ngIf="(product$ | async)?.related_products?.length">
@@ -26,5 +33,4 @@
 </section>
 
 <!-- Sticky Cart Box Start -->
-<app-sticky-checkout [product]="(product$ | async)!"></app-sticky-checkout>
-<!-- Sticky Cart Box End -->
+<app-sticky-checkout [product]="(product$ | async)!"></app-sticky-checkout><!-- Sticky Cart Box End -->

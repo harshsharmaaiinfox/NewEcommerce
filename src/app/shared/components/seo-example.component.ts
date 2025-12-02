@@ -180,8 +180,8 @@ export class SeoExampleComponent implements OnInit {
       title: 'RaylomShop Premium Mens and Womens Fashion Online',
       description: 'Discover new season shirts jackets suits denim and more at RaylomShop. Premium quality fast shipping across India COD and easy returns.',
       keywords: 'activewear, gym wear, joggers, men\'s clothes, women\'s clothes, stylish outfits, comfort fit, performance clothing, RaylomShop',
-      image: 'https://RaylomShop.in/assets/images/hero-banner.jpg',
-      url: 'https://RaylomShop.in',
+      image: 'https://raylomshop.com/assets/images/hero-banner.jpg',
+      url: 'https://raylomshop.com',
       type: 'website',
       author: 'Ecomus Team'
     });
@@ -191,8 +191,8 @@ export class SeoExampleComponent implements OnInit {
 
     // Set breadcrumb structured data
     this.seoService.setBreadcrumbStructuredData([
-      { name: 'Home', url: 'https://RaylomShop.in' },
-      { name: 'Featured Products', url: 'https://RaylomShop.in/featured' }
+      { name: 'Home', url: 'https://raylomshop.com' },
+      { name: 'Featured Products', url: 'https://raylomshop.com/featured' }
     ]);
   }
 } 

@@ -18,11 +18,11 @@ export class PrivacyPolicyComponent implements OnInit {
       title: 'Privacy Policy – How We Use Your Data | RaylomShop',
       description: 'Learn how RaylomShop protects and uses your personal information. Read our comprehensive privacy policy to understand your rights and our data practices.',
       keywords: 'privacy policy, data protection, personal information, RaylomShop privacy, data usage',
-      canonicalUrl: 'https://RaylomShop.in/privacy-policy', // ✅ Canonical URL for SEO
-      url: 'https://RaylomShop.in/privacy-policy',
+      canonicalUrl: 'https://raylomshop.com/privacy-policy', // ✅ Canonical URL for SEO
+      url: 'https://raylomshop.com/privacy-policy',
       type: 'website'
     });
-    
+
     // Set current date
     this.setCurrentDate();
   }
@@ -31,10 +31,10 @@ export class PrivacyPolicyComponent implements OnInit {
     const dateElement = document.getElementById('currentDate');
     if (dateElement) {
       const today = new Date();
-      const options: Intl.DateTimeFormatOptions = { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+      const options: Intl.DateTimeFormatOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
       };
       dateElement.textContent = today.toLocaleDateString('en-US', options);
     }

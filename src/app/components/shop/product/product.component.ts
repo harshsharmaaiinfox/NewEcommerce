@@ -118,7 +118,7 @@ export class ProductComponent implements OnInit, OnDestroy {
    */
   private forceProductSEOUpdate(product: Product, productSlug: string | null): void {
     const slug = productSlug || product.slug || `product-${product.id}`;
-    const baseUrl = 'https://RaylomShop.in';
+    const baseUrl = 'https://raylomshop.com';
     const productUrl = `${baseUrl}/product/${slug}`;
 
     // Use custom meta data if available, otherwise generate from product data

@@ -261,8 +261,8 @@ export class SeoService {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Ecomus",
-      "url": "https://RaylomShop.in",
-      "logo": "https://RaylomShop.in/assets/images/logo.png",
+      "url": "https://raylomshop.com",
+      "logo": "https://raylomshop.com/assets/images/logo.png",
       "sameAs": [
         "https://facebook.com/ecomus",
         "https://twitter.com/ecomus",
@@ -315,7 +315,7 @@ export class SeoService {
         "name": "Ecomus",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://RaylomShop.in/assets/images/logo.png"
+          "url": "https://raylomshop.com/assets/images/logo.png"
         }
       },
       "datePublished": article.publishedDate,
@@ -437,7 +437,7 @@ export class SeoService {
       description: 'Discover new season shirts jackets suits denim and more at RaylomShop. Premium quality fast shipping across India COD and easy returns.',
       keywords: 'activewear, gym wear, joggers, men\'s clothes, women\'s clothes, stylish outfits, comfort fit, performance clothing, RaylomShop',
       type: 'website',
-      url: 'https://RaylomShop.in/'
+      url: 'https://raylomshop.com/'
     });
   }
 
@@ -455,7 +455,7 @@ export class SeoService {
    * Set SEO data specifically for product pages
    * This method provides a convenient way to set all product-related SEO data
    */
-  setProductPageSEO(product: any, productSlug: string | null, baseUrl: string = 'https://RaylomShop.in'): void {
+  setProductPageSEO(product: any, productSlug: string | null, baseUrl: string = 'https://raylomshop.com'): void {
     // Handle null/undefined slug
     const slug = productSlug || product.slug || `product-${product.id}`;
     const productUrl = `${baseUrl}/product/${slug}`;

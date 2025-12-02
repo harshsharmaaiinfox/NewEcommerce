@@ -136,12 +136,12 @@ export class CollectionComponent {
     this.meta.updateTag({ name: 'keywords', content: keywords });
     this.meta.updateTag({ property: 'og:title', content: title });
     this.meta.updateTag({ property: 'og:description', content: description });
-    this.meta.updateTag({ property: 'og:url', content: `https://RaylomShop.in/collections/${category}` });
+    this.meta.updateTag({ property: 'og:url', content: `https://raylomshop.com/collections/${category}` });
     this.meta.updateTag({ name: 'twitter:title', content: title });
     this.meta.updateTag({ name: 'twitter:description', content: description });
 
     // Update canonical URL
-    this.meta.updateTag({ rel: 'canonical', href: `https://RaylomShop.in/collections/${category}` });
+    this.meta.updateTag({ rel: 'canonical', href: `https://raylomshop.com/collections/${category}` });
 
     // Update breadcrumb
     this.breadcrumb.title = `${category.charAt(0).toUpperCase() + category.slice(1)} Collection`;
@@ -168,10 +168,10 @@ export class CollectionComponent {
     this.meta.updateTag({ name: 'keywords', content: keywords });
     this.meta.updateTag({ property: 'og:title', content: title });
     this.meta.updateTag({ property: 'og:description', content: description });
-    this.meta.updateTag({ property: 'og:url', content: 'https://RaylomShop.in/collections' });
+    this.meta.updateTag({ property: 'og:url', content: 'https://raylomshop.com/collections' });
     this.meta.updateTag({ name: 'twitter:title', content: title });
     this.meta.updateTag({ name: 'twitter:description', content: description });
-    this.meta.updateTag({ rel: 'canonical', href: 'https://RaylomShop.in/collections' });
+    this.meta.updateTag({ rel: 'canonical', href: 'https://raylomshop.com/collections' });
 
     // Reset breadcrumb to default
     this.breadcrumb.title = 'Collections';

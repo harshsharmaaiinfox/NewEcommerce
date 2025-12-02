@@ -47,10 +47,10 @@ export class ContactUsComponent implements OnInit {
       title: 'Contact RaylomShop – We\'re Here to Help You 24/7',
       description: 'Get in touch with RaylomShop customer support. We\'re available 24/7 to help with orders, products, and any questions you may have.',
       keywords: 'contact us, customer support, help, RaylomShop contact, customer service',
-      canonicalUrl: 'https://RaylomShop.in/Contact-Us', // ✅ Canonical URL for SEO
-      url: 'https://RaylomShop.in/Contact-Us',
+      canonicalUrl: 'https://raylomshop.com/Contact-Us', // ✅ Canonical URL for SEO
+      url: 'https://raylomshop.com/Contact-Us',
       type: 'website',
-      image: 'https://RaylomShop.in/assets/images/contact-us.jpg'
+      image: 'https://raylomshop.com/assets/images/contact-us.jpg'
     });
   }
 

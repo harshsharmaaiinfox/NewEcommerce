@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  baseURL: 'http://localhost:4200', 
-  URL: 'https://api.fashioncarft.com/public/api', // Change only the domain part, keeping "/api" intact
-  storageURL: 'https://api.fashioncarft.com/public' // Change only the laravel primary domain
+  baseURL: 'http://localhost:4200',
+  URL: 'https://raylomshop.com/public/api', // Change only the domain part, keeping "/api" intact
+  storageURL: 'https://raylomshop.com/public' // Change only the laravel primary domain
 };
 
 /*

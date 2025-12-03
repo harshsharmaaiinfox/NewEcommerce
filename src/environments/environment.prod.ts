@@ -1,12 +1,12 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-  
+
 export const environment = {
   production: true,
-  baseURL: 'http://localhost:4200', 
-  URL: 'https://api.fashioncarft.com/public/api', // Change only the domain part, keeping "/api" intact
-  storageURL: 'https://api.fashioncarft.com/public' // Change only the laravel primary domain
+  baseURL: 'http://localhost:4200',
+  URL: 'https://raylomshop.com/public', // Change only the domain part, keeping "/api" intact
+  storageURL: 'https://raylomshop.com/public' // Change only the laravel primary domain
 };
 
 /*
@@ -17,4 +17,3 @@ export const environment = {
 * on performance if an error is thrown.
 */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
-  

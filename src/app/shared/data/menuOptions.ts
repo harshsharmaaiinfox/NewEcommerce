@@ -49,7 +49,7 @@ export const menuOptions: any[] = [
     //     "banner_image": null,
     //     "child": []
     // },
-  
+
     // {
     //     "id": 161,
     //     "title": "Kids Wear",
@@ -128,7 +128,7 @@ export const menuOptions: any[] = [
     //         "mime_type": "image/jpeg",
     //         "file_name": "charlesdeluvio-1-nx1QR5dTE-unsplash-1-scaled-1.jpg",
     //         "asset_url": "/storage/2019/charlesdeluvio-1-nx1QR5dTE-unsplash-1-scaled-1.jpg",
-    //         "original_url": "https://api.fashioncarft.com/public/storage/2019/charlesdeluvio-1-nx1QR5dTE-unsplash-1-scaled-1.jpg"
+    //         "original_url": "https://raylomshop.com/public/storage/2019/charlesdeluvio-1-nx1QR5dTE-unsplash-1-scaled-1.jpg"
     //     },
     //     "banner_image": null,
     //     "child": []
@@ -158,5 +158,5 @@ export const menuOptions: any[] = [
         "banner_image": null,
         "child": []
     },
-   
+
 ]

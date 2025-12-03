@@ -283,7 +283,7 @@ header {
 
     .web-logo {
       margin-right: 10px !important;
-      flex-shrink: 0;
+      flex-shrink: 1;
 
       img {
         height: 40px !important;
@@ -348,18 +348,19 @@ header {
     }
   }
 }
+
 // Ensure profile dropdown is visible on laptop screens
 @media (min-width: 1200px) {
   .navbar-top {
     .rightside-box {
       display: flex !important;
-      
+
       .right-side-menu {
         display: flex !important;
-        
+
         .right-side {
           display: inline-block !important;
-          
+
           &.onhover-dropdown {
             display: inline-block !important;
           }
@@ -368,17 +369,18 @@ header {
     }
   }
 }
+
 // Ensure profile dropdown is visible on all screen sizes
 @media (max-width: 1199px) {
   .navbar-top .rightside-box {
     display: flex !important;
-    
+
     .right-side-menu {
       display: flex !important;
-      
+
       .right-side {
         display: inline-block !important;
-        
+
         &.onhover-dropdown {
           display: inline-block !important;
         }
@@ -390,13 +392,13 @@ header {
 @media (max-width: 767px) {
   .navbar-top .rightside-box {
     display: flex !important;
-    
+
     .right-side-menu {
       display: flex !important;
-      
+
       .right-side {
         display: inline-block !important;
-        
+
         &.onhover-dropdown {
           display: inline-block !important;
         }

@@ -671,6 +671,21 @@ app-product-action {
 }
 
 @media(max-width:768px) {
+  .cart-item-card .item-details .item-actions .quantity-controls .qty-input {
+    width: 28px !important;
+  }
+
+  .user-dashboard-section .dashboard-right-sidebar .no-data-added {
+    position: absolute;
+    top: 58% !important;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .dashboard-right-sidebar {
+    padding-bottom: 70px !important;
+  }
+
   .sticky-bottom-cart {
     display: none !important;
   }

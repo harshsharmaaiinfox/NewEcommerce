@@ -111,8 +111,7 @@
         </div>
     </div>
 </div>
-<app-no-data [class]="'no-data-added'" [text]="'No Address Found'" [description]="'You Have Not Address yet'"
-    *ngIf="!(user$ | async)?.address?.length">
+<app-no-data [class]="'no-data-added'" *ngIf="!(user$ | async)?.address?.length">
 </app-no-data>
 <address-modal #addressModal></address-modal>
 <app-delete-modal #deleteModal (deleteItem)="delete($event.actionToPerform,$event.data)">

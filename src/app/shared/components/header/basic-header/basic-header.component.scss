@@ -368,3 +368,39 @@ header {
     }
   }
 }
+// Ensure profile dropdown is visible on all screen sizes
+@media (max-width: 1199px) {
+  .navbar-top .rightside-box {
+    display: flex !important;
+    
+    .right-side-menu {
+      display: flex !important;
+      
+      .right-side {
+        display: inline-block !important;
+        
+        &.onhover-dropdown {
+          display: inline-block !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-top .rightside-box {
+    display: flex !important;
+    
+    .right-side-menu {
+      display: flex !important;
+      
+      .right-side {
+        display: inline-block !important;
+        
+        &.onhover-dropdown {
+          display: inline-block !important;
+        }
+      }
+    }
+  }
+}

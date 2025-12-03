@@ -241,3 +241,110 @@ header {
     }
   }
 }
+
+// Mobile Responsive Styles
+@media (max-width: 1199px) {
+  .navbar-top {
+    padding: 10px 0;
+
+    .web-logo {
+      margin-right: 15px !important;
+
+      img {
+        height: 50px !important;
+      }
+    }
+
+    .middle-box {
+      margin-right: 10px;
+    }
+
+    .rightside-box {
+      .right-side-menu {
+        gap: 8px;
+
+        .right-side {
+          padding: 5px;
+
+          i {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-top {
+    padding: 8px 0;
+    flex-wrap: nowrap;
+    gap: 10px;
+
+    .web-logo {
+      margin-right: 10px !important;
+      flex-shrink: 0;
+
+      img {
+        height: 40px !important;
+      }
+    }
+
+    .middle-box {
+      margin-right: 8px;
+      flex-shrink: 1;
+      min-width: 0;
+
+      .mobile-search {
+        max-width: 100%;
+      }
+    }
+
+    .rightside-box {
+      flex-shrink: 0;
+
+      .right-side-menu {
+        gap: 5px;
+
+        .right-side {
+          padding: 3px;
+
+          i {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+
+  // Ensure mobile menu button is visible and properly styled
+  .navbar-menu-button {
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-top {
+    .web-logo {
+      img {
+        height: 47px !important;
+      }
+    }
+
+    .middle-box {
+      .mobile-search {
+        font-size: 14px;
+      }
+    }
+
+    .rightside-box {
+      .right-side-menu {
+        .right-side {
+          i {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -62,7 +62,7 @@
   padding: 8px;
   min-width: 240px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  z-index: 99999 !important;
+  z-index: 999999 !important;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
@@ -70,6 +70,11 @@
   border: 1px solid rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(20px);
   overflow: hidden;
+
+  // Ensure visibility on laptop screens
+  @media (min-width: 1200px) {
+    display: block !important;
+  }
 
   html.dark & {
     background: #1e1e1e;
@@ -197,7 +202,7 @@
 // Parent container z-index
 .onhover-dropdown {
   position: relative;
-  z-index: 99998;
+  z-index: 999998;
 }
 
 // Show dropdown on hover
@@ -226,4 +231,3 @@
     }
   }
 }
-

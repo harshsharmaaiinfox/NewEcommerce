@@ -659,6 +659,7 @@ header .navbar-toggler-icon {
     z-index: 99999999 !important;
   }
 }
+
 // Mobile Menu Sidebar Redesign
 .offcanvas.offcanvas-collapse {
   background: linear-gradient(180deg, #1B4B45 0%, #0f2e2a 100%) !important;
@@ -675,7 +676,7 @@ header .navbar-toggler-icon {
       background: transparent !important;
       color: #ffffff !important;
       opacity: 1;
-      
+
       i {
         color: #ffffff !important;
         font-size: 24px;
@@ -688,14 +689,16 @@ header .navbar-toggler-icon {
   }
 
   .offcanvas-body {
+
     // Target the menu items inside app-menu
     .navbar-nav {
       .nav-item {
+
         .nav-link,
         .dropdown-toggle {
           color: #ffffff !important;
           border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-          
+
           &:hover,
           &.active,
           &.show {
@@ -708,10 +711,10 @@ header .navbar-toggler-icon {
         .dropdown-menu {
           background-color: rgba(0, 0, 0, 0.2) !important;
           border: none;
-          
+
           .dropdown-item {
             color: rgba(255, 255, 255, 0.8) !important;
-            
+
             &:hover {
               color: #ffffff !important;
               background-color: rgba(255, 255, 255, 0.1) !important;
@@ -728,43 +731,43 @@ header .navbar-toggler-icon {
   background-color: #000000 !important;
   box-shadow: none !important;
   padding: 10px 0 !important;
-  
+
   ul {
     width: 100% !important;
     justify-content: space-around !important;
     padding: 0 !important;
     margin: 0 !important;
-    
+
     li {
       width: auto !important;
-      
+
       &.active {
         &::before {
           display: none !important;
         }
       }
-      
+
       a {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
         gap: 4px !important;
-        
+
         i {
           color: #ffffff !important;
           font-size: 22px !important;
           margin: 0 !important;
-          
+
           &.activated {
             display: none;
           }
-          
+
           &.deactivated {
             display: block;
           }
         }
-        
+
         span {
           color: #ffffff !important;
           font-size: 11px !important;
@@ -772,19 +775,19 @@ header .navbar-toggler-icon {
           opacity: 1 !important;
         }
       }
-      
+
       // Active state handling
       &.active {
         a {
           i.deactivated {
             display: none !important;
           }
-          
+
           i.activated {
             display: block !important;
             color: #ffffff !important;
           }
-          
+
           span {
             font-weight: 600 !important;
           }
@@ -792,4 +795,8 @@ header .navbar-toggler-icon {
       }
     }
   }
+}
+
+.breadcrumb-contain {
+  padding-bottom: 0px !important;
 }

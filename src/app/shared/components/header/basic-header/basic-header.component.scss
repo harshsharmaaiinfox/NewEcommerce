@@ -348,3 +348,23 @@ header {
     }
   }
 }
+// Ensure profile dropdown is visible on laptop screens
+@media (min-width: 1200px) {
+  .navbar-top {
+    .rightside-box {
+      display: flex !important;
+      
+      .right-side-menu {
+        display: flex !important;
+        
+        .right-side {
+          display: inline-block !important;
+          
+          &.onhover-dropdown {
+            display: inline-block !important;
+          }
+        }
+      }
+    }
+  }
+}

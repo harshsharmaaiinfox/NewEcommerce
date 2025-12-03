@@ -5,7 +5,7 @@
 export const environment = {
   production: true,
   baseURL: 'http://localhost:4200',
-  URL: 'https://raylomshop.com/public', // Change only the domain part, keeping "/api" intact
+  URL: 'https://raylomshop.com/public/api', // Change only the domain part, keeping "/api" intact
   storageURL: 'https://raylomshop.com/public' // Change only the laravel primary domain
 };
 

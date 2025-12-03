@@ -402,8 +402,8 @@
                             </div>
                         </div>
                         <div class="product-details">
-                            <app-no-data [class]="'empty-cart'" [image]="'assets/svg/empty-items.svg'"
-                                [text]="'No Items Cart'" *ngIf="!(cartItem$ | async)?.length">
+                            <app-no-data [class]="'empty-cart'" [text]="'No Items Cart'"
+                                *ngIf="!(cartItem$ | async)?.length">
                             </app-no-data>
                             <ul class="cart-listing" *ngIf="(cartItem$ | async)?.length">
                                 <li *ngFor="let item of cartItem$ | async">

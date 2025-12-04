@@ -36,33 +36,7 @@
         </ng-template>
       </li>
 
-      <li ngbNavItem="review" *ngIf="!product?.is_external">
-        <a ngbNavLink class="product-tabs-nav__link">
-          {{ 'Review' | translate }}
-        </a>
-        <ng-template ngbNavContent>
-          <div class="product-tabs-panel__body">
-            <app-product-review
-              [product]="product"
-              [reviews]="(review$ | async)?.data || []"
-            ></app-product-review>
-          </div>
-        </ng-template>
-      </li>
-
-      <li ngbNavItem="questions_answers">
-        <a ngbNavLink class="product-tabs-nav__link">
-          {{ 'Q/A' | translate }}
-        </a>
-        <ng-template ngbNavContent>
-          <div class="product-tabs-panel__body">
-            <app-questions-answers
-              [product]="product!"
-              [questionAnswers]="(question$ | async)?.data || []"
-            ></app-questions-answers>
-          </div>
-        </ng-template>
-      </li>
+     
     </ul>
   </div>
 

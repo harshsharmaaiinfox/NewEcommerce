@@ -221,8 +221,7 @@
         gap: 15px;
         width: 100%;
         border-radius: 10px;
-        padding: calc(16px + (20 - 16) * ((100vw - 320px) / (1920 - 320)))
-          calc(16px + (26 - 16) * ((100vw - 320px) / (1920 - 320)));
+        padding: calc(16px + (20 - 16) * ((100vw - 320px) / (1920 - 320))) calc(16px + (26 - 16) * ((100vw - 320px) / (1920 - 320)));
         background: $light-gray;
 
         @include mq-max(xs) {
@@ -338,9 +337,7 @@
             white-space: nowrap;
             display: block;
             font-weight: 600;
-            font-size: calc(
-              14px + (15 - 14) * ((100vw - 320px) / (1920 - 320))
-            );
+            font-size: calc(14px + (15 - 14) * ((100vw - 320px) / (1920 - 320)));
 
             &:hover {
               color: var(--theme-color);
@@ -444,11 +441,9 @@
     border-top: 1px solid $border-color;
 
     ul {
-      @include flex_wrap(
-        $dis: flex,
+      @include flex_wrap($dis: flex,
         $wrap: wrap,
-        $gap: calc(9px + (12 - 9) * ((100vw - 320px) / (1920 - 320)))
-      );
+        $gap: calc(9px + (12 - 9) * ((100vw - 320px) / (1920 - 320))));
       align-items: center;
 
       body.rtl & {
@@ -701,7 +696,7 @@
         }
       }
 
-      + .product-label-tag {
+      +.product-label-tag {
         margin-top: 13px;
       }
     }
@@ -773,11 +768,9 @@
 
       &-box {
         @include mq-max(3xl) {
-          @include flex_common(
-            $dis: flex,
+          @include flex_common($dis: flex,
             $align: center,
-            $justify: space-between
-          );
+            $justify: space-between);
         }
 
         @include mq-max(xs) {
@@ -865,11 +858,9 @@
       }
 
       .select-package {
-        @include flex_wrap(
-          $dis: flex,
+        @include flex_wrap($dis: flex,
           $wrap: wrap,
-          $gap: calc(5px + (13 - 5) * ((100vw - 320px) / (1920 - 320)))
-        );
+          $gap: calc(5px + (13 - 5) * ((100vw - 320px) / (1920 - 320))));
 
         @include mq-max(md) {
           justify-content: center;
@@ -991,12 +982,8 @@
 
           button {
             @include flex_common;
-            width: calc(
-              30px + (35 - 30) * ((100vw - 320px) / (1920 - 320))
-            ) !important;
-            height: calc(
-              30px + (35 - 30) * ((100vw - 320px) / (1920 - 320))
-            ) !important;
+            width: calc(30px + (35 - 30) * ((100vw - 320px) / (1920 - 320))) !important;
+            height: calc(30px + (35 - 30) * ((100vw - 320px) / (1920 - 320))) !important;
             background-color: $light-gray;
             border-radius: 100%;
             color: $content-color !important;
@@ -1025,7 +1012,7 @@
           }
         }
 
-        + .form-check {
+        +.form-check {
           margin-left: 15px;
 
           body.rtl & {
@@ -1071,7 +1058,7 @@
               transform: scale(1);
             }
 
-            ~ .form-check-label {
+            ~.form-check-label {
               color: $title-color;
             }
           }
@@ -1145,11 +1132,9 @@
     }
 
     .note-box {
-      @include flex_wrap(
-        $dis: flex,
+      @include flex_wrap($dis: flex,
         $wrap: wrap,
-        $gap: calc(7px + (15 - 7) * ((100vw - 320px) / (1920 - 320)))
-      );
+        $gap: calc(7px + (15 - 7) * ((100vw - 320px) / (1920 - 320))));
       align-items: center;
       margin-top: 20px;
 
@@ -1187,11 +1172,9 @@
         }
 
         .input-group {
-          background: linear-gradient(
-            187.77deg,
-            #fafafa 5.52%,
-            $light-gray 94%
-          );
+          background: linear-gradient(187.77deg,
+              #fafafa 5.52%,
+              $light-gray 94%);
         }
       }
 
@@ -1209,9 +1192,7 @@
           transition: none;
 
           i {
-            font-size: calc(
-              18px + (20 - 18) * ((100vw - 320px) / (1920 - 320))
-            );
+            font-size: calc(18px + (20 - 18) * ((100vw - 320px) / (1920 - 320)));
             line-height: 1;
           }
         }
@@ -1272,11 +1253,9 @@
       }
 
       a {
-        @include flex_wrap(
-          $dis: flex,
+        @include flex_wrap($dis: flex,
           $wrap: wrap,
-          $gap: calc(5px + (8 - 5) * ((100vw - 320px) / (1920 - 320)))
-        );
+          $gap: calc(5px + (8 - 5) * ((100vw - 320px) / (1920 - 320))));
         font-size: 16px;
         align-items: center;
         color: #777;
@@ -1298,11 +1277,9 @@
         margin-top: 20px;
 
         .product-info-list {
-          @include flex_wrap(
-            $dis: flex,
+          @include flex_wrap($dis: flex,
             $wrap: wrap,
-            $gap: calc(8px + (12 - 8) * ((100vw - 320px) / (1920 - 320)))
-          );
+            $gap: calc(8px + (12 - 8) * ((100vw - 320px) / (1920 - 320))));
           align-items: flex-start;
           text-align: left;
           display: inline-block;
@@ -1381,9 +1358,7 @@
           li {
             padding-left: 13px;
             width: 100%;
-            font-size: calc(
-              14px + (15 - 14) * ((100vw - 320px) / (1920 - 320))
-            );
+            font-size: calc(14px + (15 - 14) * ((100vw - 320px) / (1920 - 320)));
             position: relative;
             color: #777;
 
@@ -1427,7 +1402,7 @@
               color: $title-color;
               font-weight: 500;
 
-              + a {
+              +a {
                 margin-left: 0;
               }
             }
@@ -1509,11 +1484,9 @@
 
       ul {
         align-items: center;
-        @include flex_wrap(
-          $dis: flex,
+        @include flex_wrap($dis: flex,
           $wrap: wrap,
-          $gap: calc(3px + (8 - 3) * ((100vw - 320px) / (1920 - 320)))
-        );
+          $gap: calc(3px + (8 - 3) * ((100vw - 320px) / (1920 - 320))));
 
         @include mq-max(md) {
           justify-content: center;
@@ -1642,7 +1615,7 @@
 
     .product-right-sidebar {
       li {
-        + li {
+        +li {
           margin-top: 0;
 
           &::after {
@@ -1670,7 +1643,7 @@
   margin-top: 10px;
   max-width: 600px;
 
-  > * {
+  >* {
     width: 100%;
   }
 
@@ -1713,8 +1686,8 @@
       .related-image {
         width: auto;
 
-        > ul {
-          > li {
+        >ul {
+          >li {
             width: 205px;
             min-width: 205px;
           }
@@ -1722,11 +1695,11 @@
       }
 
       .budle-list {
-        > ul {
+        >ul {
           flex-direction: column;
           align-items: flex-start;
 
-          > li {
+          >li {
             width: unset;
           }
         }
@@ -1743,9 +1716,7 @@
       h4 {
         font-size: calc(21px + (25 - 21) * ((100vw - 320px) / (1920 - 320)));
         font-weight: 600;
-        margin-bottom: calc(
-          16px + (21 - 16) * ((100vw - 320px) / (1920 - 320))
-        );
+        margin-bottom: calc(16px + (21 - 16) * ((100vw - 320px) / (1920 - 320)));
       }
     }
   }
@@ -1765,35 +1736,29 @@
       overflow: auto;
       padding-bottom: 13px;
 
-      > ul {
+      >ul {
         display: flex;
         align-items: flex-start;
         flex-wrap: nowrap;
         gap: calc(25px + (35 - 25) * ((100vw - 320px) / (1920 - 320)));
 
-        > li {
+        >li {
           width: 225px;
           min-width: 225px;
           position: relative;
 
-          + li {
+          +li {
             &::before {
               @include pos($pos: absolute, $content: "\2b");
               @include center(vertical);
-              left: calc(
-                -18px + (-26 - -18) * ((100vw - 320px) / (1920 - 320))
-              );
-              font-size: calc(
-                14px + (20 - 14) * ((100vw - 320px) / (1920 - 320))
-              );
+              left: calc(-18px + (-26 - -18) * ((100vw - 320px) / (1920 - 320)));
+              font-size: calc(14px + (20 - 14) * ((100vw - 320px) / (1920 - 320)));
               @include font;
               color: $content-color;
 
               body.rtl & {
                 left: unset;
-                right: calc(
-                  -18px + (-26 - -18) * ((100vw - 320px) / (1920 - 320))
-                );
+                right: calc(-18px + (-26 - -18) * ((100vw - 320px) / (1920 - 320)));
               }
             }
           }
@@ -1804,18 +1769,12 @@
 
             .image-box {
               background-color: $light-gray;
-              width: calc(
-                136px + (170 - 136) * ((100vw - 320px) / (1920 - 320))
-              );
-              height: calc(
-                136px + (170 - 136) * ((100vw - 320px) / (1920 - 320))
-              );
+              width: calc(136px + (170 - 136) * ((100vw - 320px) / (1920 - 320)));
+              height: calc(136px + (170 - 136) * ((100vw - 320px) / (1920 - 320)));
               padding: 10px;
               @include flex_common;
               position: relative;
-              border-radius: calc(
-                6px + (9 - 6) * ((100vw - 320px) / (1920 - 320))
-              );
+              border-radius: calc(6px + (9 - 6) * ((100vw - 320px) / (1920 - 320)));
 
               .form-check {
                 position: absolute;
@@ -1868,13 +1827,13 @@
       align-items: center;
       flex-wrap: wrap;
 
-      > ul {
+      >ul {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
         gap: 15px;
 
-        > li {
+        >li {
           width: 100%;
           display: block;
 
@@ -1890,9 +1849,7 @@
 
             .form-check-label {
               span {
-                font-size: calc(
-                  15px + (17 - 15) * ((100vw - 320px) / (1920 - 320))
-                );
+                font-size: calc(15px + (17 - 15) * ((100vw - 320px) / (1920 - 320)));
                 color: $content-color;
 
                 span {
@@ -1917,9 +1874,7 @@
               font-weight: 700;
 
               del {
-                font-size: calc(
-                  14px + (16 - 14) * ((100vw - 320px) / (1920 - 320))
-                );
+                font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
                 margin-left: 5px;
                 font-weight: 400;
               }
@@ -1932,6 +1887,7 @@
 }
 
 .sticky-bottom-cart {
+  display: none;
   position: fixed;
   bottom: -160px;
   width: 100%;
@@ -1960,7 +1916,7 @@
 
     .selection-section {
       .form-group {
-        > * {
+        >* {
           display: flex;
           align-items: center;
           gap: calc(6px + (10 - 6) * ((100vw - 575px) / (1920 - 575)));
@@ -2122,7 +2078,7 @@
         }
       }
 
-      + a {
+      +a {
         @include mq-max(sm) {
           margin-left: 8px;
 
@@ -2166,7 +2122,7 @@
       line-height: 1;
     }
 
-    + li {
+    +li {
       margin-top: 4px;
     }
   }
@@ -2362,10 +2318,10 @@
         margin-top: 8px;
         margin-bottom: 18px;
 
-        > li {
+        >li {
           position: relative;
 
-          + li {
+          +li {
             padding-left: 15px;
             margin-left: 8px;
 
@@ -2394,9 +2350,7 @@
           .content {
             color: #777;
             display: inline-block;
-            font-size: calc(
-              15px + (17 - 15) * ((100vw - 320px) / (1920 - 320))
-            );
+            font-size: calc(15px + (17 - 15) * ((100vw - 320px) / (1920 - 320)));
             font-weight: 400;
 
             html.dark & {
@@ -2492,10 +2446,8 @@
         text-align: center;
         color: $content-color;
 
-        > i {
-          font-size: calc(
-            140px + (480 - 140) * ((100vw - 320px) / (1920 - 320))
-          );
+        >i {
+          font-size: calc(140px + (480 - 140) * ((100vw - 320px) / (1920 - 320)));
           line-height: 1;
         }
 
@@ -2534,14 +2486,10 @@
             border: unset;
             color: #ffffff;
             letter-spacing: 0.9px;
-            font-size: calc(
-              15px + (16 - 15) * ((100vw - 320px) / (1920 - 320))
-            );
+            font-size: calc(15px + (16 - 15) * ((100vw - 320px) / (1920 - 320)));
 
             i {
-              font-size: calc(
-                16px + (20 - 16) * ((100vw - 320px) / (1920 - 320))
-              );
+              font-size: calc(16px + (20 - 16) * ((100vw - 320px) / (1920 - 320)));
             }
 
             span {
@@ -2558,6 +2506,7 @@
               font-size: 23px;
               padding: 7px 16px;
               border-radius: 9px;
+
               i {
                 font-size: inherit;
               }
@@ -2604,12 +2553,8 @@
             a {
               &.product-theme-icon {
                 @include flex_common;
-                @include pseudowh(
-                  $width:
-                    calc(34px + (42 - 34) * ((100vw - 576px) / (1920 - 576))),
-                  $height:
-                    calc(34px + (42 - 34) * ((100vw - 576px) / (1920 - 576)))
-                );
+                @include pseudowh($width: calc(34px + (42 - 34) * ((100vw - 576px) / (1920 - 576))),
+                  $height: calc(34px + (42 - 34) * ((100vw - 576px) / (1920 - 576))));
                 color: var(--theme-color);
                 border-radius: 5px;
                 position: relative;
@@ -2622,20 +2567,14 @@
                 }
 
                 i {
-                  font-size: calc(
-                    18px + (22 - 18) * ((100vw - 576px) / (1920 - 576))
-                  );
+                  font-size: calc(18px + (22 - 18) * ((100vw - 576px) / (1920 - 576)));
                 }
               }
 
               &.layout-grid {
                 @include flex_common;
-                @include pseudowh(
-                  $width:
-                    calc(34px + (42 - 34) * ((100vw - 576px) / (1920 - 576))),
-                  $height:
-                    calc(34px + (42 - 34) * ((100vw - 576px) / (1920 - 576)))
-                );
+                @include pseudowh($width: calc(34px + (42 - 34) * ((100vw - 576px) / (1920 - 576))),
+                  $height: calc(34px + (42 - 34) * ((100vw - 576px) / (1920 - 576))));
                 z-index: 0;
                 color: #ffffff;
                 overflow: hidden;
@@ -2659,7 +2598,7 @@
                 margin: 0;
                 cursor: pointer;
 
-                &:checked ~ .feather {
+                &:checked~.feather {
                   fill: var(--theme-color);
                 }
               }
@@ -2737,11 +2676,9 @@
       }
 
       .select-package {
-        @include flex_wrap(
-          $dis: flex,
+        @include flex_wrap($dis: flex,
           $wrap: wrap,
-          $gap: calc(5px + (13 - 5) * ((100vw - 320px) / (1920 - 320)))
-        );
+          $gap: calc(5px + (13 - 5) * ((100vw - 320px) / (1920 - 320))));
 
         @include mq-max(md) {
           justify-content: center;
@@ -2888,7 +2825,7 @@
             }
           }
 
-          + .form-check {
+          +.form-check {
             margin-left: 15px;
           }
 
@@ -2929,7 +2866,7 @@
                 transform: scale(1);
               }
 
-              ~ .form-check-label {
+              ~.form-check-label {
                 color: $title-color;
               }
             }
@@ -2946,11 +2883,9 @@
         }
 
         &.form-select {
-          background: linear-gradient(
-            187.77deg,
-            #fafafa 5.52%,
-            $light-gray 94%
-          );
+          background: linear-gradient(187.77deg,
+              #fafafa 5.52%,
+              $light-gray 94%);
           border-radius: 7px;
           border: 1px solid #eee;
           display: inline-block;
@@ -3083,7 +3018,7 @@
     }
 
     .product-package {
-      + .product-package {
+      +.product-package {
         margin-top: 10px;
       }
 
@@ -3098,8 +3033,7 @@
         border: 1px solid #eee;
         display: inline-block;
         box-shadow: unset;
-        padding: calc(8px + 0.00375 * (100vw - 320px))
-          calc(12px + 3 * (100vw - 320px) / 1600);
+        padding: calc(8px + 0.00375 * (100vw - 320px)) calc(12px + 3 * (100vw - 320px) / 1600);
       }
     }
 
@@ -3212,8 +3146,7 @@
 
     .discount-box {
       background-color: $light-gray;
-      padding: calc(12px + (23 - 12) * ((100vw - 320px) / (1920 - 320)))
-        calc(18px + (23 - 18) * ((100vw - 320px) / (1920 - 320)));
+      padding: calc(12px + (23 - 12) * ((100vw - 320px) / (1920 - 320))) calc(18px + (23 - 18) * ((100vw - 320px) / (1920 - 320)));
       border-radius: calc(6px + (9 - 6) * ((100vw - 320px) / (1920 - 320)));
       border: 1px solid $border-color;
 
@@ -3255,9 +3188,7 @@
       p {
         line-height: 1.5;
         font-size: calc(14px + (16 - 14) * ((100vw - 320px) / (1920 - 320)));
-        margin-bottom: calc(
-          16px + (24 - 16) * ((100vw - 320px) / (1920 - 320))
-        );
+        margin-bottom: calc(16px + (24 - 16) * ((100vw - 320px) / (1920 - 320)));
         color: $content-color;
       }
 
@@ -3268,8 +3199,7 @@
         border: none;
         font-size: 16px;
         letter-spacing: 1.1px;
-        padding: calc(10px + (12 - 10) * ((100vw - 320px) / (1920 - 320)))
-          calc(16px + (29 - 16) * ((100vw - 320px) / (1920 - 320)));
+        padding: calc(10px + (12 - 10) * ((100vw - 320px) / (1920 - 320))) calc(16px + (29 - 16) * ((100vw - 320px) / (1920 - 320)));
       }
     }
 
@@ -3346,7 +3276,7 @@
           cursor: pointer;
 
           &:checked {
-            ~ .form-check-label {
+            ~.form-check-label {
               &::before {
                 opacity: 0.1;
               }
@@ -3380,12 +3310,8 @@
             gap: 7px;
 
             .circle {
-              @include pseudowh(
-                $width:
-                  calc(16px + (18 - 16) * ((100vw - 320px) / (1920 - 320))),
-                $height:
-                  calc(16px + (18 - 16) * ((100vw - 320px) / (1920 - 320)))
-              );
+              @include pseudowh($width: calc(16px + (18 - 16) * ((100vw - 320px) / (1920 - 320))),
+                $height: calc(16px + (18 - 16) * ((100vw - 320px) / (1920 - 320))));
               background-color: $white;
               border-radius: 100%;
               position: relative;
@@ -3398,12 +3324,8 @@
 
               &::before {
                 @include pos;
-                @include pseudowh(
-                  $width:
-                    calc(10px + (12 - 10) * ((100vw - 320px) / (1920 - 320))),
-                  $height:
-                    calc(10px + (12 - 10) * ((100vw - 320px) / (1920 - 320)))
-                );
+                @include pseudowh($width: calc(10px + (12 - 10) * ((100vw - 320px) / (1920 - 320))),
+                  $height: calc(10px + (12 - 10) * ((100vw - 320px) / (1920 - 320))));
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%) scale(0);
@@ -3415,19 +3337,12 @@
           }
 
           .name {
-            @include flex_common(
-              $dis: flex,
+            @include flex_common($dis: flex,
               $align: center,
-              $justify: space-between
-            );
+              $justify: space-between);
             margin: 0;
-            font-size: calc(
-              15px + (18 - 15) * ((100vw - 320px) / (1920 - 320))
-            );
-            width: calc(
-              100% - 7px -
-                calc(16px + (18 - 16) * ((100vw - 320px) / (1920 - 320)))
-            );
+            font-size: calc(15px + (18 - 15) * ((100vw - 320px) / (1920 - 320)));
+            width: calc(100% - 7px - calc(16px + (18 - 16) * ((100vw - 320px) / (1920 - 320))));
             font-weight: 500;
             color: $content-color;
 
@@ -3508,11 +3423,9 @@
 
             &.product-package {
               .select-package {
-                @include flex_wrap(
-                  $dis: flex,
+                @include flex_wrap($dis: flex,
                   $wrap: wrap,
-                  $gap: calc(5px + (13 - 5) * ((100vw - 320px) / (1920 - 320)))
-                );
+                  $gap: calc(5px + (13 - 5) * ((100vw - 320px) / (1920 - 320))));
 
                 @include mq-max(md) {
                   justify-content: center;
@@ -3658,7 +3571,7 @@
                   }
                 }
 
-                + .form-check {
+                +.form-check {
                   margin-left: 15px;
                 }
 
@@ -3699,7 +3612,7 @@
                       transform: scale(1);
                     }
 
-                    ~ .form-check-label {
+                    ~.form-check-label {
                       color: $title-color;
                     }
                   }
@@ -3716,11 +3629,9 @@
               }
 
               .form-select {
-                background: linear-gradient(
-                  187.77deg,
-                  #fafafa 5.52%,
-                  $light-gray 94%
-                );
+                background: linear-gradient(187.77deg,
+                    #fafafa 5.52%,
+                    $light-gray 94%);
                 border-radius: 7px;
                 border: 1px solid #eee;
                 display: inline-block;
@@ -3868,7 +3779,7 @@
         margin-top: 0;
       }
 
-      + .form-check {
+      +.form-check {
         margin: 0 !important;
       }
     }

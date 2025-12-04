@@ -24,7 +24,7 @@
   justify-content: center;
   width: 100%;
   padding: 20px 15px;
-  
+
   @media (min-width: 992px) {
     padding: 20px 30px;
   }
@@ -67,6 +67,7 @@
         opacity: 0;
         transform: translateY(-20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -239,7 +240,7 @@
         }
       }
 
-      input:focus ~ .input-icon {
+      input:focus~.input-icon {
         color: var(--theme-color, #20c997);
       }
     }
@@ -284,7 +285,7 @@
         opacity: 0;
         cursor: pointer;
 
-        &:checked ~ .checkmark {
+        &:checked~.checkmark {
           background: linear-gradient(135deg, var(--theme-color, #20c997) 0%, var(--theme-color-dark, #0a1a1a) 100%);
           border-color: var(--theme-color, #20c997);
 
@@ -374,6 +375,7 @@
       from {
         transform: rotate(0deg);
       }
+
       to {
         transform: rotate(360deg);
       }
@@ -473,8 +475,13 @@
 }
 
 @media (max-width: 768px) {
+  .login-form-container {
+    padding: 10px 5px;
+  }
+
   .login-card {
-    padding: 35px 25px;
+    padding: 25px 10px;
+    max-width: 100%;
   }
 
   .login-header {
@@ -500,4 +507,3 @@
     gap: 15px;
   }
 }
-

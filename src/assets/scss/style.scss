@@ -671,6 +671,10 @@ app-product-action {
 }
 
 @media(max-width:768px) {
+  .product-box .product-detail .sold .price {
+    font-size: 16px !important;
+  }
+
   .cart-item-card .item-details .item-actions .quantity-controls .qty-input {
     width: 28px !important;
   }

@@ -110,49 +110,54 @@
         }
     }
 
-    .newsletter-content {
+    .social-content {
         p {
             margin-bottom: 20px;
             font-size: 14px;
             line-height: 1.6;
             color: #ffffff;
+            opacity: 0.9;
         }
 
-        .newsletter-form {
-            position: relative;
+        .social-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
 
-            .form-control {
-                background-color: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                color: #fff;
-                padding: 12px 15px;
-                border-radius: 0;
-                width: 100%;
+            li {
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    color: #ffffff;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    font-size: 14px;
+                    padding: 8px 0;
+                    opacity: 0.8;
 
-                &::placeholder {
-                    color: rgba(255, 255, 255, 0.7);
-                }
+                    i {
+                        font-size: 20px;
+                        width: 24px;
+                        transition: all 0.3s ease;
+                    }
 
-                &:focus {
-                    border-color: #fff;
-                    box-shadow: none;
-                    background-color: rgba(255, 255, 255, 0.2);
-                }
-            }
+                    span {
+                        transition: all 0.3s ease;
+                    }
 
-            .btn-solid {
-                background-color: #fff;
-                color: #000;
-                border: none;
-                padding: 12px 25px;
-                text-transform: uppercase;
-                font-weight: 600;
-                letter-spacing: 1px;
-                width: 100%;
-                transition: all 0.3s ease;
+                    &:hover {
+                        opacity: 1;
+                        transform: translateX(5px);
 
-                &:hover {
-                    background-color: #e0e0e0;
+                        i {
+                            color: #fff;
+                            transform: scale(1.2);
+                        }
+                    }
                 }
             }
         }

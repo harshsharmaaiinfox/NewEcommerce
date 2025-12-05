@@ -129,7 +129,8 @@
       position: relative;
       width: 100%;
       padding: 10px;
-      
+      aspect-ratio: 4 / 5;
+      max-height: 600px;
 
       img,
       video {
@@ -169,6 +170,7 @@
   }
 
   @media (max-width: 991.98px) {
+
     .product-details-card,
     .product-gallery-card {
       border-radius: 10px;
@@ -176,4 +178,3 @@
     }
   }
 }
-

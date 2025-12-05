@@ -92,7 +92,7 @@ export const CategoryOption: any[] = [
   {
     "id": 68,
     "name": "Style for Her",
-    "slug": "Style for Her",
+    "slug": "women",
     "meta_title": null,
     "meta_description": null,
     "category_meta_image_id": null,

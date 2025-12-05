@@ -16,13 +16,13 @@ export class CollectionPriceFilterComponent {
       id: 1,
       price: 100,
       text: 'Below',
-      value: '100'
+      value: '0-99'
     },
     {
       id: 2,
       minPrice: 100,
       maxPrice: 200,
-      value: '0-200'
+      value: '100-200'
     },
     {
       id: 3,
@@ -72,7 +72,7 @@ export class CollectionPriceFilterComponent {
     if ((<HTMLInputElement>event?.target)?.checked)
       this.selectedPrices.push((<HTMLInputElement>event?.target)?.value); // push in array cheked value
     else
-      this.selectedPrices.splice(index,1);  // removed in array unchecked value
+      this.selectedPrices.splice(index, 1);  // removed in array unchecked value
 
     this.router.navigate([], {
       relativeTo: this.route,
@@ -86,8 +86,8 @@ export class CollectionPriceFilterComponent {
   }
 
   // check if the item are selected
-  checked(item: string){
-    if(this.selectedPrices?.indexOf(item) != -1){
+  checked(item: string) {
+    if (this.selectedPrices?.indexOf(item) != -1) {
       return true;
     }
     return false;

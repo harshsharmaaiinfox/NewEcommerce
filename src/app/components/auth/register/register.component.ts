@@ -12,6 +12,7 @@ import { Option } from '../../../shared/interface/theme-option.interface';
 import { Values } from '../../../shared/interface/setting.interface';
 import * as data from '../../../shared/data/country-code';
 import { NotificationService } from '../../../shared/services/notification.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-register',
@@ -32,7 +33,7 @@ export class RegisterComponent {
   public tnc = new FormControl(false, [Validators.requiredTrue]);
   public reCaptcha: boolean = true;
   public isLoading: boolean = false;
-  
+
 
   constructor(
     private store: Store,
@@ -48,10 +49,10 @@ export class RegisterComponent {
       password: new FormControl('', [Validators.required]),
       password_confirmation: new FormControl('', [Validators.required]),
       recaptcha: new FormControl(null, Validators.required)
-    },{validator : CustomValidators.MatchValidator('password', 'password_confirmation')});
+    }, { validator: CustomValidators.MatchValidator('password', 'password_confirmation') });
 
     this.setting$.subscribe(seting => {
-      if((seting?.google_reCaptcha && !seting?.google_reCaptcha?.status) || !seting?.google_reCaptcha) {
+      if ((seting?.google_reCaptcha && !seting?.google_reCaptcha?.status) || !seting?.google_reCaptcha) {
         this.form.removeControl('recaptcha');
         this.reCaptcha = false;
       } else {
@@ -62,14 +63,14 @@ export class RegisterComponent {
 
     this.form.get('country_code')?.disable();
     this.form.controls['phone']?.valueChanges.subscribe((value) => {
-      if(value && value.toString().length < 10) {
+      if (value && value.toString().length < 10) {
         this.form.controls['phone'].markAsTouched();
-        this.form.controls['phone'].setErrors({invalid: true});
+        this.form.controls['phone'].setErrors({ invalid: true });
       }
-      if(value && value.toString().length > 10) {
+      if (value && value.toString().length > 10) {
         this.form.controls['phone']?.setValue(+value.toString().slice(0, 10), { emitEvent: false });
       }
-      if(value && value.toString().length === 10) {
+      if (value && value.toString().length === 10) {
         this.form.controls['phone'].setErrors(null);
       }
     });
@@ -145,20 +146,21 @@ export class RegisterComponent {
 
   submit() {
     this.form.markAllAsTouched();
-    if(this.tnc.invalid){
+    if (this.tnc.invalid) {
       return
     }
-    if(this.form.valid) {
+    if (this.form.valid) {
       this.isLoading = true;
-      this.store.dispatch(new Register(this.form.value)).subscribe({
-          complete: () => {
-            this.isLoading = false;
-            this.router.navigateByUrl('/account/dashboard');
-          },
-          error: () => {
-            this.isLoading = false;
-          }
+      const payload = { ...this.form.value, 'store-id': environment.storeId };
+      this.store.dispatch(new Register(payload)).subscribe({
+        complete: () => {
+          this.isLoading = false;
+          this.router.navigateByUrl('/account/dashboard');
+        },
+        error: () => {
+          this.isLoading = false;
         }
+      }
       );
     }
   }

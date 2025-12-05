@@ -10,6 +10,7 @@ import * as data from '../../../shared/data/country-code';
 import { LoginWithNumber } from '../../../shared/action/auth.action';
 import { OtpComponent } from '../otp/otp.component';
 import { AuthService } from '../../../shared/services/auth.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login-with-number',
@@ -19,7 +20,7 @@ import { AuthService } from '../../../shared/services/auth.service';
 export class LoginWithNumberComponent {
 
   @Select(SettingState.setting) setting$: Observable<Values>;
-  
+
   public form: FormGroup;
   public codes = data.countryCodes;
 
@@ -40,13 +41,14 @@ export class LoginWithNumberComponent {
     })
   }
 
-  submit(){
+  submit() {
     this.form.markAllAsTouched();
-    if(this.form.valid){
-      this.store.dispatch(new LoginWithNumber(this.form.value)).subscribe({
+    if (this.form.valid) {
+      const payload = { ...this.form.value, 'store-id': environment.storeId };
+      this.store.dispatch(new LoginWithNumber(payload)).subscribe({
         complete: () => {
           this.authService.otpType = 'number';
-           this.router.navigateByUrl('/auth/otp'); 
+          this.router.navigateByUrl('/auth/otp');
         }
       })
     }

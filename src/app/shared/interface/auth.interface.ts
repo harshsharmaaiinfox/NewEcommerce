@@ -1,4 +1,4 @@
-export interface AuthStateModal{
+export interface AuthStateModal {
   email: string;
   token: String | Number;
   access_token: String | null;
@@ -8,6 +8,7 @@ export interface AuthStateModal{
 export interface AuthUserStateModel {
   email: string;
   password: string;
+  'store-id'?: number;
 }
 
 export interface AuthUserForgotModel {
@@ -19,12 +20,13 @@ export interface VerifyEmailOtpModel {
   token: string;
 }
 
-export interface AuthNumberLoginState{
+export interface AuthNumberLoginState {
   phone: number;
   country_code: number;
+  'store-id'?: number;
 }
 
-export interface AuthVerifyNumberOTPState{
+export interface AuthVerifyNumberOTPState {
   phone: number;
   country_code: number;
   token: string;
@@ -44,6 +46,7 @@ export interface RegisterModal {
   country_code: number;
   password: string;
   password_confirmation: string;
+  'store-id'?: number;
 }
 
 

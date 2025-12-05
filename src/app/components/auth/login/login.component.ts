@@ -11,6 +11,7 @@ import { CartState } from '../../../shared/state/cart.state';
 import { GetCartItems, SyncCart } from '../../../shared/action/cart.action';
 import { Values } from '../../../shared/interface/setting.interface';
 import { SettingState } from '../../../shared/state/setting.state';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -42,7 +43,7 @@ export class LoginComponent {
       recaptcha: new FormControl(null, Validators.required)
     });
     this.setting$.subscribe(setting => {
-      if((setting?.google_reCaptcha && !setting?.google_reCaptcha?.status) || !setting?.google_reCaptcha) {
+      if ((setting?.google_reCaptcha && !setting?.google_reCaptcha?.status) || !setting?.google_reCaptcha) {
         this.form.removeControl('recaptcha');
         this.reCaptcha = false;
       } else {
@@ -54,16 +55,17 @@ export class LoginComponent {
 
   submit() {
     this.form.markAllAsTouched();
-    if(this.form.valid) {
+    if (this.form.valid) {
       this.isLoading = true;
-      this.store.dispatch(new Login(this.form.value)).subscribe({
+      const payload = { ...this.form.value, 'store-id': environment.storeId };
+      this.store.dispatch(new Login(payload)).subscribe({
         complete: () => {
           this.isLoading = false;
           // Sync Cart Storage when successfully Login
           let syncCartItems: CartAddOrUpdate[] = [];
           this.cartItem$.subscribe(items => {
             items.filter(item => {
-              if(item) {
+              if (item) {
                 const params: CartAddOrUpdate = {
                   id: null,
                   product: item?.product,
@@ -76,7 +78,7 @@ export class LoginComponent {
               }
             });
           });
-          if(syncCartItems.length) {
+          if (syncCartItems.length) {
             this.store.dispatch(new SyncCart(syncCartItems));
           } else {
             this.store.dispatch(new GetCartItems());

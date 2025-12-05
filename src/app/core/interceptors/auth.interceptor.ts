@@ -7,6 +7,7 @@ import { NotificationService } from '../../shared/services/notification.service'
 import { Values } from '../../shared/interface/setting.interface';
 import { SettingState } from '../../shared/state/setting.state';
 import { AuthClear } from '../../shared/action/auth.action';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -28,7 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<any> {
 
     // If Maintenance Mode On
-    if(this.isMaintenanceModeOn) {
+    if (this.isMaintenanceModeOn) {
       this.ngZone.run(() => {
         this.router.navigate(['/maintenance']);
       })
@@ -39,13 +40,13 @@ export class AuthInterceptor implements HttpInterceptor {
       req = req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`,
-          store_id: '25',
+          'store-id': environment.storeId.toString(),
         },
       });
     } else {
       req = req.clone({
         setHeaders: {
-          store_id: '25',
+          'store-id': environment.storeId.toString(),
         },
       });
     }

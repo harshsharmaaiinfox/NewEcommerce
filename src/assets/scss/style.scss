@@ -670,7 +670,13 @@ app-product-action {
   flex-direction: column;
 }
 
+.login-section {
+  padding: 90px 0 60px !important;
+}
+
 @media(max-width:768px) {
+
+
   .product-box .product-detail .sold .price {
     font-size: 16px !important;
   }
@@ -889,7 +895,7 @@ button#search-btn {
 }
 
 @media(min-width:768px) and (max-width:1200px) {
- app-box-search {
+  app-box-search {
     display: none;
-}
+  }
 }

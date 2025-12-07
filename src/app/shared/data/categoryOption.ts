@@ -27,7 +27,7 @@ export const CategoryOption: any[] = [
       "mime_type": "image/jpeg",
       "file_name": "beautiful-smiling-woman-dressed-white-jersey-top-shirt-jeans_158538-19163.jpg",
       "asset_url": "/storage/2005/beautiful-smiling-woman-dressed-white-jersey-top-shirt-jeans_158538-19163.jpg",
-      "original_url": "https://raylomshop.com/public/storage/2005/beautiful-smiling-woman-dressed-white-jersey-top-shirt-jeans_158538-19163.jpg"
+      "original_url": "https://payrush247.com/public/storage/2005/beautiful-smiling-woman-dressed-white-jersey-top-shirt-jeans_158538-19163.jpg"
     },
     "category_meta_image": null,
     "category_icon": {
@@ -37,7 +37,7 @@ export const CategoryOption: any[] = [
       "mime_type": "image/png",
       "file_name": "sportswear.png",
       "asset_url": "/storage/2035/sportswear.png",
-      "original_url": "https://raylomshop.com/public/storage/2035/sportswear.png"
+      "original_url": "https://payrush247.com/public/storage/2035/sportswear.png"
     },
     "zones": [],
     "exclude_zones": [],
@@ -72,7 +72,7 @@ export const CategoryOption: any[] = [
       "mime_type": "image/jpeg",
       "file_name": "demin-jacket.jpg",
       "asset_url": "/storage/1977/demin-jacket.jpg",
-      "original_url": "https://raylomshop.com/public/storage/1977/demin-jacket.jpg"
+      "original_url": "https://payrush247.com/public/storage/1977/demin-jacket.jpg"
     },
     "category_meta_image": null,
     "category_icon": {
@@ -82,7 +82,7 @@ export const CategoryOption: any[] = [
       "mime_type": "image/png",
       "file_name": "icons8-clothes-64.png",
       "asset_url": "/storage/2049/icons8-clothes-64.png",
-      "original_url": "https://raylomshop.com/public/storage/2049/icons8-clothes-64.png"
+      "original_url": "https://payrush247.com/public/storage/2049/icons8-clothes-64.png"
     },
     "zones": [],
     "exclude_zones": [],
@@ -117,7 +117,7 @@ export const CategoryOption: any[] = [
       "mime_type": "image/jpeg",
       "file_name": "women-check.jpg",
       "asset_url": "/storage/1971/women-check.jpg",
-      "original_url": "https://raylomshop.com/public/storage/1971/women-check.jpg"
+      "original_url": "https://payrush247.com/public/storage/1971/women-check.jpg"
     },
     "category_meta_image": null,
     "category_icon": {
@@ -127,7 +127,7 @@ export const CategoryOption: any[] = [
       "mime_type": "image/png",
       "file_name": "dress.png",
       "asset_url": "/storage/2052/dress.png",
-      "original_url": "https://raylomshop.com/public/storage/2052/dress.png"
+      "original_url": "https://payrush247.com/public/storage/2052/dress.png"
     },
     "zones": [],
     "exclude_zones": [],

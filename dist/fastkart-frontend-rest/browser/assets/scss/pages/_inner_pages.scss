@@ -1184,7 +1184,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        background-color: var(--theme-color);
+        // background-color: var(--theme-color);
         padding: 2px 8px;
         border-radius: 4px;
         color: #ffffff;
@@ -1989,6 +1989,7 @@
 
         .select2-container {
           min-width: 110px;
+
           .select2-selection {
             border-radius: 6px 0 0 6px;
             border: unset !important;
@@ -2018,7 +2019,7 @@
       }
     }
 
-    .number-btn{
+    .number-btn {
       border: 1px solid rgba(26, 163, 135, 0.451);
       width: 100%;
       display: block;

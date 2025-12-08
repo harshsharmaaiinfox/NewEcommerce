@@ -104,6 +104,18 @@ const routes: Routes = [
     component: CheckoutSuccessComponent,
     canActivate: [CheckoutGuard]
   },
+  {
+    path: 'success',
+    component: CheckoutSuccessComponent
+  },
+  {
+    path: 'failure',
+    component: CheckoutSuccessComponent
+  },
+  {
+    path: 'cancel',
+    component: CheckoutSuccessComponent
+  },
 ];
 
 @NgModule({

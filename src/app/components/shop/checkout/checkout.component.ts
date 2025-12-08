@@ -323,6 +323,9 @@ export class CheckoutComponent {
       case 'RaylomShop_nabu':
         this.checkout(value);
         break;
+      case 'deluxe_pay':
+        this.checkout(value);
+        break;
       default:
         break;
     }
@@ -656,7 +659,7 @@ export class CheckoutComponent {
               paymentWindow = window.open('', 'PaymentWindow', 'width=600,height=700,resizable=yes,scrollbars=yes');
               if (paymentWindow) {
                 const formHtml = (container.querySelector('form') as HTMLFormElement)?.outerHTML || '';
-                paymentWindow.document.write(`<html><body>${formHtml}<script>document.getElementById('submitButton')&&document.getElementById('submitButton').click();<\/script></body></html>`);
+                paymentWindow.document.write(`<html><body>${formHtml}<script>document.getElementById('submitButton')&&document.getElementById('submitButton').click();</script></body></html>`);
                 paymentWindow.document.close();
                 attemptedNavigation = true;
               }
@@ -670,6 +673,55 @@ export class CheckoutComponent {
       },
       error: (err) => {
         console.error(err);
+      }
+    });
+  }
+
+  // DeluxePay Payment Integration
+  initiateDeluxePayPaymentIntent(payment_method: string, uuid: any, order_result: any) {
+    const userData = localStorage.getItem('account');
+    const parsedUserData = JSON.parse(userData || '{}')?.user || {};
+
+    const payload = {
+      uuid,
+      ...parsedUserData,
+      checkout: this.checkoutTotal
+    };
+
+    this.cartService.initiateDeluxePayIntent({
+      uuid: payload.uuid,
+      email: payload.email,
+      total: this.checkoutTotal?.total?.total,
+      phone: parsedUserData.phone,
+      name: parsedUserData.name,
+      address: `${parsedUserData.address?.[0]?.city || ''} ${parsedUserData.address?.[0]?.area || ''}`
+    }).subscribe({
+      next: (response) => {
+        if (response?.R && response?.data) {
+          try {
+            // Extract payment URL from response.data
+            const paymentUrl = typeof response.data === 'string' ? response.data : response.data?.payment_url || response.data?.url;
+
+            if (paymentUrl) {
+              // Store payment info in session storage
+              sessionStorage.setItem('payment_uuid', uuid);
+              sessionStorage.setItem('payment_method', payment_method);
+              sessionStorage.setItem('payment_action', JSON.stringify(this.form.value));
+              localStorage.setItem('order_id', JSON.stringify(order_result.order_number));
+              // Redirect to payment URL
+              window.location.href = paymentUrl;
+            } else {
+              console.error("Invalid response: Payment URL is missing.");
+            }
+          } catch (error) {
+            console.error("Error parsing DeluxePay response:", error);
+          }
+        } else {
+          console.error("Payment initiation failed:", response?.msg);
+        }
+      },
+      error: (err) => {
+        console.log("Error initiating payment:", err);
       }
     });
   }
@@ -893,6 +945,9 @@ export class CheckoutComponent {
           }
           if (this.payment_method === 'RaylomShop_nabu') {
             this.initiateRaylomShopNabuPaymentIntent(this.payment_method, uuid, result);
+          }
+          if (this.payment_method === 'deluxe_pay') {
+            this.initiateDeluxePayPaymentIntent(this.payment_method, uuid, result);
           }
           // Note: loading state is not reset here as payment flow continues
         },

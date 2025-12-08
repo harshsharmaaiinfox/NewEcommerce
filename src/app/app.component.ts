@@ -98,14 +98,57 @@ export class AppComponent implements OnInit {
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        if (event.url.includes('/success')) {
-          console.log('Coming After Payment Successfully or Failed');
-          setTimeout(() => {
-            const getOrderId = localStorage.getItem('order_id');
-            if (getOrderId) {
-              this.router.navigate(['/account/order/details', getOrderId]);
-            }
-          }, 500);
+        // Handle payment success, failure, cancel, or back to checkout
+        if (event.url.includes('/success') || event.url.includes('/failure') || event.url.includes('/cancel')) {
+          console.log('Coming After Payment Successfully or Failed or Cancelled');
+          const getOrderId = localStorage.getItem('order_id');
+          if (getOrderId) {
+            // Small delay to allow current navigation to complete
+            setTimeout(() => {
+              try {
+                // Parse the JSON string to get the actual order ID
+                const orderId = JSON.parse(getOrderId);
+                // Clear the stored order_id to prevent repeated redirects
+                localStorage.removeItem('order_id');
+                sessionStorage.removeItem('payment_uuid');
+                sessionStorage.removeItem('payment_method');
+                sessionStorage.removeItem('payment_action');
+                // Redirect to order details page
+                this.router.navigate(['/account/order/details', orderId]);
+              } catch (error) {
+                console.error('Error parsing order_id:', error);
+                // If parsing fails, try using the value directly
+                localStorage.removeItem('order_id');
+                this.router.navigate(['/account/order/details', getOrderId]);
+              }
+            }, 100);
+          }
+        }
+        // Handle back button to checkout page after payment initiation
+        else if (event.url.includes('/checkout') && !event.url.includes('/checkout-success')) {
+          const getOrderId = localStorage.getItem('order_id');
+          const paymentUuid = sessionStorage.getItem('payment_uuid');
+          // If order_id exists, it means payment was initiated but user came back
+          if (getOrderId && paymentUuid) {
+            console.log('User returned to checkout after payment initiation');
+            // Small delay to allow current navigation to complete
+            setTimeout(() => {
+              try {
+                const orderId = JSON.parse(getOrderId);
+                // Clear the stored data
+                localStorage.removeItem('order_id');
+                sessionStorage.removeItem('payment_uuid');
+                sessionStorage.removeItem('payment_method');
+                sessionStorage.removeItem('payment_action');
+                // Redirect to order details page
+                this.router.navigate(['/account/order/details', orderId]);
+              } catch (error) {
+                console.error('Error parsing order_id:', error);
+                localStorage.removeItem('order_id');
+                this.router.navigate(['/account/order/details', getOrderId]);
+              }
+            }, 100);
+          }
         }
       }
     });

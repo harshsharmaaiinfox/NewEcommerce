@@ -59,19 +59,34 @@ export class DenverComponent implements OnInit {
         paginate: this.data?.content?.products_ids.length,
         ids: this.data?.content?.products_ids?.join(',')
       }));
-      const getBrand$ = this.store.dispatch(new GetBrands({
-        status: 1,
-        ids: this.data?.content?.brands?.brand_ids?.join()
-      }));
-      const getStore$ = this.store.dispatch(new GetStores({
-        status: 1,
-        ids: this.data?.content?.seller?.store_ids?.join()
-      }));
+
+      // Only call GetBrands if brand_ids exist and are not empty
+      const brandIds = this.data?.content?.brands?.brand_ids;
+      const getBrand$ = brandIds && brandIds.length > 0
+        ? this.store.dispatch(new GetBrands({
+          status: 1,
+          ids: brandIds.join()
+        }))
+        : null;
+
+      // Only call GetStores if store_ids exist and are not empty
+      const storeIds = this.data?.content?.seller?.store_ids;
+      const getStore$ = storeIds && storeIds.length > 0
+        ? this.store.dispatch(new GetStores({
+          status: 1,
+          ids: storeIds.join()
+        }))
+        : null;
 
       // Skeleton Loader
       document.body.classList.add('skeleton-body');
 
-      forkJoin([getProducts$, getBrand$, getStore$]).subscribe({
+      // Build array of valid API calls
+      const apiCalls = [getProducts$];
+      if (getBrand$) apiCalls.push(getBrand$);
+      if (getStore$) apiCalls.push(getStore$);
+
+      forkJoin(apiCalls).subscribe({
         complete: () => {
           document.body.classList.remove('skeleton-body');
           this.themeOptionService.preloader = false;

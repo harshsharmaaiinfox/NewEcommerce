@@ -14,7 +14,6 @@ import { ClearCart } from '../../../shared/action/cart.action';
 import { AddressModalComponent } from '../../../shared/components/widgets/modal/address-modal/address-modal.component';
 import { Cart } from '../../../shared/interface/cart.interface';
 import { SettingState } from '../../../shared/state/setting.state';
-import { GetSettingOption } from '../../../shared/action/setting.action';
 import { OrderCheckout } from '../../../shared/interface/order.interface';
 import { Values, DeliveryBlock } from '../../../shared/interface/setting.interface';
 import { CartService } from '../../../shared/services/cart.service';
@@ -98,7 +97,8 @@ export class CheckoutComponent {
     private sanitizer: DomSanitizer,
     private orderService: OrderService
   ) {
-    this.store.dispatch(new GetSettingOption());
+    // Settings are already loaded in app.component.ts and cached in state
+    // No need to call GetSettingOption again here
 
     this.form = this.formBuilder.group({
       products: this.formBuilder.array([], [Validators.required]),

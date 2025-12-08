@@ -36,6 +36,7 @@
               "src/favicon.ico",
               "src/assets",
               "src/.htaccess",
+              "src/web.config",
               "src/sitemap.xml",
               "src/robots.txt"
             ],

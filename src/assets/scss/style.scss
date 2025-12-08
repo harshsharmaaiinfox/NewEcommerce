@@ -899,3 +899,13 @@ button#search-btn {
     display: none;
   }
 }
+
+.form-check.custom-form-check.hide-check-box {
+  gap: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.form-check .form-check-input {
+  margin-left: -0.5em !important;
+}

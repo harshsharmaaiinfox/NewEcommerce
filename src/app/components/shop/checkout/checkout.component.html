@@ -373,28 +373,28 @@
                                     </app-delivery-block>
                                 </div>
                             </li>
-                            <li>
-                                <div class="checkout-icon">
-                                    <i class="ri-bank-card-line"></i>
-                                </div>
-                                <div class="checkout-box">
-                                    <div class="checkout-title">
-                                        <h4>{{ 'Payment Options' | translate }}</h4>
-                                    </div>
-                                    <div class="empty-box" *ngIf="!(user$ | async)">
-                                        <h2>{{ 'No Payment Options Found' | translate }}</h2>
-                                    </div>
-                                    <app-payment-block *ngIf="(accessToken$ | async)" [setting]="(setting$ | async)!"
-                                        (selectPaymentMethod)="selectPaymentMethod($event)">
-                                    </app-payment-block>
-                                </div>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-xxl-4 col-xl-5">
-                <div class="card pos-detail-card">
+                <div class="card pos-detail-card payment-options-card">
+                    <div class="card-body">
+                        <div class="title-header">
+                            <div class="d-flex align-items-center">
+                                <h5><i class="ri-bank-card-line me-2"></i>{{ 'Payment Options' | translate }}</h5>
+                            </div>
+                        </div>
+                        <div class="empty-box" *ngIf="!(setting$ | async)?.payment_methods?.length">
+                            <h2>{{ 'No Payment Options Found' | translate }}</h2>
+                        </div>
+                        <app-payment-block *ngIf="(accessToken$ | async)" [setting]="(setting$ | async)!"
+                            (selectPaymentMethod)="selectPaymentMethod($event)">
+                        </app-payment-block>
+                    </div>
+                </div>
+                <div class="card pos-detail-card checkout-summary-card">
                     <div class="card-body">
                         <div class="title-header">
                             <div class="d-flex align-items-center">

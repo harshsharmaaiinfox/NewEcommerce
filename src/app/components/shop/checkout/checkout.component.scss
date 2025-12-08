@@ -686,6 +686,36 @@ $shadow-theme: 0 4px 16px rgba(27, 75, 69, 0.15);
 }
 
 // ============================================
+// Payment Options Card (Right Sidebar)
+// ============================================
+.payment-options-card {
+    margin-bottom: $spacing-lg;
+
+    .card-body {
+        padding: $spacing-lg;
+
+        .title-header {
+            margin-bottom: $spacing-lg;
+            padding-bottom: $spacing-md;
+            border-bottom: 2px solid $theme-primary;
+
+            h5 {
+                font-size: 22px;
+                font-weight: 700;
+                color: $theme-primary;
+                margin: 0;
+                display: flex;
+                align-items: center;
+
+                i {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}
+
+// ============================================
 // Empty States
 // ============================================
 .empty-box {

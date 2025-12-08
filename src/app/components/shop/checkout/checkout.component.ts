@@ -51,6 +51,9 @@ export class CheckoutComponent {
   @Select(CartState.cartHasDigital) cartDigital$: Observable<boolean | number>;
   @Select(CountryState.countries) countries$: Observable<Select2Data>;
 
+  // Local storage for cart items to prevent disappearing
+  public localCartItems: Cart[] = [];
+
   @ViewChild("addressModal") AddressModal: AddressModalComponent;
   @ViewChild('cpn', { static: false }) cpnRef: ElementRef<HTMLInputElement>;
   @ViewChild("payByQRModal") payByQRModal: TemplateRef<any>;
@@ -252,6 +255,12 @@ export class CheckoutComponent {
 
   ngOnInit() {
     this.checkout$.subscribe(data => this.checkoutTotal = data);
+    // Subscribe to cart items and store locally to prevent disappearing
+    this.cartItem$.subscribe(items => {
+      if (items && items.length > 0) {
+        this.localCartItems = [...items];
+      }
+    });
     this.products();
   }
 

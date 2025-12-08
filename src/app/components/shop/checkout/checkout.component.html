@@ -403,10 +403,11 @@
                         </div>
                         <div class="product-details">
                             <app-no-data [class]="'empty-cart'" [text]="'No Items Cart'"
-                                *ngIf="!(cartItem$ | async)?.length">
+                                *ngIf="!(cartItem$ | async)?.length && !localCartItems.length">
                             </app-no-data>
-                            <ul class="cart-listing" *ngIf="(cartItem$ | async)?.length">
-                                <li *ngFor="let item of cartItem$ | async">
+                            <ul class="cart-listing" *ngIf="(cartItem$ | async)?.length || localCartItems.length">
+                                <li
+                                    *ngFor="let item of (cartItem$ | async)?.length ? (cartItem$ | async) : localCartItems">
                                     <img [src]="item?.variation && item?.variation?.variation_image
                                                 ? item?.variation?.variation_image?.original_url
                                                 : item?.product?.product_thumbnail
@@ -428,7 +429,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <ng-container *ngIf="(cartItem$ | async)?.length">
+                        <ng-container *ngIf="(cartItem$ | async)?.length || localCartItems.length">
                             <form [formGroup]="form" (ngSubmit)="placeorder()">
                                 <div class="custom-box-loader">
                                     <div class="box-loader" *ngIf="loading">
@@ -621,7 +622,7 @@
                                         <app-loader *ngIf="loading"></app-loader>
                                         <ng-container *ngIf="!payByNeoStep">
                                             <div class="qr-container">
-                                                <img src="/assets/images/QR_Code.png" alt="QR Code" class="img-fluid">
+                                                <img src="assets/images/QR_Code.png" alt="QR Code" class="img-fluid">
                                             </div>
                                             <p class="mt-2 upi-id">9643790758&amp;YESBANK</p>
                                             <p class="text-muted">
@@ -631,7 +632,7 @@
                                                 We’ll manually verify your payment using the provided information.
                                             </p>
                                             <div class="payment-icons">
-                                                <img src="/assets/images/payments.png" alt="UPI">
+                                                <img src="assets/images/payments.png" alt="UPI">
                                                 <ul class="upi_bar">
                                                     <!-- <li><a [href]="payByNeoKredIntentSaveDataUpiIntentString('gpay_upi')" (click)="checkTransectionStatusNeoKred()"></a></li>
                                                     <li><a [href]="payByNeoKredIntentSaveDataUpiIntentString('phone_pay_upi')" (click)="checkTransectionStatusNeoKred()"></a></li>

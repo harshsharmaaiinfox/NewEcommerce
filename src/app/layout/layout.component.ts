@@ -89,15 +89,29 @@ export class LayoutComponent {
     this.themeOptionService.preloader = true;
     const getCategories$ = this.store.dispatch(new GetCategories({ status: 1 }));
     const getBlog$ = this.store.dispatch(new GetBlogs({ status: 1, paginate: 10 }));
-    const getProductBySearch$ = this.store.dispatch(new GetProductBySearch());
     const getPages$ = this.store.dispatch(new GetPages({ status: 1 }));
     const getMenu$ = this.store.dispatch(new GetMenu({ status: 1 }));
     this.store.dispatch(new GetWishlist())
-    forkJoin([getCategories$, getProductBySearch$, getPages$, getBlog$, getMenu$]).subscribe({
-      complete: () => {
-        this.themeOptionService.preloader = false;
-      }
-    });
+
+    // Check if current route is home page
+    const isHomePage = this.router.url === '/' || this.router.url === '' || this.router.url.startsWith('/?');
+
+    // Only call GetProductBySearch if NOT on home page
+    if (!isHomePage) {
+      const getProductBySearch$ = this.store.dispatch(new GetProductBySearch());
+      forkJoin([getCategories$, getProductBySearch$, getPages$, getBlog$, getMenu$]).subscribe({
+        complete: () => {
+          this.themeOptionService.preloader = false;
+        }
+      });
+    } else {
+      // On home page, exclude GetProductBySearch
+      forkJoin([getCategories$, getPages$, getBlog$, getMenu$]).subscribe({
+        complete: () => {
+          this.themeOptionService.preloader = false;
+        }
+      });
+    }
 
   }
 

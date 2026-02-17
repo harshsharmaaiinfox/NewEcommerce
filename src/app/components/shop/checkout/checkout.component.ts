@@ -45,6 +45,7 @@ export class CheckoutComponent {
   @Select(AccountState.user) user$: Observable<AccountUser>;
   @Select(AuthState.accessToken) accessToken$: Observable<string>;
   @Select(CartState.cartItems) cartItem$: Observable<Cart[]>;
+  @Select(CartState.cartTotal) cartTotal$: Observable<number>;
   @Select(OrderState.checkout) checkout$: Observable<OrderCheckout>;
   @Select(SettingState.setting) setting$: Observable<Values>;
   @Select(CartState.cartHasDigital) cartDigital$: Observable<boolean | number>;
@@ -185,7 +186,21 @@ export class CheckoutComponent {
         });
 
         this.form.statusChanges.subscribe(value => {
-          if (value == 'VALID') {
+          // Check if form is valid ignoring payment_method
+          const isPaymentMethodInvalid = this.form.get('payment_method')?.invalid;
+          let valid = this.form.valid;
+
+          if (!valid && isPaymentMethodInvalid) {
+            const otherControlsValid = Object.keys(this.form.controls)
+              .filter(key => key !== 'payment_method')
+              .every(key => this.form.controls[key].valid);
+
+            if (otherControlsValid) {
+              valid = true;
+            }
+          }
+
+          if (valid) {
             this.checkout();
           }
         });
@@ -253,12 +268,17 @@ export class CheckoutComponent {
   //   )
   // }
 
+  public subTotal: number = 0;
+
   ngOnInit() {
     this.checkout$.subscribe(data => this.checkoutTotal = data);
     // Subscribe to cart items and store locally to prevent disappearing
     this.cartItem$.subscribe(items => {
       if (items && items.length > 0) {
         this.localCartItems = [...items];
+        this.subTotal = items.reduce((prev, curr: Cart) => {
+          return (prev + Number(curr.sub_total));
+        }, 0);
       }
     });
     this.products();
@@ -869,9 +889,38 @@ export class CheckoutComponent {
       this.form.controls['coupon'].reset();
     }
 
-    if (this.form.valid) {
+    // Check if form is valid ignoring payment_method
+    const isPaymentMethodInvalid = this.form.get('payment_method')?.invalid;
+    let valid = this.form.valid;
+
+    // If form is invalid potentially due to payment_method, checks other controls
+    if (!valid && isPaymentMethodInvalid) {
+      const otherControlsValid = Object.keys(this.form.controls)
+        .filter(key => key !== 'payment_method')
+        .every(key => this.form.controls[key].valid);
+
+      if (otherControlsValid) {
+        valid = true;
+      }
+    }
+
+    if (valid) {
       this.loading = true;
-      this.store.dispatch(new Checkout(this.form.value)).subscribe({
+
+      const payload = { ...this.form.value };
+
+      // If payment_method is missing, inject a default from settings to satisfy backend
+      if (!payload.payment_method) {
+        const setting = this.store.selectSnapshot(state => state.setting).setting;
+        if (setting && setting.payment_methods && setting.payment_methods.length) {
+          const defaultMethod = setting.payment_methods.find((m: any) => m.status);
+          if (defaultMethod) {
+            payload.payment_method = defaultMethod.name;
+          }
+        }
+      }
+
+      this.store.dispatch(new Checkout(payload)).subscribe({
         next: (value) => {
           this.storeData = value;
           console.log(this.storeData);
@@ -970,7 +1019,7 @@ export class CheckoutComponent {
 
   ngOnDestroy() {
     // this.store.dispatch(new Clear());
-    this.store.dispatch(new ClearCart());
+    // this.store.dispatch(new ClearCart());
     this.form.reset();
     this.pollingSubscription && this.pollingSubscription.unsubscribe();
   }

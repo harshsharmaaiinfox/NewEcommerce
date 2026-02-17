@@ -305,17 +305,7 @@
                                 (selectDelivery)="selectDelivery($event)">
                             </app-delivery-block>
                         </div>
-                        <div class="checkbox-main-box">
-                            <div class="checkout-title1">
-                                <h2><i class="ri-bank-card-line"></i> {{ 'Payment Options' | translate }}</h2>
-                            </div>
-                            <div class="empty-box" *ngIf="!(setting$ | async)?.payment_methods?.length">
-                                <h2>{{ 'No Payment Options Found' | translate }}</h2>
-                            </div>
-                            <app-payment-block *ngIf="(accessToken$ | async)" [setting]="(setting$ | async)!"
-                                (selectPaymentMethod)="selectPaymentMethod($event)">
-                            </app-payment-block>
-                        </div>
+                        <!-- Payment Options Removed from Left Sidebar -->
                     </div>
                     <div class="checkout-detail-box" *ngIf="(accessToken$ | async)">
                         <ul>
@@ -389,7 +379,7 @@
                         <div class="empty-box" *ngIf="!(setting$ | async)?.payment_methods?.length">
                             <h2>{{ 'No Payment Options Found' | translate }}</h2>
                         </div>
-                        <app-payment-block *ngIf="(accessToken$ | async)" [setting]="(setting$ | async)!"
+                        <app-payment-block [setting]="(setting$ | async)!"
                             (selectPaymentMethod)="selectPaymentMethod($event)">
                         </app-payment-block>
                     </div>
@@ -440,21 +430,21 @@
                                             <h4>{{ 'Subtotal' | translate }}</h4>
                                             <h4 class="price">
                                                 {{ (checkoutTotal ? (checkoutTotal.total.sub_total | currencySymbol) :
-                                                'Not Calculated Yet' | translate ) }}
+                                                (subTotal | currencySymbol)) }}
                                             </h4>
                                         </li>
                                         <li *ngIf="!(cartDigital$ | async)">
                                             <h4>{{ 'Shipping' | translate }}</h4>
                                             <h4 class="price">
                                                 {{ (checkoutTotal ? (checkoutTotal.total.shipping_total |
-                                                currencySymbol) : 'Not Calculated Yet' | translate) }}
+                                                currencySymbol) : (0 | currencySymbol)) }}
                                             </h4>
                                         </li>
                                         <li>
                                             <h4>{{ 'Tax' | translate }}</h4>
                                             <h4 class="price">
                                                 {{ (checkoutTotal ? (checkoutTotal.total.tax_total | currencySymbol) :
-                                                'Not Calculated Yet' | translate ) }}
+                                                (0 | currencySymbol)) }}
                                             </h4>
                                         </li>
                                         <li *ngIf="(user$ | async) && checkoutTotal && (user$ | async)?.point?.balance">

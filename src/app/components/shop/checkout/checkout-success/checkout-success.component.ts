@@ -27,7 +27,7 @@ export class CheckoutSuccessComponent {
     title: "Checkout",
     items: [{ label: 'Checkout', active: true }]
   }
- 
+
   public form: FormGroup;
   public coupon: boolean = true;
   public couponCode: string;
@@ -57,11 +57,11 @@ export class CheckoutSuccessComponent {
   constructor(
     private store: Store, private router: Router,
     private formBuilder: FormBuilder, public cartService: CartService,
-        private modalService: NgbModal,
-        private sanitizer: DomSanitizer,
-        private orderService: OrderService,
-        private route: ActivatedRoute
-      ) {
+    private modalService: NgbModal,
+    private sanitizer: DomSanitizer,
+    private orderService: OrderService,
+    private route: ActivatedRoute
+  ) {
 
 
     this.route.queryParams
@@ -72,7 +72,7 @@ export class CheckoutSuccessComponent {
         this.order_status = params['order_status'];
         console.log(this.order_status);
       });
-    
+
   }
 
   get productControl(): FormArray {
@@ -87,6 +87,9 @@ export class CheckoutSuccessComponent {
 
   ngOnInit() {
     this.products();
+    // Clear the restoration state as the order was successful
+    sessionStorage.removeItem('restore_cart_items');
+    sessionStorage.removeItem('restore_checkout_form');
   }
 
   products() {
@@ -98,13 +101,13 @@ export class CheckoutSuccessComponent {
   }
 
   selectShippingAddress(id: number) {
-    if(id) {
+    if (id) {
       this.form.controls['shipping_address_id'].setValue(Number(id));
     }
   }
 
   selectBillingAddress(id: number) {
-    if(id) {
+    if (id) {
       this.form.controls['billing_address_id'].setValue(Number(id));
     }
   }
@@ -124,7 +127,7 @@ export class CheckoutSuccessComponent {
         break;
       case 'sub_paisa':
         // this.openModal();
-        break;  
+        break;
       default:
         break;
     }
@@ -166,7 +169,7 @@ export class CheckoutSuccessComponent {
     this.setCoupon();
   }
 
-  clearCart(){
+  clearCart() {
   }
 
   ngOnDestroy() {

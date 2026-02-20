@@ -918,3 +918,66 @@ $shadow-theme: 0 4px 16px rgba(27, 75, 69, 0.15);
 * {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+// ============================================
+// Minimum Order Alert
+// ============================================
+.checkout-minimum-order-alert {
+    background: linear-gradient(135deg, lighten($theme-error, 45%) 0%, lighten($theme-error, 48%) 100%);
+    border: 1.5px solid rgba($theme-error, 0.3);
+    border-radius: $radius-sm;
+    padding: $spacing-md;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-top: $spacing-lg;
+    margin-bottom: $spacing-xs;
+    animation: fadeInSlide 0.4s ease-out;
+    box-shadow: 0 4px 12px rgba($theme-error, 0.08);
+
+    .alert-icon {
+        width: 32px;
+        height: 32px;
+        background: $theme-error;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+
+        i {
+            color: white;
+            font-size: 18px;
+        }
+    }
+
+    .alert-content {
+        h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: darken($theme-error, 10%);
+            margin: 0 0 2px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            font-size: 13px;
+            color: darken($theme-error, 5%);
+            margin: 0;
+            font-weight: 500;
+            line-height: 1.25;
+        }
+    }
+}
+
+@keyframes fadeInSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

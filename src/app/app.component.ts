@@ -125,30 +125,13 @@ export class AppComponent implements OnInit {
           }
         }
         // Handle back button to checkout page after payment initiation
+        // Removed as per request: now handled by state restoration in checkout component
         else if (event.url.includes('/checkout') && !event.url.includes('/checkout-success')) {
-          const getOrderId = localStorage.getItem('order_id');
-          const paymentUuid = sessionStorage.getItem('payment_uuid');
-          // If order_id exists, it means payment was initiated but user came back
-          if (getOrderId && paymentUuid) {
-            console.log('User returned to checkout after payment initiation');
-            // Small delay to allow current navigation to complete
-            setTimeout(() => {
-              try {
-                const orderId = JSON.parse(getOrderId);
-                // Clear the stored data
-                localStorage.removeItem('order_id');
-                sessionStorage.removeItem('payment_uuid');
-                sessionStorage.removeItem('payment_method');
-                sessionStorage.removeItem('payment_action');
-                // Redirect to order details page
-                this.router.navigate(['/account/order/details', orderId]);
-              } catch (error) {
-                console.error('Error parsing order_id:', error);
-                localStorage.removeItem('order_id');
-                this.router.navigate(['/account/order/details', getOrderId]);
-              }
-            }, 100);
-          }
+          // Clearing the temporary order trackers so the user can actually use the checkout page again
+          localStorage.removeItem('order_id');
+          sessionStorage.removeItem('payment_uuid');
+          sessionStorage.removeItem('payment_method');
+          sessionStorage.removeItem('payment_action');
         }
       }
     });

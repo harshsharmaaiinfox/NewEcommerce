@@ -10,7 +10,7 @@ import { AccountState } from '../../../shared/state/account.state';
 import { CartState } from '../../../shared/state/cart.state';
 import { OrderState } from '../../../shared/state/order.state';
 import { Checkout, PlaceOrder } from '../../../shared/action/order.action';
-import { ClearCart } from '../../../shared/action/cart.action';
+import { ClearCart, SyncCart } from '../../../shared/action/cart.action';
 import { AddressModalComponent } from '../../../shared/components/widgets/modal/address-modal/address-modal.component';
 import { Cart } from '../../../shared/interface/cart.interface';
 import { SettingState } from '../../../shared/state/setting.state';
@@ -272,6 +272,7 @@ export class CheckoutComponent {
 
   ngOnInit() {
     this.checkout$.subscribe(data => this.checkoutTotal = data);
+
     // Subscribe to cart items and store locally to prevent disappearing
     this.cartItem$.subscribe(items => {
       if (items && items.length > 0) {
@@ -281,6 +282,44 @@ export class CheckoutComponent {
         }, 0);
       }
     });
+
+    // Restore saved checkout state if returning from a payment page
+    const savedCart = sessionStorage.getItem('restore_cart_items');
+    const savedForm = sessionStorage.getItem('restore_checkout_form');
+
+    if (savedForm) {
+      try {
+        this.form.patchValue(JSON.parse(savedForm));
+        sessionStorage.removeItem('restore_checkout_form');
+      } catch (e) {
+        console.error("Error restoring checkout form:", e);
+      }
+    }
+
+    if (savedCart) {
+      try {
+        const parsedItems = JSON.parse(savedCart);
+        if (parsedItems && parsedItems.length > 0) {
+          const syncItems = parsedItems.map((item: any) => ({
+            id: null,
+            product_id: item.product_id,
+            product: item.product,
+            variation_id: item.variation_id,
+            variation: item.variation,
+            quantity: item.quantity
+          }));
+          this.store.dispatch(new SyncCart(syncItems)).subscribe({
+            next: () => {
+              this.checkout(); // Re-calculate total after restoring cart
+            }
+          });
+        }
+        sessionStorage.removeItem('restore_cart_items');
+      } catch (e) {
+        console.error("Error restoring cart items:", e);
+      }
+    }
+
     this.products();
   }
 
@@ -949,6 +988,13 @@ export class CheckoutComponent {
         this.form.controls['coupon'].reset();
       }
 
+      // Save current cart and form state for potential recovery if user clicks back from payment
+      const currentItems = this.store.selectSnapshot(CartState.cartItems);
+      if (currentItems && currentItems.length > 0) {
+        sessionStorage.setItem('restore_cart_items', JSON.stringify(currentItems));
+      }
+      sessionStorage.setItem('restore_checkout_form', JSON.stringify(this.form.value));
+
       const uuid = uuidv4();
 
       const formData = {
@@ -1018,9 +1064,9 @@ export class CheckoutComponent {
   }
 
   ngOnDestroy() {
+    // Note: form.reset() removed to allow state persistence during payment redirects
     // this.store.dispatch(new Clear());
     // this.store.dispatch(new ClearCart());
-    this.form.reset();
     this.pollingSubscription && this.pollingSubscription.unsubscribe();
   }
 

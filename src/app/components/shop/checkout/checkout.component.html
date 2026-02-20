@@ -530,8 +530,19 @@
                                             </h4>
                                         </li>
                                     </ul>
-                                    <app-button [class]="'btn theme-bg-color text-white btn-md w-100 mt-4 fw-bold'"
-                                        [id]="'place_order'" [disabled]="loading || !(form.valid && checkoutTotal)">
+                                    <div class="checkout-minimum-order-alert"
+                                        *ngIf="(checkoutTotal?.total?.total || 0) <= 300">
+                                        <div class="alert-icon">
+                                            <i class="ri-error-warning-line"></i>
+                                        </div>
+                                        <div class="alert-content">
+                                            <h4>{{ 'Minimum Order Required' | translate }}</h4>
+                                            <p>{{ 'please order above 300' | translate }}</p>
+                                        </div>
+                                    </div>
+                                    <app-button [class]="'btn theme-bg-color text-white btn-md w-100 mt-2 fw-bold'"
+                                        [id]="'place_order'"
+                                        [disabled]="loading || !(form.valid && checkoutTotal) || (checkoutTotal?.total?.total || 0) <= 300">
                                         {{ 'Order Now' | translate }}
                                     </app-button>
                                 </div>
